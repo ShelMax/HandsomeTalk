@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">HandsomeTalk</string>
+    <string name="email">Email</string>
+    <string name="kakaotalk">KakaoTalk</string>
+    <string name="login_with">Login with</string>
+    <string name="or">or</string>
+    <string name="registration">Registration</string>
+    <string name="login">Login</string>
 </resources>

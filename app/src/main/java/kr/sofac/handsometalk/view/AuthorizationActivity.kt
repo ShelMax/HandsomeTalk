@@ -22,15 +22,16 @@ class AuthorizationActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View) {
         when (v.id) {
             R.id.idButtonLogin -> {
-                Toast.makeText(this,"idButtonLogin",Toast.LENGTH_SHORT)
+                Toast.makeText(this, "idButtonLogin", Toast.LENGTH_SHORT).show()
             }
             R.id.idButtonKakaoTalk -> {
-                Toast.makeText(this,"idButtonKakaoTalk",Toast.LENGTH_SHORT)
+                Toast.makeText(this, "idButtonKakaoTalk", Toast.LENGTH_SHORT).show()
             }
             R.id.idButtonRegistration -> {
-                Toast.makeText(this,"idButtonRegistration",Toast.LENGTH_SHORT)
+                Toast.makeText(this, "idButtonRegistration", Toast.LENGTH_SHORT).show()
             }
-            else -> {}
+            else -> {
+            }
         }
     }
 }

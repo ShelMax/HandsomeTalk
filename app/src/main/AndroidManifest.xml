@@ -18,7 +18,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.AuthorizationActivity" />
-        <activity android:name=".view.RegistrationActivity"></activity>
+        <activity android:name=".view.RegistrationActivity" />
+        <activity android:name=".view.BaseActivity" />
+        <activity
+            android:name=".view.NavigationActivity"
+            android:label="@string/title_activity_navigation"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

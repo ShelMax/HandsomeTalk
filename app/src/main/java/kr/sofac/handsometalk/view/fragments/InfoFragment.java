@@ -1,4 +1,4 @@
-package kr.sofac.handsometalk.view;
+package kr.sofac.handsometalk.view.fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -13,12 +13,12 @@ import kr.sofac.handsometalk.R;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link TalkFragment.OnFragmentInteractionListener} interface
+ * {@link InfoFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link TalkFragment#newInstance} factory method to
+ * Use the {@link InfoFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TalkFragment extends Fragment {
+public class InfoFragment extends BaseFragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -30,7 +30,7 @@ public class TalkFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public TalkFragment() {
+    public InfoFragment() {
         // Required empty public constructor
     }
 
@@ -40,11 +40,11 @@ public class TalkFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment TalkFragment.
+     * @return A new instance of fragment InfoFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static TalkFragment newInstance(String param1, String param2) {
-        TalkFragment fragment = new TalkFragment();
+    public static InfoFragment newInstance(String param1, String param2) {
+        InfoFragment fragment = new InfoFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -65,7 +65,7 @@ public class TalkFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_talk, container, false);
+        return inflater.inflate(R.layout.fragment_info, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

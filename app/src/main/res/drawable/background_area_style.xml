@@ -1,9 +1,21 @@
 <selector
-xmlns:android="http://schemas.android.com/apk/res/android">
-<item>
-    <shape android:shape="rectangle">
+xmlns:android="http://schemas.android.com/apk/res/android"
+    android:bottom="-100dp">
+<!--<item>-->
+    <!--<shape android:shape="rectangle">-->
 
-        <solid android:color="#0377BE"/>
-    </shape>
-</item>
+        <!--<solid android:color="#0377BE"/>-->
+    <!--</shape>-->
+<!--</item>-->
+
+    <item
+        >
+        <rotate
+            android:fromDegrees="85"
+            android:pivotX="50%">
+            <shape>
+                <solid android:color="#ffffff" />
+            </shape>
+        </rotate>
+    </item>
 </selector>

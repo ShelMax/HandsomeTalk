@@ -7,39 +7,39 @@
         <item
             android:id="@+id/id_info"
             android:icon="@drawable/information"
-            android:title="About us" />
+            android:title="@string/about_us" />
         <item
             android:id="@+id/id_talk"
             android:icon="@drawable/message_text"
-            android:title="Help me" />
+            android:title="@string/help_me" />
         <item
             android:id="@+id/id_calendar"
             android:icon="@drawable/calendar_check"
-            android:title="Make an appointment" />
+            android:title="@string/make_an_appointment" />
         <item
             android:id="@+id/id_event"
             android:icon="@drawable/cards"
-            android:title="Events" />
+            android:title="@string/events" />
         <item
             android:id="@+id/id_push"
             android:icon="@drawable/email_alert"
-            android:title="Notofications" />
+            android:title="@string/notifications" />
         <item
             android:id="@+id/id_contacts"
             android:icon="@drawable/hospital_marker"
-            android:title="Contacts" />
+            android:title="@string/contacts" />
     </group>
 
-    <item android:title="Configuration">
+    <item android:title="@string/configuration">
         <menu>
             <item
                 android:id="@+id/id_settings"
                 android:icon="@drawable/settings"
-                android:title="Settings" />
+                android:title="@string/settings" />
             <item
                 android:id="@+id/id_sign_out"
                 android:icon="@drawable/logout_variant"
-                android:title="Sign out" />
+                android:title="@string/sign_out" />
         </menu>
     </item>
 

@@ -59,6 +59,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 
         fTrans = getFragmentManager().beginTransaction();
         fTrans.add(R.id.id_main_frame_layout, eventFragment);
+        setTitle(getString(R.string.app_name));
         fTrans.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -111,24 +112,31 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 
         switch (item.getItemId()) {
             case R.id.id_info:
+                setTitle(getString(R.string.about_us));
                 fTrans.replace(R.id.id_main_frame_layout, infoFragment);
                 break;
             case R.id.id_talk:
+                setTitle(getString(R.string.help_me));
                 fTrans.replace(R.id.id_main_frame_layout, talkFragment);
                 break;
             case R.id.id_calendar:
+                setTitle(getString(R.string.make_an_appointment));
                 fTrans.replace(R.id.id_main_frame_layout, calendarFragment);
                 break;
             case R.id.id_event:
+                setTitle(getString(R.string.events));
                 fTrans.replace(R.id.id_main_frame_layout, eventFragment);
                 break;
             case R.id.id_push:
+                setTitle(getString(R.string.notifications));
                 fTrans.replace(R.id.id_main_frame_layout, pushFragment);
                 break;
             case R.id.id_contacts:
+                setTitle(getString(R.string.contacts));
                 fTrans.replace(R.id.id_main_frame_layout, contactsFragment);
                 break;
             case R.id.id_settings:
+                setTitle(getString(R.string.settings));
                 fTrans.replace(R.id.id_main_frame_layout, settingsFragment);
                 break;
             case R.id.id_sign_out:

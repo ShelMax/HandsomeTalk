@@ -25,6 +25,7 @@
     <style name="CalenderViewCustom" parent="Theme.AppCompat">
         <item name="colorAccent">#fff</item>
     </style>
+
     <!--<style name="CalenderViewDateCustomText" parent="android:TextAppearance.DeviceDefault.Small">-->
         <!--<item name="android:textColor">#fff</item>-->
     <!--</style>-->

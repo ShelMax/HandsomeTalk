@@ -10,7 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.CheckBox;
+import android.widget.Toast;
 
 import kr.sofac.handsometalk.R;
 import kr.sofac.handsometalk.view.fragments.CalendarFragment;
@@ -22,8 +22,7 @@ import kr.sofac.handsometalk.view.fragments.SettingsFragment;
 import kr.sofac.handsometalk.view.fragments.TalkFragment;
 
 
-public class NavigationActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class NavigationActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     CalendarFragment calendarFragment;
     ContactsFragment contactsFragment;
@@ -32,9 +31,7 @@ public class NavigationActivity extends AppCompatActivity
     PushFragment pushFragment;
     SettingsFragment settingsFragment;
     TalkFragment talkFragment;
-
     FragmentTransaction fTrans;
-    CheckBox chbStack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +56,10 @@ public class NavigationActivity extends AppCompatActivity
         pushFragment = new PushFragment();
         settingsFragment = new SettingsFragment();
         talkFragment = new TalkFragment();
+
+        fTrans = getFragmentManager().beginTransaction();
+        fTrans.add(R.id.id_main_frame_layout, eventFragment);
+        fTrans.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -107,36 +108,33 @@ public class NavigationActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         fTrans = getFragmentManager().beginTransaction();
-        int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            fTrans.replace(R.id.containerFrame, calendarFragment);
-        } else if (id == R.id.nav_gallery) {
-            fTrans.replace(R.id.containerFrame, contactsFragment);
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        switch (item.getItemId()) {
+            case R.id.id_info:
+                fTrans.replace(R.id.id_main_frame_layout, infoFragment);
+                break;
+            case R.id.id_talk:
+                fTrans.replace(R.id.id_main_frame_layout, talkFragment);
+                break;
+            case R.id.id_calendar:
+                fTrans.replace(R.id.id_main_frame_layout, calendarFragment);
+                break;
+            case R.id.id_event:
+                fTrans.replace(R.id.id_main_frame_layout, eventFragment);
+                break;
+            case R.id.id_push:
+                fTrans.replace(R.id.id_main_frame_layout, pushFragment);
+                break;
+            case R.id.id_contacts:
+                fTrans.replace(R.id.id_main_frame_layout, contactsFragment);
+                break;
+            case R.id.id_settings:
+                fTrans.replace(R.id.id_main_frame_layout, settingsFragment);
+                break;
+            case R.id.id_sign_out:
+                Toast.makeText(this, "Fuck off!", Toast.LENGTH_SHORT).show();
+                break;
         }
-
-//        fTrans = getFragmentManager().beginTransaction();
-//        switch (v.getId()) {
-//            case R.id.btnAdd:
-//
-//                break;
-//            case R.id.btnRemove:
-//                fTrans.remove(frag1);
-//                break;
-//            case R.id.btnReplace:
-//                fTrans.replace(R.id.frgmCont, frag2);
-//            default:
-//                break;
-//        }
-
 
         fTrans.commit();
 

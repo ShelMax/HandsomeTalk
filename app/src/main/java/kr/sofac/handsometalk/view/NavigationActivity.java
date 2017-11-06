@@ -1,6 +1,7 @@
 package kr.sofac.handsometalk.view;
 
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -111,6 +112,11 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         fTrans = getFragmentManager().beginTransaction();
 
         switch (item.getItemId()) {
+            case R.id.id_home_page:
+                Intent intent = new Intent(this, MainCustomActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                break;
             case R.id.id_info:
                 setTitle(getString(R.string.about_us));
                 fTrans.replace(R.id.id_main_frame_layout, infoFragment);

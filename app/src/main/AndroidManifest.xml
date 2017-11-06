@@ -21,17 +21,17 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".view.SplashActivity" />
+        <activity
+            android:name=".view.AuthorizationActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".view.AuthorizationActivity" />
-
-        <activity android:name=".view.RegistrationActivity" />
+        <activity
+            android:name=".view.RegistrationActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <activity android:name=".view.BaseActivity" />
-
-
-
-
+        <activity android:name=".view.SplashActivity" />
+        <activity android:name=".view.MainCustomActivity" />
 
     </application>
 

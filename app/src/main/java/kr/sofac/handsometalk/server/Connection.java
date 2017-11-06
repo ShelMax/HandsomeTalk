@@ -21,9 +21,9 @@ public class Connection<T> {
         void processFinish(Boolean isSuccess, ServerResponse<T> answerServerResponse);
     }
 
-//    /**
-//     * Authorization DTO
-//     */
+    /**
+     * Authorization DTO
+     */
 //    public void authorizationUser(AuthorizationDTO authorizationDTO, AnswerServerResponse<T> async) { //Change name request / Change data in method parameters
 //        answerServerResponse = async;
 //        new ManagerRetrofit<AuthorizationDTO>().sendRequest(authorizationDTO, new Object() {// Change type Object sending / Change data sending

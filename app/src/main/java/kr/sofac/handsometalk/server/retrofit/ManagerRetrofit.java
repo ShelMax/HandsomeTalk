@@ -137,7 +137,7 @@ public class ManagerRetrofit<T> {
             stringDeleting = stringDeleting + ";" + str;
         }
 
-        Timber.e("JSON DEL >>>>>>>>> " + stringDeleting);
+        Timber.e("JSON DEL >>>>>>>>> %s", stringDeleting);
 
         ServiceRetrofit serviceUploading = ServiceGenerator.createService(ServiceRetrofit.class);
 
@@ -232,14 +232,14 @@ public class ManagerRetrofit<T> {
     private void logServerRequest(ServerRequest serverRequest) {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
-        Timber.e(">>>>>>>>>>>>>>>>> \n" + gson.toJson(serverRequest));
+        Timber.e(">>>>>>>>>>>>>>>>> %s", gson.toJson(serverRequest));
     }
 
     /**
      * Логирование данных приема
      */
     private String logServerResponse(String serverResponse) {
-        Timber.e("<<<<<<<<<<<<<<<< \n" + serverResponse);
+        Timber.e("<<<<<<<<<<<<<<<< %s", serverResponse);
         return serverResponse;
     }
 

@@ -4,29 +4,83 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_style"
     tools:context="kr.sofac.handsometalk.view.MainCustomActivity">
 
     <Button
         android:id="@+id/id_info_button"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:text="Info"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="51dp" />
+        app:layout_constraintBottom_toTopOf="@+id/id_contacts_button"
+        app:layout_constraintEnd_toEndOf="@+id/id_contacts_button"
+        app:layout_constraintStart_toStartOf="@+id/id_contacts_button" />
 
     <Button
         android:id="@+id/id_contacts_button"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
         android:text="Contacts"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="123dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="w,5:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.269" />
 
     <Button
         android:id="@+id/id_calendar_button"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="Calendar"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="200dp" />
+        app:layout_constraintEnd_toEndOf="@+id/id_contacts_button"
+        app:layout_constraintStart_toStartOf="@+id/id_contacts_button"
+        app:layout_constraintTop_toBottomOf="@+id/id_contacts_button" />
+
+    <Button
+        android:id="@+id/id_event_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Event"
+        app:layout_constraintEnd_toEndOf="@+id/id_calendar_button"
+        app:layout_constraintStart_toStartOf="@+id/id_calendar_button"
+        app:layout_constraintTop_toBottomOf="@+id/id_calendar_button" />
+
+    <Button
+        android:id="@+id/id_push_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Push"
+        app:layout_constraintEnd_toEndOf="@+id/id_event_button"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/id_event_button"
+        app:layout_constraintTop_toBottomOf="@+id/id_event_button" />
+
+    <Button
+        android:id="@+id/id_talk_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Talk"
+        app:layout_constraintEnd_toEndOf="@+id/id_push_button"
+        app:layout_constraintStart_toStartOf="@+id/id_push_button"
+        app:layout_constraintTop_toBottomOf="@+id/id_push_button" />
+
+    <Button
+        android:id="@+id/id_settings_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Settings"
+        app:layout_constraintEnd_toEndOf="@+id/id_talk_button"
+        app:layout_constraintStart_toStartOf="@+id/id_talk_button"
+        app:layout_constraintTop_toBottomOf="@+id/id_talk_button" />
 </android.support.constraint.ConstraintLayout>

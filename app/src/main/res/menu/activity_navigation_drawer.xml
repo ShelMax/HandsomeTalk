@@ -3,11 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/id_home_page"
-            android:icon="@drawable/home"
-            android:title="Home" />
+    <!--<group android:checkableBehavior="single">-->
         <item
             android:id="@+id/id_info"
             android:icon="@drawable/information"
@@ -32,19 +28,15 @@
             android:id="@+id/id_contacts"
             android:icon="@drawable/hospital_marker"
             android:title="@string/contacts" />
-    </group>
+    <!--</group>-->
 
-    <item android:title="@string/configuration">
-        <menu>
+    <!--<item android:title="@string/configuration">-->
+        <!--<menu>-->
             <item
                 android:id="@+id/id_settings"
                 android:icon="@drawable/settings"
                 android:title="@string/settings" />
-            <item
-                android:id="@+id/id_sign_out"
-                android:icon="@drawable/logout_variant"
-                android:title="@string/sign_out" />
-        </menu>
-    </item>
+        <!--</menu>-->
+    <!--</item>-->
 
 </menu>

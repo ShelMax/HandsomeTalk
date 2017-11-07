@@ -11,7 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.view.View;
 
 import kr.sofac.handsometalk.R;
 import kr.sofac.handsometalk.view.fragments.CalendarFragment;
@@ -22,8 +22,17 @@ import kr.sofac.handsometalk.view.fragments.PushFragment;
 import kr.sofac.handsometalk.view.fragments.SettingsFragment;
 import kr.sofac.handsometalk.view.fragments.TalkFragment;
 
+import static kr.sofac.handsometalk.Constants.CALENDAR_FRAGMENT;
+import static kr.sofac.handsometalk.Constants.CONTACTS_FRAGMENT;
+import static kr.sofac.handsometalk.Constants.EVENT_FRAGMENT;
+import static kr.sofac.handsometalk.Constants.INFO_FRAGMENT;
+import static kr.sofac.handsometalk.Constants.PUSH_FRAGMENT;
+import static kr.sofac.handsometalk.Constants.SETTINGS_FRAGMENT;
+import static kr.sofac.handsometalk.Constants.TALK_FRAGMENT;
+import static kr.sofac.handsometalk.Constants.TYPE_CONTENT_NAVIGATION;
 
-public class NavigationActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+public class NavigationActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     CalendarFragment calendarFragment;
     ContactsFragment contactsFragment;
@@ -41,7 +50,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -49,6 +58,8 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 //                        .setAction("Action", null).show();
 //            }
 //        });
+
+
 
         contactsFragment = new ContactsFragment();
         calendarFragment = new CalendarFragment();
@@ -59,8 +70,36 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         talkFragment = new TalkFragment();
 
         fTrans = getFragmentManager().beginTransaction();
-        fTrans.add(R.id.id_main_frame_layout, eventFragment);
-        setTitle(getString(R.string.app_name));
+        switch (getIntent().getStringExtra(TYPE_CONTENT_NAVIGATION)){
+            case CALENDAR_FRAGMENT:
+                setTitle(getString(R.string.make_an_appointment));
+                fTrans.add(R.id.id_main_frame_layout, calendarFragment);
+                break;
+            case CONTACTS_FRAGMENT:
+                setTitle(getString(R.string.contacts));
+                fTrans.add(R.id.id_main_frame_layout, contactsFragment);
+                break;
+            case INFO_FRAGMENT:
+                setTitle(getString(R.string.about_us));
+                fTrans.add(R.id.id_main_frame_layout, infoFragment);
+                break;
+            case EVENT_FRAGMENT:
+                setTitle(getString(R.string.events));
+                fTrans.add(R.id.id_main_frame_layout, eventFragment);
+                break;
+            case PUSH_FRAGMENT:
+                setTitle(getString(R.string.notifications));
+                fTrans.add(R.id.id_main_frame_layout, pushFragment);
+                break;
+            case TALK_FRAGMENT:
+                setTitle(getString(R.string.help_me));
+                fTrans.add(R.id.id_main_frame_layout, talkFragment);
+                break;
+            case SETTINGS_FRAGMENT:
+                setTitle(getString(R.string.settings));
+                fTrans.add(R.id.id_main_frame_layout, settingsFragment);
+                break;
+        }
         fTrans.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -71,6 +110,15 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        //View headerLayout = navigationView.inflateHeaderView(R.layout.nav_header_navigation);
+        View header = navigationView.getHeaderView(0);
+        if(checkAuthorization()){
+            header.findViewById(R.id.id_sign_in_background).setVisibility(View.GONE);
+        } else {
+            header.findViewById(R.id.id_sign_in_button_tv).setOnClickListener(this);
+        }
+
+
     }
 
     @Override
@@ -112,11 +160,6 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         fTrans = getFragmentManager().beginTransaction();
 
         switch (item.getItemId()) {
-            case R.id.id_home_page:
-                Intent intent = new Intent(this, MainCustomActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-                break;
             case R.id.id_info:
                 setTitle(getString(R.string.about_us));
                 fTrans.replace(R.id.id_main_frame_layout, infoFragment);
@@ -145,15 +188,25 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                 setTitle(getString(R.string.settings));
                 fTrans.replace(R.id.id_main_frame_layout, settingsFragment);
                 break;
-            case R.id.id_sign_out:
-                Toast.makeText(this, "Fuck off!", Toast.LENGTH_SHORT).show();
-                break;
         }
-
         fTrans.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.id_sign_in_button_tv:
+                startActivity(new Intent(this, AuthorizationActivity.class));
+                finishAffinity();
+                break;
+        }
+    }
+
+    public boolean checkAuthorization(){
+        return false;
     }
 }

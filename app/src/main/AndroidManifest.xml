@@ -12,7 +12,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".view.NavigationActivity"
+            android:name=".view.MainCustomActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,7 +31,8 @@
 
         <activity android:name=".view.BaseActivity" />
         <activity android:name=".view.SplashActivity" />
-        <activity android:name=".view.MainCustomActivity" />
+        <activity android:name=".view.NavigationActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
 
     </application>
 

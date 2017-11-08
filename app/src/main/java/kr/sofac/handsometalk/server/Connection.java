@@ -7,6 +7,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 
 import kr.sofac.handsometalk.dto.AuthorizationDTO;
+import kr.sofac.handsometalk.dto.RegistrationDTO;
 import kr.sofac.handsometalk.dto.UserDTO;
 import kr.sofac.handsometalk.server.retrofit.ManagerRetrofit;
 import kr.sofac.handsometalk.server.type.ServerResponse;
@@ -31,6 +32,25 @@ public class Connection<T> {
     public void authorizationUser(AuthorizationDTO authorizationDTO, AnswerServerResponse<T> async) { //Change name request / Change data in method parameters
         answerServerResponse = async;
         new ManagerRetrofit<AuthorizationDTO>().sendRequest(authorizationDTO, new Object() {// Change type Object sending / Change data sending
+        }.getClass().getEnclosingMethod().getName(), new ManagerRetrofit.AsyncAnswerString() {
+            @Override
+            public void processFinish(Boolean isSuccess, String answerString) {
+                if (isSuccess) {
+                    Type typeAnswer = new TypeToken<ServerResponse<String>>() { //Change type response
+                    }.getType();
+                    tryParsing(answerString, typeAnswer);
+                } else {
+                    answerServerResponse.processFinish(false, null);
+                }
+            }
+        });
+    }
+    /**
+     * Registration DTO
+     */
+    public void registrationUser(RegistrationDTO registrationDTO, AnswerServerResponse<T> async) { //Change name request / Change data in method parameters
+        answerServerResponse = async;
+        new ManagerRetrofit<RegistrationDTO>().sendRequest(registrationDTO, new Object() {// Change type Object sending / Change data sending
         }.getClass().getEnclosingMethod().getName(), new ManagerRetrofit.AsyncAnswerString() {
             @Override
             public void processFinish(Boolean isSuccess, String answerString) {

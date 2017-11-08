@@ -3,6 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="kr.sofac.handsometalk.view.fragments.ContactsFragment">
+    <!--<ImageView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="500dp"-->
+        <!--android:scaleType="fitStart"-->
+        <!--android:src="@drawable/image_info_background"-->
+        <!--android:background="#e8d8be"/>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="?attr/actionBarSize">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -32,6 +44,7 @@
 
         </android.support.v7.widget.CardView>
 
+    </LinearLayout>
     </LinearLayout>
 
 </FrameLayout>

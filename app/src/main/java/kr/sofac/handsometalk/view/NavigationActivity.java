@@ -9,11 +9,11 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import kr.sofac.handsometalk.R;
+import kr.sofac.handsometalk.util.PreferenceApp;
 import kr.sofac.handsometalk.view.fragments.CalendarFragment;
 import kr.sofac.handsometalk.view.fragments.ContactsFragment;
 import kr.sofac.handsometalk.view.fragments.EventFragment;
@@ -43,11 +43,13 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     TalkFragment talkFragment;
     FragmentTransaction fTrans;
 
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -59,8 +61,6 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 //            }
 //        });
 
-
-
         contactsFragment = new ContactsFragment();
         calendarFragment = new CalendarFragment();
         eventFragment = new EventFragment();
@@ -68,6 +68,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         pushFragment = new PushFragment();
         settingsFragment = new SettingsFragment();
         talkFragment = new TalkFragment();
+
 
         fTrans = getFragmentManager().beginTransaction();
         switch (getIntent().getStringExtra(TYPE_CONTENT_NAVIGATION)){
@@ -131,27 +132,27 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.navigation, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.navigation, menu);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -160,6 +161,10 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         fTrans = getFragmentManager().beginTransaction();
 
         switch (item.getItemId()) {
+            case R.id.id_home:
+                finishAffinity();
+                startActivity(new Intent(this, MainCustomActivity.class));
+                break;
             case R.id.id_info:
                 setTitle(getString(R.string.about_us));
                 fTrans.replace(R.id.id_main_frame_layout, infoFragment);
@@ -207,6 +212,6 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     }
 
     public boolean checkAuthorization(){
-        return false;
+        return new PreferenceApp(this).getAuthorization();
     }
 }

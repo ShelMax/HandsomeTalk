@@ -5,15 +5,14 @@
     <application
         android:name=".HandsomeTalk"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme.NoBar">
 
         <activity
-            android:name=".view.MainCustomActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".view.MainCustomActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,16 +22,17 @@
 
         <activity
             android:name=".view.AuthorizationActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoBar" />
 
         <activity
             android:name=".view.RegistrationActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoBar" />
 
         <activity android:name=".view.BaseActivity" />
         <activity android:name=".view.SplashActivity" />
+
         <activity android:name=".view.NavigationActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoBar"/>
 
     </application>
 

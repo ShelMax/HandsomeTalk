@@ -8,11 +8,9 @@ xmlns:android="http://schemas.android.com/apk/res/android"
     <!--</shape>-->
 <!--</item>-->
 
-    <item
-        >
+    <item>
         <rotate
-            android:fromDegrees="85"
-            android:pivotX="50%">
+            android:fromDegrees="85" >
             <shape>
                 <solid android:color="#ffffff" />
             </shape>

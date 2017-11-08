@@ -5,11 +5,12 @@ package kr.sofac.handsometalk;
  */
 
 public class Constants {
-    public static final String BASE_URL = "http://server.com/";
-    public static final String PART_CONTROLLER = "/some/";
 
+    /** Connection */
+    public static final String BASE_URL = "http://192.168.0.15/";
+    public final static String PART_CONTROLLER = "data/ajax/request.php";
 
-
+    /** Type view in (MainCustomActivity -> NavigationActivity) */
     public static final String TYPE_CONTENT_NAVIGATION = "TYPE_CONTENT_NAVIGATION";
 
     public static final String CALENDAR_FRAGMENT = "CALENDAR";
@@ -19,4 +20,12 @@ public class Constants {
     public static final String PUSH_FRAGMENT = "PUSH";
     public static final String SETTINGS_FRAGMENT = "SETTINGS";
     public static final String TALK_FRAGMENT = "TALK";
+
+    /** Preference */
+    public static final String USER_ID_PREF = "USER_ID_PREF";
+    public static final String USER_AUTHORIZATION = "USER_AUTHORIZATION";
+
+
+
+
 }

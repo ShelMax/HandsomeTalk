@@ -4,34 +4,48 @@
     android:layout_height="match_parent"
     tools:context="kr.sofac.handsometalk.view.fragments.PushFragment">
 
+    <!--<ImageView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="500dp"-->
+        <!--android:background="#e8d8be"-->
+        <!--android:scaleType="fitStart"-->
+        <!--android:src="@drawable/image_info_background" />-->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background_area_style"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingTop="?attr/actionBarSize">
 
-        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/card_view"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/background_area_style"
+            android:orientation="vertical">
 
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-
-            card_view:cardCornerRadius="5dp"
-            card_view:cardElevation="2dp"
-            card_view:contentPadding="5dp">
-
-            <TextView
+            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/card_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="Push"/>
 
-        </android.support.v7.widget.CardView>
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
 
+                card_view:cardCornerRadius="5dp"
+                card_view:cardElevation="2dp"
+                card_view:contentPadding="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Push" />
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
     </LinearLayout>
 
 </FrameLayout>

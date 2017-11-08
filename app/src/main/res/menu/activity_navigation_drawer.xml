@@ -4,39 +4,43 @@
     tools:showIn="navigation_view">
 
     <!--<group android:checkableBehavior="single">-->
-        <item
-            android:id="@+id/id_info"
-            android:icon="@drawable/information"
-            android:title="@string/about_us" />
-        <item
-            android:id="@+id/id_talk"
-            android:icon="@drawable/message_text"
-            android:title="@string/help_me" />
-        <item
-            android:id="@+id/id_calendar"
-            android:icon="@drawable/calendar_check"
-            android:title="@string/make_an_appointment" />
-        <item
-            android:id="@+id/id_event"
-            android:icon="@drawable/cards"
-            android:title="@string/events" />
-        <item
-            android:id="@+id/id_push"
-            android:icon="@drawable/email_alert"
-            android:title="@string/notifications" />
-        <item
-            android:id="@+id/id_contacts"
-            android:icon="@drawable/hospital_marker"
-            android:title="@string/contacts" />
+    <item
+        android:id="@+id/id_home"
+        android:icon="@drawable/home"
+        android:title="Home" />
+    <item
+        android:id="@+id/id_info"
+        android:icon="@drawable/information"
+        android:title="@string/about_us" />
+    <item
+        android:id="@+id/id_talk"
+        android:icon="@drawable/message_text"
+        android:title="@string/help_me" />
+    <item
+        android:id="@+id/id_calendar"
+        android:icon="@drawable/calendar_check"
+        android:title="@string/make_an_appointment" />
+    <item
+        android:id="@+id/id_event"
+        android:icon="@drawable/cards"
+        android:title="@string/events" />
+    <item
+        android:id="@+id/id_push"
+        android:icon="@drawable/email_alert"
+        android:title="@string/notifications" />
+    <item
+        android:id="@+id/id_contacts"
+        android:icon="@drawable/hospital_marker"
+        android:title="@string/contacts" />
     <!--</group>-->
 
     <!--<item android:title="@string/configuration">-->
-        <!--<menu>-->
-            <item
-                android:id="@+id/id_settings"
-                android:icon="@drawable/settings"
-                android:title="@string/settings" />
-        <!--</menu>-->
+    <!--<menu>-->
+    <item
+        android:id="@+id/id_settings"
+        android:icon="@drawable/settings"
+        android:title="@string/settings" />
+    <!--</menu>-->
     <!--</item>-->
 
 </menu>

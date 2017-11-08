@@ -7,6 +7,12 @@
     android:background="@drawable/background_style"
     tools:context="kr.sofac.handsometalk.view.NavigationActivity">
 
+
+    <include
+        layout="@layout/content_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,20 +28,10 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <!--<include layout="@layout/content_navigation" />-->
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="70dp">
-
-        <FrameLayout
-        android:id="@+id/id_main_frame_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        </FrameLayout>
-
-    </LinearLayout>
+    <!--<FrameLayout-->
+    <!--android:id="@+id/id_main_frame_layout"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"/>-->
 
 
     <!--<android.support.design.widget.FloatingActionButton-->

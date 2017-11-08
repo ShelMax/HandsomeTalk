@@ -40,6 +40,10 @@
         android:id="@+id/id_settings"
         android:icon="@drawable/settings"
         android:title="@string/settings" />
+    <item
+        android:id="@+id/id_exit"
+        android:icon="@drawable/logout_variant"
+        android:title="@string/sign_out" />
     <!--</menu>-->
     <!--</item>-->
 

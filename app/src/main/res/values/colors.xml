@@ -10,4 +10,7 @@
     <color name="colorBlack">#000000</color>
     <color name="colorDarkTransparent">#87000000</color>
 
+    <!-- Progress bar bg color -->
+    <color name="transparent">#00000000</color>
+
 </resources>

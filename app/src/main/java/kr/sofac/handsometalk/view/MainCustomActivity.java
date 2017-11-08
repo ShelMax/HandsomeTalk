@@ -2,7 +2,6 @@ package kr.sofac.handsometalk.view;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -12,7 +11,7 @@ import kr.sofac.handsometalk.R;
 
 import static kr.sofac.handsometalk.Constants.TYPE_CONTENT_NAVIGATION;
 
-public class MainCustomActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainCustomActivity extends BaseActivity implements View.OnClickListener {
 
     Button calendarButton, contactsButton, infoButton, eventButton, pushButton, talkButton, settingsButton;
 

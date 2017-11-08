@@ -7,10 +7,10 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import kr.sofac.handsometalk.R;
 import kr.sofac.handsometalk.util.PreferenceApp;
@@ -32,7 +32,7 @@ import static kr.sofac.handsometalk.Constants.TALK_FRAGMENT;
 import static kr.sofac.handsometalk.Constants.TYPE_CONTENT_NAVIGATION;
 
 
-public class NavigationActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+public class NavigationActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     CalendarFragment calendarFragment;
     ContactsFragment contactsFragment;
@@ -71,7 +71,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 
 
         fTrans = getFragmentManager().beginTransaction();
-        switch (getIntent().getStringExtra(TYPE_CONTENT_NAVIGATION)){
+        switch (getIntent().getStringExtra(TYPE_CONTENT_NAVIGATION)) {
             case CALENDAR_FRAGMENT:
                 setTitle(getString(R.string.make_an_appointment));
                 fTrans.add(R.id.id_main_frame_layout, calendarFragment);
@@ -111,10 +111,12 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        //View headerLayout = navigationView.inflateHeaderView(R.layout.nav_header_navigation);
+
         View header = navigationView.getHeaderView(0);
-        if(checkAuthorization()){
+        if (checkAuthorization()) {
             header.findViewById(R.id.id_sign_in_background).setVisibility(View.GONE);
+            ((TextView) header.findViewById(R.id.id_user_name)).setText((new PreferenceApp(this).getUser().getName()));
+            ((TextView) header.findViewById(R.id.id_user_email)).setText((new PreferenceApp(this).getUser().getEmail()));
         } else {
             header.findViewById(R.id.id_sign_in_button_tv).setOnClickListener(this);
         }
@@ -193,6 +195,11 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                 setTitle(getString(R.string.settings));
                 fTrans.replace(R.id.id_main_frame_layout, settingsFragment);
                 break;
+            case R.id.id_exit:
+                new PreferenceApp(this).setAuthorization(false);
+                startActivity(new Intent(this, MainCustomActivity.class));
+                finishAffinity();
+                break;
         }
         fTrans.commit();
 
@@ -203,7 +210,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.id_sign_in_button_tv:
                 startActivity(new Intent(this, AuthorizationActivity.class));
                 finishAffinity();
@@ -211,7 +218,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         }
     }
 
-    public boolean checkAuthorization(){
+    public boolean checkAuthorization() {
         return new PreferenceApp(this).getAuthorization();
     }
 }

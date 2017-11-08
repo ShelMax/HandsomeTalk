@@ -7,6 +7,20 @@
     android:background="@drawable/background_style"
     tools:context="kr.sofac.handsometalk.view.AuthorizationActivity">
 
+    <EditText
+        android:id="@+id/id_edit_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:singleLine="true"
+        android:theme="@style/Theme.App.Base"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintBottom_toTopOf="@+id/id_edit_password"
+        app:layout_constraintEnd_toEndOf="@+id/id_edit_password"
+        app:layout_constraintStart_toStartOf="@+id/id_edit_password" />
 
     <EditText
         android:id="@+id/id_edit_password"
@@ -27,21 +41,6 @@
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/id_edit_name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:ems="10"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress"
-        android:singleLine="true"
-        android:theme="@style/Theme.App.Base"
-        android:textColor="@color/colorWhite"
-        app:layout_constraintBottom_toTopOf="@+id/id_edit_password"
-        app:layout_constraintEnd_toEndOf="@+id/id_edit_password"
-        app:layout_constraintStart_toStartOf="@+id/id_edit_password" />
 
     <Button
         android:id="@+id/id_sign_in_button"

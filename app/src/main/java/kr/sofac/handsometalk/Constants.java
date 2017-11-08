@@ -6,6 +6,8 @@ package kr.sofac.handsometalk;
 
 public class Constants {
 
+    public static final String CLOUD_API_KEY = "AIzaSyDZJmgv9fvQnQkc5vvCx8bPFcUqSYDVhnM";
+
     /** Connection */
     public static final String BASE_URL = "http://192.168.0.15/";
     public final static String PART_CONTROLLER = "data/ajax/request.php";
@@ -24,6 +26,9 @@ public class Constants {
     /** Preference */
     public static final String USER_ID_PREF = "USER_ID_PREF";
     public static final String USER_AUTHORIZATION = "USER_AUTHORIZATION";
+    public static final String GOOGLE_CLOUD_PREFERENCE = "GOOGLE_CLOUD_PREFERENCE";
+    public static final String USER_PREFERENCE = "USER_PREFERENCE";
+
 
 
 

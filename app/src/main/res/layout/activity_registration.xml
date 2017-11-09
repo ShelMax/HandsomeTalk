@@ -9,7 +9,7 @@
 
 
     <EditText
-        android:id="@+id/id_edit_password"
+        android:id="@+id/id_edit_email"
         android:layout_width="0dp"
         android:layout_height="46dp"
         android:layout_marginBottom="8dp"
@@ -20,7 +20,7 @@
         android:theme="@style/Theme.App.Base"
         app:layout_constraintBottom_toTopOf="@+id/id_edit_phone"
         app:layout_constraintEnd_toEndOf="@+id/id_edit_phone"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/id_edit_phone" />
 
     <EditText
@@ -29,6 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:ems="10"
         android:hint="Name"
         android:inputType="text"
@@ -36,19 +37,8 @@
         android:textColor="@color/colorWhite"
         android:theme="@style/Theme.App.Base"
         app:layout_constraintBottom_toTopOf="@+id/switch1"
-        app:layout_constraintEnd_toEndOf="@+id/id_edit_password"
-        app:layout_constraintStart_toStartOf="@+id/id_edit_password" />
-
-    <TextView
-        android:id="@+id/id_register_text_view"
-        android:layout_width="198dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/don_t_have_an_account_register"
-        android:textColor="@color/colorWhite"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/id_edit_email"
+        app:layout_constraintStart_toStartOf="@+id/id_edit_email" />
 
     <TextView
         android:id="@+id/textView4"
@@ -69,15 +59,15 @@
         android:id="@+id/switch1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:textColor="@color/colorWhite"
         android:textOff="Male"
         android:textOn="Female"
-        app:layout_constraintBottom_toTopOf="@+id/id_edit_password"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/id_edit_email"
+        app:layout_constraintEnd_toEndOf="@+id/id_edit_email"
+        app:layout_constraintStart_toStartOf="@+id/id_edit_email" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
@@ -119,13 +109,12 @@
         android:inputType="phone"
         android:textColor="@color/colorWhite"
         android:theme="@style/Theme.App.Base"
-        app:layout_constraintBottom_toBottomOf="@+id/id_register_text_view"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="w,5:1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.541" />
+        app:layout_constraintVertical_bias="0.556" />
 
     <EditText
         android:id="@+id/id_password"

@@ -44,13 +44,16 @@
         android:id="@+id/id_sign_in_background"
         android:layout_width="match_parent"
         android:layout_height="@dimen/nav_header_height"
-        android:paddingTop="10dp"
+        android:paddingTop="15dp"
         android:background="@color/colorDarkTransparent"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical|center_horizontal">
 
         <TextView
+            android:background="@drawable/border_textview"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
             android:id="@+id/id_sign_in_button_tv"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:text="Sign in"

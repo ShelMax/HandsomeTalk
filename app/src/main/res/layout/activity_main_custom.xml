@@ -2,85 +2,232 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_style"
+    android:background="#2b3363"
     tools:context="kr.sofac.handsometalk.view.MainCustomActivity">
 
-    <Button
+    <LinearLayout
+        android:id="@+id/idLiner2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:background="@drawable/animation_list"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/id_talk_button"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <LinearLayout
+        android:id="@+id/idLiner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_main"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/id_talk_button"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+    <TextView
+        android:id="@+id/idContacts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Contacts"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintStart_toEndOf="@+id/id_contacts_button"
+        app:layout_constraintTop_toBottomOf="@+id/id_contacts_button" />
+
+    <TextView
+        android:id="@+id/idSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:text="TextView"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintBottom_toBottomOf="@+id/id_settings_button"
+        app:layout_constraintStart_toEndOf="@+id/id_settings_button"
+        app:layout_constraintTop_toTopOf="@+id/id_settings_button"
+        tools:text="Settings" />
+
+    <TextView
+        android:id="@+id/idInfo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_weight="1"
+        android:text="About us"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintBottom_toTopOf="@+id/id_info_button"
+        app:layout_constraintStart_toEndOf="@+id/id_info_button" />
+
+    <TextView
+        android:id="@+id/idCalendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_weight="1"
+        android:text="Calendar"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintBottom_toBottomOf="@+id/id_calendar_button"
+        app:layout_constraintStart_toEndOf="@+id/id_calendar_button"
+        app:layout_constraintTop_toTopOf="@+id/id_calendar_button" />
+
+    <TextView
+        android:id="@+id/idEvent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:text="Event"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintBottom_toBottomOf="@+id/id_event_button"
+        app:layout_constraintStart_toEndOf="@+id/id_event_button"
+        app:layout_constraintTop_toTopOf="@+id/id_event_button" />
+
+    <TextView
+        android:id="@+id/idPush"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:text="Push"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintBottom_toBottomOf="@+id/id_push_button"
+        app:layout_constraintStart_toEndOf="@+id/id_push_button"
+        app:layout_constraintTop_toTopOf="@+id/id_push_button" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        android:text="핸섬톡"
+        android:textColor="@color/colorWhite"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageButton
+        android:id="@+id/id_talk_button"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/oval_central_button"
+        android:padding="60dp"
+        android:src="@drawable/message_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="w,1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.511" />
+
+
+    <ImageButton
         android:id="@+id/id_info_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="Info"
-        app:layout_constraintBottom_toTopOf="@+id/id_contacts_button"
-        app:layout_constraintEnd_toEndOf="@+id/id_contacts_button"
-        app:layout_constraintStart_toStartOf="@+id/id_contacts_button" />
+        android:layout_marginBottom="60dp"
+        android:layout_marginStart="48dp"
+        android:background="@drawable/oval_button_pink"
+        android:padding="15dp"
+        android:src="@drawable/information"
+        app:layout_constraintBottom_toTopOf="@+id/id_talk_button"
+        app:layout_constraintDimensionRatio="w,1:1"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/id_contacts_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Contacts"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintDimensionRatio="w,5:1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.521"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.269" />
-
-    <Button
+    <ImageButton
         android:id="@+id/id_calendar_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="160dp"
         android:layout_marginTop="8dp"
-        android:text="Calendar"
-        app:layout_constraintEnd_toEndOf="@+id/id_contacts_button"
-        app:layout_constraintStart_toStartOf="@+id/id_contacts_button"
-        app:layout_constraintTop_toBottomOf="@+id/id_contacts_button" />
+        android:background="@drawable/oval_button_purple"
+        android:padding="15dp"
+        android:src="@drawable/calendar_check"
+        app:layout_constraintBottom_toTopOf="@+id/id_talk_button"
+        app:layout_constraintDimensionRatio="w,1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/id_info_button"
+        app:layout_constraintVertical_bias="0.383" />
 
-    <Button
+
+    <ImageButton
         android:id="@+id/id_event_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="72dp"
         android:layout_marginTop="8dp"
-        android:text="Event"
-        app:layout_constraintEnd_toEndOf="@+id/id_calendar_button"
-        app:layout_constraintStart_toStartOf="@+id/id_calendar_button"
-        app:layout_constraintTop_toBottomOf="@+id/id_calendar_button" />
+        android:background="@drawable/oval_button_blue"
+        android:padding="15dp"
+        android:src="@drawable/cards"
+        app:layout_constraintBottom_toTopOf="@+id/id_settings_button"
+        app:layout_constraintDimensionRatio="w,1:1"
+        app:layout_constraintStart_toEndOf="@+id/id_talk_button"
+        app:layout_constraintTop_toTopOf="@+id/id_calendar_button"
+        app:layout_constraintVertical_bias="0.402" />
 
-    <Button
+    <ImageButton
         android:id="@+id/id_push_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="72dp"
         android:layout_marginTop="8dp"
-        android:text="Push"
-        app:layout_constraintEnd_toEndOf="@+id/id_event_button"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/id_event_button"
-        app:layout_constraintTop_toBottomOf="@+id/id_event_button" />
+        android:background="@drawable/oval_button_green"
+        android:padding="15dp"
+        android:src="@drawable/email_alert"
+        app:layout_constraintBottom_toBottomOf="@+id/id_settings_button"
+        app:layout_constraintDimensionRatio="w,1:1"
+        app:layout_constraintStart_toEndOf="@+id/id_talk_button"
+        app:layout_constraintTop_toBottomOf="@+id/id_calendar_button"
+        app:layout_constraintVertical_bias="0.656" />
 
-    <Button
-        android:id="@+id/id_talk_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Talk"
-        app:layout_constraintEnd_toEndOf="@+id/id_push_button"
-        app:layout_constraintStart_toStartOf="@+id/id_push_button"
-        app:layout_constraintTop_toBottomOf="@+id/id_push_button" />
 
-    <Button
+    <ImageButton
         android:id="@+id/id_settings_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="152dp"
         android:layout_marginTop="8dp"
-        android:text="Settings"
-        app:layout_constraintEnd_toEndOf="@+id/id_talk_button"
-        app:layout_constraintStart_toStartOf="@+id/id_talk_button"
+        android:background="@drawable/oval_button_yellow"
+        android:padding="15dp"
+        android:src="@drawable/settings"
+        app:layout_constraintBottom_toBottomOf="@+id/id_contacts_button"
+        app:layout_constraintDimensionRatio="w,1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/id_talk_button"
+        app:layout_constraintVertical_bias="0.545" />
+
+
+    <ImageButton
+        android:id="@+id/id_contacts_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/oval_button_brown"
+        android:padding="15dp"
+        android:src="@drawable/hospital_marker"
+        app:layout_constraintDimensionRatio="w,1:1"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/id_talk_button" />
+
+
 </android.support.constraint.ConstraintLayout>

@@ -5,11 +5,11 @@
     tools:context="kr.sofac.handsometalk.view.fragments.EventFragment">
 
     <!--<ImageView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="500dp"-->
-        <!--android:background="#e8d8be"-->
-        <!--android:scaleType="fitStart"-->
-        <!--android:src="@drawable/image_info_background" />-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="500dp"-->
+    <!--android:background="#e8d8be"-->
+    <!--android:scaleType="fitStart"-->
+    <!--android:src="@drawable/image_info_background" />-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,11 +37,25 @@
                 card_view:cardElevation="2dp"
                 card_view:contentPadding="5dp">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="Event" />
+                <!--<android.support.v4.widget.SwipeRefreshLayout-->
+                    <!--android:id="@+id/refresh"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent">-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp">
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/idRecyclerEvent"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scrollbars="vertical"  />
+                    </LinearLayout>
+
+                <!--</android.support.v4.widget.SwipeRefreshLayout>-->
 
             </android.support.v7.widget.CardView>
 

@@ -1,9 +1,11 @@
 package kr.sofac.handsometalk.view;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import kr.sofac.handsometalk.Constants;
@@ -13,7 +15,9 @@ import static kr.sofac.handsometalk.Constants.TYPE_CONTENT_NAVIGATION;
 
 public class MainCustomActivity extends BaseActivity implements View.OnClickListener {
 
-    Button calendarButton, contactsButton, infoButton, eventButton, pushButton, talkButton, settingsButton;
+    ImageButton calendarButton, contactsButton, infoButton, eventButton, pushButton, talkButton, settingsButton;
+    LinearLayout container;
+    AnimationDrawable anim;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +39,10 @@ public class MainCustomActivity extends BaseActivity implements View.OnClickList
         talkButton.setOnClickListener(this);
         settingsButton.setOnClickListener(this);
 
+        container = findViewById(R.id.idLiner2);
+        anim = (AnimationDrawable) container.getBackground();
+        anim.setEnterFadeDuration(3000);
+        anim.setExitFadeDuration(3000);
     }
 
     public void startChoiceActivity(String typeFragment) {
@@ -84,5 +92,23 @@ public class MainCustomActivity extends BaseActivity implements View.OnClickList
                 startChoiceActivity(Constants.SETTINGS_FRAGMENT);
                 break;
         }
+    }
+
+
+
+    // Starting animation:- start the animation on onResume.
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (anim != null && !anim.isRunning())
+            anim.start();
+    }
+
+    // Stopping animation:- stop the animation on onPause.
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (anim != null && anim.isRunning())
+            anim.stop();
     }
 }

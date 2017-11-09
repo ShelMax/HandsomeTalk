@@ -29,7 +29,7 @@ public class AuthorizationActivity extends BaseActivity implements View.OnClickL
         setContentView(R.layout.activity_authorization);
 
         editEmail = findViewById(R.id.id_edit_name);
-        editPassword = findViewById(R.id.id_edit_password);
+        editPassword = findViewById(R.id.id_edit_email);
 
         buttonSignIn = findViewById(R.id.id_sign_in_button);
         buttonKakaoTalk = findViewById(R.id.id_kakaotalk_button);

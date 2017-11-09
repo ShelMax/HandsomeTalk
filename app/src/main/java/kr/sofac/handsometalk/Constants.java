@@ -8,11 +8,11 @@ public class Constants {
 
     public static final String CLOUD_API_KEY = "AIzaSyDZJmgv9fvQnQkc5vvCx8bPFcUqSYDVhnM";
 
-    /** Connection */
+    // Connection /
     public static final String BASE_URL = "http://192.168.0.15/";
     public final static String PART_CONTROLLER = "data/ajax/request.php";
 
-    /** Type view in (MainCustomActivity -> NavigationActivity) */
+    // Type view in (MainCustomActivity -> NavigationActivity) /
     public static final String TYPE_CONTENT_NAVIGATION = "TYPE_CONTENT_NAVIGATION";
 
     public static final String CALENDAR_FRAGMENT = "CALENDAR";
@@ -23,11 +23,19 @@ public class Constants {
     public static final String SETTINGS_FRAGMENT = "SETTINGS";
     public static final String TALK_FRAGMENT = "TALK";
 
-    /** Preference */
+    // Preference /
     public static final String USER_ID_PREF = "USER_ID_PREF";
     public static final String USER_AUTHORIZATION = "USER_AUTHORIZATION";
     public static final String GOOGLE_CLOUD_PREFERENCE = "GOOGLE_CLOUD_PREFERENCE";
     public static final String USER_PREFERENCE = "USER_PREFERENCE";
+
+    // File path /
+    public final static String PART_ESTIMATE = "data/files/estimate/"; //Part estimate
+    public final static String PART_MESSAGE = "data/files/message/"; //Part message
+    public final static String PART_POST = "data/files/post/"; //Part post
+    public final static String PART_TOSS = "data/files/toss/"; //Part toss
+
+    public final static String PART_IMAGE = "data/files/images/original/"; //Part toss
 
 
 

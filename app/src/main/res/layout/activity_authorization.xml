@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="24dp"
+    android:fitsSystemWindows="true"
     android:background="@drawable/background_style"
     tools:context="kr.sofac.handsometalk.view.AuthorizationActivity">
 

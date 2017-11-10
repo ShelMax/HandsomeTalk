@@ -2,6 +2,7 @@ package kr.sofac.handsometalk.view;
 
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -90,6 +91,9 @@ public class MainCustomActivity extends BaseActivity implements View.OnClickList
                 break;
             case R.id.id_settings_button:
                 startChoiceActivity(Constants.SETTINGS_FRAGMENT);
+                break;
+            case R.id.id_website_button:
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.eventme.asia/")));
                 break;
         }
     }

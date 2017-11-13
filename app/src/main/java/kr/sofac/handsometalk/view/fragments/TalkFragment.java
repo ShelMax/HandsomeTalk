@@ -1,24 +1,25 @@
 package kr.sofac.handsometalk.view.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import kr.sofac.handsometalk.R;
 import kr.sofac.handsometalk.adapter.AdapterEstimation;
-import kr.sofac.handsometalk.adapter.AdapterPush;
 import kr.sofac.handsometalk.adapter.RecyclerItemClickListener;
-import kr.sofac.handsometalk.dto.GetPushDTO;
-import kr.sofac.handsometalk.dto.PushDTO;
+import kr.sofac.handsometalk.dto.EstimateDTO;
+import kr.sofac.handsometalk.dto.GetEstimationsDTO;
 import kr.sofac.handsometalk.server.Connection;
 import kr.sofac.handsometalk.server.type.ServerResponse;
-import kr.sofac.handsometalk.util.PreferenceApp;
 import kr.sofac.handsometalk.util.ProgressBar;
+import kr.sofac.handsometalk.view.DetailEstimateActivity;
 import timber.log.Timber;
 
 public class TalkFragment extends BaseFragment {
@@ -27,6 +28,8 @@ public class TalkFragment extends BaseFragment {
     private RecyclerView.LayoutManager mLayoutManager;
     private AdapterEstimation adapterEstimation;
     private ProgressBar processBar;
+    private TextView emptyView;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,16 +42,27 @@ public class TalkFragment extends BaseFragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_talk, container, false);
 
-        recyclerViewEstimation = (RecyclerView) rootView.findViewById(R.id.idRecyclerPush);
+        recyclerViewEstimation = (RecyclerView) rootView.findViewById(R.id.idRecyclerEstimation);
+        emptyView = (TextView) rootView.findViewById(R.id.recyclerTalkEmpty);
+
         mLayoutManager = new LinearLayoutManager(this.getActivity());
-        recyclerViewPush.setHasFixedSize(true);
-        recyclerViewPush.setLayoutManager(mLayoutManager);
+        recyclerViewEstimation.setHasFixedSize(true);
+        recyclerViewEstimation.setLayoutManager(mLayoutManager);
+
         processBar = new ProgressBar(getActivity());
         processBar.showView();
-        new Connection<ArrayList<PushDTO>>().getListPush(new GetPushDTO(new PreferenceApp(getActivity()).getUser().getId(), new PreferenceApp(getActivity()).getGoogleKey()), new Connection.AnswerServerResponse<ArrayList<PushDTO>>() {
+        //new PreferenceApp(getActivity()).getUser().getId()
+        new Connection<ArrayList<EstimateDTO>>().getEstimations(new GetEstimationsDTO("1"), new Connection.AnswerServerResponse<ArrayList<EstimateDTO>>() {
             @Override
-            public void processFinish(Boolean isSuccess, ServerResponse<ArrayList<PushDTO>> answerServerResponse) {
+            public void processFinish(Boolean isSuccess, ServerResponse<ArrayList<EstimateDTO>> answerServerResponse) {
                 if (isSuccess) {
+                    if (answerServerResponse.getDataTransferObject().isEmpty()) {
+                        recyclerViewEstimation.setVisibility(View.GONE);
+                        emptyView.setVisibility(View.VISIBLE);
+                    } else {
+                        recyclerViewEstimation.setVisibility(View.VISIBLE);
+                        emptyView.setVisibility(View.GONE);
+                    }
                     initUI(answerServerResponse.getDataTransferObject());
                 } else {
                     Timber.e("Error!");
@@ -57,18 +71,21 @@ public class TalkFragment extends BaseFragment {
             }
         });
 
+
         // recyclerViewEvent = rootView.findViewById(R.id.);
         return rootView;
     }
 
-    public void initUI(ArrayList<PushDTO> pushDTOs) {
+    public void initUI(ArrayList<EstimateDTO> estimateDTOs) {
 
-        adapterPush = new AdapterPush(getActivity(), pushDTOs);
-        recyclerViewPush.setAdapter(adapterPush);
+        adapterEstimation = new AdapterEstimation(getActivity(), estimateDTOs);
+        recyclerViewEstimation.setAdapter(adapterEstimation);
 
-        recyclerViewPush.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), recyclerViewPush, new RecyclerItemClickListener.OnItemClickListener() {
+        recyclerViewEstimation.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), recyclerViewEstimation, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
+
+                startActivity(new Intent(getActivity(), DetailEstimateActivity.class));
 //                if (postDTOs != null) {
 //                    intentDetailPostActivity.putExtra(POST_ID, postDTOs.get(position).getId());
 //                    startActivityForResult(intentDetailPostActivity, 1);

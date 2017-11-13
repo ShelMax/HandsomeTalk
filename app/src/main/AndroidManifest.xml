@@ -13,30 +13,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoBar">
-
-        <activity
-            android:name=".view.MainCustomActivity" >
+        <activity android:name=".view.MainCustomActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".view.AuthorizationActivity"
             android:theme="@style/AppTheme.NoBar" />
-
         <activity
             android:name=".view.RegistrationActivity"
             android:theme="@style/AppTheme.NoBar" />
-
         <activity android:name=".view.BaseActivity" />
         <activity android:name=".view.SplashActivity" />
-
-        <activity android:name=".view.NavigationActivity"
-            android:theme="@style/AppTheme.NoBar"/>
-
+        <activity
+            android:name=".view.NavigationActivity"
+            android:theme="@style/AppTheme.NoBar" />
+        <activity android:name=".view.DetailEstimateActivity"></activity>
     </application>
 
 </manifest>

@@ -95,6 +95,8 @@ public class EventDTO {
                 ", image=" + image +
                 '}';
     }
+
+
 }
 
 //{

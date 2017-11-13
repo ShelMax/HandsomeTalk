@@ -8,8 +8,12 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import kr.sofac.handsometalk.dto.AuthorizationDTO;
+import kr.sofac.handsometalk.dto.EstimateDTO;
 import kr.sofac.handsometalk.dto.EventDTO;
+import kr.sofac.handsometalk.dto.GetEstimationsDTO;
+import kr.sofac.handsometalk.dto.GetListMessageDTO;
 import kr.sofac.handsometalk.dto.GetPushDTO;
+import kr.sofac.handsometalk.dto.MessageDTO;
 import kr.sofac.handsometalk.dto.PushDTO;
 import kr.sofac.handsometalk.dto.RegistrationDTO;
 import kr.sofac.handsometalk.dto.UserDTO;
@@ -99,6 +103,44 @@ public class Connection<T> {
             public void processFinish(Boolean isSuccess, String answerString) {
                 if (isSuccess) {
                     Type typeAnswer = new TypeToken<ServerResponse<ArrayList<PushDTO>>>() { //Change type response
+                    }.getType();
+                    tryParsing(answerString, typeAnswer);
+                } else {
+                    answerServerResponse.processFinish(false, null);
+                }
+            }
+        });
+    }
+    /**
+     * Get All Estimations
+     */
+    public void getEstimations(GetEstimationsDTO getEstimationDTO, AnswerServerResponse<T> async) { //Change name request / Change data in method parameters
+        answerServerResponse = async;
+        new ManagerRetrofit<GetEstimationsDTO>().sendRequest(getEstimationDTO, new Object() {// Change type Object sending / Change data sending
+        }.getClass().getEnclosingMethod().getName(), new ManagerRetrofit.AsyncAnswerString() {
+            @Override
+            public void processFinish(Boolean isSuccess, String answerString) {
+                if (isSuccess) {
+                    Type typeAnswer = new TypeToken<ServerResponse<ArrayList<EstimateDTO>>>() { //Change type response
+                    }.getType();
+                    tryParsing(answerString, typeAnswer);
+                } else {
+                    answerServerResponse.processFinish(false, null);
+                }
+            }
+        });
+    }
+    /**
+     * Get All Message estimate
+     */
+    public void getEstimation(GetListMessageDTO getListMessageDTO, AnswerServerResponse<T> async) { //Change name request / Change data in method parameters
+        answerServerResponse = async;
+        new ManagerRetrofit<GetListMessageDTO>().sendRequest(getListMessageDTO, new Object() {// Change type Object sending / Change data sending
+        }.getClass().getEnclosingMethod().getName(), new ManagerRetrofit.AsyncAnswerString() {
+            @Override
+            public void processFinish(Boolean isSuccess, String answerString) {
+                if (isSuccess) {
+                    Type typeAnswer = new TypeToken<ServerResponse<ArrayList<MessageDTO>>>() { //Change type response
                     }.getType();
                     tryParsing(answerString, typeAnswer);
                 } else {

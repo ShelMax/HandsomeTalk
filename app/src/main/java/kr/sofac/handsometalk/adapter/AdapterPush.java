@@ -89,7 +89,7 @@ public class AdapterPush extends RecyclerView.Adapter<AdapterPush.ViewHolder> {
 
         public ViewHolder(View view) {
             super(view);
-            titlePush = view.findViewById(R.id.idTitlePush);
+            titlePush = view.findViewById(R.id.idTitleEstimation);
             descriptionPush = view.findViewById(R.id.idDescriptionPush);
             datePush = view.findViewById(R.id.idDatePush);
 

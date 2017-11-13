@@ -24,13 +24,13 @@ import static kr.sofac.handsometalk.Constants.BASE_URL;
  * Created by Maxim on 09.11.2017.
  */
 
-public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> {
+public class AdapterEvent extends RecyclerView.Adapter<AdapterEvent.ViewHolder> {
     private ArrayList<EventDTO> eventDTOS;
     private Context ctx;
     private LayoutInflater inflater;
 
 
-    public EventAdapter(Context context, ArrayList<EventDTO> eventDTOS) {
+    public AdapterEvent(Context context, ArrayList<EventDTO> eventDTOS) {
         this.eventDTOS = eventDTOS;
         this.ctx = context;
         this.inflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

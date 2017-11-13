@@ -55,4 +55,5 @@ dependencies {
     compile 'com.google.firebase:firebase-messaging:11.4.2'
     compile 'com.jakewharton.timber:timber:4.6.0'
 
+    implementation 'com.google.android.gms:play-services-maps:11.4.2'
 }

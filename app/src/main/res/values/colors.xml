@@ -13,4 +13,6 @@
     <!-- Progress bar bg color -->
     <color name="transparent">#00000000</color>
 
+    <color name="colorGreyViewLine">#a9a9a9</color>
+
 </resources>

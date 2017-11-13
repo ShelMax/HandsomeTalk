@@ -9,6 +9,8 @@ import java.util.ArrayList;
 
 import kr.sofac.handsometalk.dto.AuthorizationDTO;
 import kr.sofac.handsometalk.dto.EventDTO;
+import kr.sofac.handsometalk.dto.GetPushDTO;
+import kr.sofac.handsometalk.dto.PushDTO;
 import kr.sofac.handsometalk.dto.RegistrationDTO;
 import kr.sofac.handsometalk.dto.UserDTO;
 import kr.sofac.handsometalk.server.retrofit.ManagerRetrofit;
@@ -77,6 +79,26 @@ public class Connection<T> {
             public void processFinish(Boolean isSuccess, String answerString) {
                 if (isSuccess) {
                     Type typeAnswer = new TypeToken<ServerResponse<ArrayList<EventDTO>>>() { //Change type response
+                    }.getType();
+                    tryParsing(answerString, typeAnswer);
+                } else {
+                    answerServerResponse.processFinish(false, null);
+                }
+            }
+        });
+    }
+
+    /**
+     * Get All Push notification
+     */
+    public void getListPush(GetPushDTO getPushDTO, AnswerServerResponse<T> async) { //Change name request / Change data in method parameters
+        answerServerResponse = async;
+        new ManagerRetrofit<GetPushDTO>().sendRequest(getPushDTO, new Object() {// Change type Object sending / Change data sending
+        }.getClass().getEnclosingMethod().getName(), new ManagerRetrofit.AsyncAnswerString() {
+            @Override
+            public void processFinish(Boolean isSuccess, String answerString) {
+                if (isSuccess) {
+                    Type typeAnswer = new TypeToken<ServerResponse<ArrayList<PushDTO>>>() { //Change type response
                     }.getType();
                     tryParsing(answerString, typeAnswer);
                 } else {

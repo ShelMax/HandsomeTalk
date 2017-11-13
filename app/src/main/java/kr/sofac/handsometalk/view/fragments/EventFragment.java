@@ -10,18 +10,20 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import kr.sofac.handsometalk.R;
-import kr.sofac.handsometalk.adapter.EventAdapter;
+import kr.sofac.handsometalk.adapter.AdapterEvent;
 import kr.sofac.handsometalk.adapter.RecyclerItemClickListener;
 import kr.sofac.handsometalk.dto.EventDTO;
 import kr.sofac.handsometalk.server.Connection;
 import kr.sofac.handsometalk.server.type.ServerResponse;
+import kr.sofac.handsometalk.util.ProgressBar;
 import timber.log.Timber;
 
 public class EventFragment extends BaseFragment {
 
     public RecyclerView recyclerViewEvent;
     private RecyclerView.LayoutManager mLayoutManager;
-    private EventAdapter adapterEvent;
+    private AdapterEvent adapterEvent;
+    private ProgressBar processBar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,11 +37,12 @@ public class EventFragment extends BaseFragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_event, container, false);
 
-        recyclerViewEvent = (RecyclerView) rootView.findViewById(R.id.idRecyclerEvent);
+        recyclerViewEvent = rootView.findViewById(R.id.idRecyclerEvent);
         mLayoutManager = new LinearLayoutManager(this.getActivity());
         recyclerViewEvent.setHasFixedSize(true);
         recyclerViewEvent.setLayoutManager(mLayoutManager);
-
+        processBar = new ProgressBar(getActivity());
+        processBar.showView();
         new Connection<ArrayList<EventDTO>>().allEvents("", new Connection.AnswerServerResponse<ArrayList<EventDTO>>() {
             @Override
             public void processFinish(Boolean isSuccess, ServerResponse<ArrayList<EventDTO>> answerServerResponse) {
@@ -48,6 +51,7 @@ public class EventFragment extends BaseFragment {
                 }else{
                     Timber.e("Error!");
                 }
+                processBar.dismissView();
             }
         });
 
@@ -57,7 +61,7 @@ public class EventFragment extends BaseFragment {
 
     public void initUI(ArrayList<EventDTO> eventDTOs){
 
-        adapterEvent = new EventAdapter(getActivity(), eventDTOs);
+        adapterEvent = new AdapterEvent(getActivity(), eventDTOs);
         recyclerViewEvent.setAdapter(adapterEvent);
 
         recyclerViewEvent.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), recyclerViewEvent, new RecyclerItemClickListener.OnItemClickListener() {

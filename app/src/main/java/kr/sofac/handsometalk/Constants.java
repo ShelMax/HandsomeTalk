@@ -9,7 +9,7 @@ public class Constants {
     public static final String CLOUD_API_KEY = "AIzaSyDZJmgv9fvQnQkc5vvCx8bPFcUqSYDVhnM";
 
     // Connection /
-    public static final String BASE_URL = "http://192.168.0.15/";
+    public static final String BASE_URL = "http://192.168.0.58/";
     public final static String PART_CONTROLLER = "data/ajax/request.php";
 
     // Type view in (MainCustomActivity -> NavigationActivity) /

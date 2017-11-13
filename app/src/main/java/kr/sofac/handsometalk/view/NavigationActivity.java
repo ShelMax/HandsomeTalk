@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import kr.sofac.handsometalk.R;
 import kr.sofac.handsometalk.util.PreferenceApp;
@@ -172,10 +173,18 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
                 fTrans.replace(R.id.id_main_frame_layout, infoFragment);
                 break;
             case R.id.id_talk:
+                if (!checkAuthorization()) {
+                    notAuthorization();
+                    break;
+                }
                 setTitle(getString(R.string.help_me));
                 fTrans.replace(R.id.id_main_frame_layout, talkFragment);
                 break;
             case R.id.id_calendar:
+                if (!checkAuthorization()) {
+                    notAuthorization();
+                    break;
+                }
                 setTitle(getString(R.string.make_an_appointment));
                 fTrans.replace(R.id.id_main_frame_layout, calendarFragment);
                 break;
@@ -184,6 +193,10 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
                 fTrans.replace(R.id.id_main_frame_layout, eventFragment);
                 break;
             case R.id.id_push:
+                if (!checkAuthorization()) {
+                    notAuthorization();
+                    break;
+                }
                 setTitle(getString(R.string.notifications));
                 fTrans.replace(R.id.id_main_frame_layout, pushFragment);
                 break;
@@ -192,6 +205,10 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
                 fTrans.replace(R.id.id_main_frame_layout, contactsFragment);
                 break;
             case R.id.id_settings:
+                if (!checkAuthorization()) {
+                    notAuthorization();
+                    break;
+                }
                 setTitle(getString(R.string.settings));
                 fTrans.replace(R.id.id_main_frame_layout, settingsFragment);
                 break;
@@ -216,6 +233,10 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
                 finishAffinity();
                 break;
         }
+    }
+
+    public void notAuthorization() {
+        Toast.makeText(this, "You not authorization!", Toast.LENGTH_SHORT).show();
     }
 
     public boolean checkAuthorization() {

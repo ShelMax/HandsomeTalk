@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import kr.sofac.handsometalk.Constants;
 import kr.sofac.handsometalk.R;
+import kr.sofac.handsometalk.util.PreferenceApp;
 
 import static kr.sofac.handsometalk.Constants.TYPE_CONTENT_NAVIGATION;
 
@@ -72,6 +73,10 @@ public class MainCustomActivity extends BaseActivity implements View.OnClickList
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.id_calendar_button:
+                if (!checkAuthorization()) {
+                    notAuthorization();
+                    break;
+                }
                 startChoiceActivity(Constants.CALENDAR_FRAGMENT);
                 break;
             case R.id.id_contacts_button:
@@ -84,18 +89,38 @@ public class MainCustomActivity extends BaseActivity implements View.OnClickList
                 startChoiceActivity(Constants.EVENT_FRAGMENT);
                 break;
             case R.id.id_push_button:
+                if (!checkAuthorization()) {
+                    notAuthorization();
+                    break;
+                }
                 startChoiceActivity(Constants.PUSH_FRAGMENT);
                 break;
             case R.id.id_talk_button:
+                if (!checkAuthorization()) {
+                    notAuthorization();
+                    break;
+                }
                 startChoiceActivity(Constants.TALK_FRAGMENT);
                 break;
             case R.id.id_settings_button:
+                if (!checkAuthorization()) {
+                    notAuthorization();
+                    break;
+                }
                 startChoiceActivity(Constants.SETTINGS_FRAGMENT);
                 break;
             case R.id.id_website_button:
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.eventme.asia/")));
                 break;
         }
+    }
+
+    public void notAuthorization() {
+        Toast.makeText(this, "You not authorization!", Toast.LENGTH_SHORT).show();
+    }
+
+    public boolean checkAuthorization() {
+        return new PreferenceApp(this).getAuthorization();
     }
 
 

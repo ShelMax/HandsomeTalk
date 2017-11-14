@@ -19,5 +19,22 @@ public class DetailEstimateActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         setTitle("SukaTalk");
+
+//        new Connection<String>().newMessage(
+//                getActivity(),
+//                new MessageDTO("","50","1","","one more message Fuck","","","","",""),
+//                listPhoto,
+//                new Connection.AnswerServerResponse<String>() {
+//                    @Override
+//                    public void processFinish(Boolean isSuccess, ServerResponse<String> answerServerResponse) {
+//                        if (isSuccess) {
+//
+//                        } else {
+//
+//                        }
+//                        processBar.dismissView();
+//                    }
+//                }
+//        );
     }
 }

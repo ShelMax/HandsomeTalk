@@ -1,34 +1,58 @@
 package kr.sofac.handsometalk.view.fragments;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import kr.sofac.handsometalk.R;
 import kr.sofac.handsometalk.adapter.AdapterEstimation;
+import kr.sofac.handsometalk.adapter.AdapterScrollPhotos;
 import kr.sofac.handsometalk.adapter.RecyclerItemClickListener;
 import kr.sofac.handsometalk.dto.EstimateDTO;
 import kr.sofac.handsometalk.dto.GetEstimationsDTO;
+import kr.sofac.handsometalk.dto.NewEstimateRequestDTO;
 import kr.sofac.handsometalk.server.Connection;
 import kr.sofac.handsometalk.server.type.ServerResponse;
+import kr.sofac.handsometalk.util.PreferenceApp;
 import kr.sofac.handsometalk.util.ProgressBar;
 import kr.sofac.handsometalk.view.DetailEstimateActivity;
 import timber.log.Timber;
 
-public class TalkFragment extends BaseFragment {
+import static kr.sofac.handsometalk.Constants.REQUEST_TAKE_PHOTO;
+
+public class TalkFragment extends BaseFragment implements View.OnClickListener {
 
     public RecyclerView recyclerViewEstimation;
     private RecyclerView.LayoutManager mLayoutManager;
     private AdapterEstimation adapterEstimation;
     private ProgressBar processBar;
-    private TextView emptyView;
+    private ConstraintLayout emptyView;
+    private Button buttonSendMessage, buttonAddPhotoMessage;
+    private EditText editTextMessage;
+
+    private ArrayList<Uri> listPhoto;
+    private LinearLayout linearLayoutPhoto;
+    private AdapterScrollPhotos adapterScrollPhotos;
+    private RecyclerView recyclerViewScrollPhoto;
 
 
     @Override
@@ -43,37 +67,76 @@ public class TalkFragment extends BaseFragment {
         View rootView = inflater.inflate(R.layout.fragment_talk, container, false);
 
         recyclerViewEstimation = (RecyclerView) rootView.findViewById(R.id.idRecyclerEstimation);
-        emptyView = (TextView) rootView.findViewById(R.id.recyclerTalkEmpty);
 
+        emptyView = rootView.findViewById(R.id.recyclerTalkEmpty);
+        editTextMessage = rootView.findViewById(R.id.idEditMessage);
+
+        buttonSendMessage = rootView.findViewById(R.id.buttonSendNewEstimation);
+        buttonAddPhotoMessage = rootView.findViewById(R.id.buttonAddPhotoNewEstimation);
+        buttonSendMessage.setOnClickListener(this);
+        buttonAddPhotoMessage.setOnClickListener(this);
+
+
+        recyclerViewScrollPhoto = (RecyclerView) rootView.findViewById(R.id.idRecyclerScrollPhotos);
+        linearLayoutPhoto = rootView.findViewById(R.id.idLayoutPhotos);
         mLayoutManager = new LinearLayoutManager(this.getActivity());
         recyclerViewEstimation.setHasFixedSize(true);
         recyclerViewEstimation.setLayoutManager(mLayoutManager);
 
         processBar = new ProgressBar(getActivity());
         processBar.showView();
-        //new PreferenceApp(getActivity()).getUser().getId()
-        new Connection<ArrayList<EstimateDTO>>().getEstimations(new GetEstimationsDTO("1"), new Connection.AnswerServerResponse<ArrayList<EstimateDTO>>() {
+
+        listPhoto = new ArrayList<>();
+
+        adapterScrollPhotos = new AdapterScrollPhotos(listPhoto);
+        adapterScrollPhotos.setItemClickListener(new AdapterScrollPhotos.ClickListener() {
             @Override
-            public void processFinish(Boolean isSuccess, ServerResponse<ArrayList<EstimateDTO>> answerServerResponse) {
-                if (isSuccess) {
-                    if (answerServerResponse.getDataTransferObject().isEmpty()) {
-                        recyclerViewEstimation.setVisibility(View.GONE);
-                        emptyView.setVisibility(View.VISIBLE);
-                    } else {
-                        recyclerViewEstimation.setVisibility(View.VISIBLE);
-                        emptyView.setVisibility(View.GONE);
-                    }
-                    initUI(answerServerResponse.getDataTransferObject());
-                } else {
-                    Timber.e("Error!");
+            public void onMyClick(View view, int position) {
+                switch (view.getId()) {
+                    case R.id.idButtonDeleting:
+                        listPhoto.remove(position);
+                        adapterScrollPhotos.notifyDataSetChanged();
+                        if (listPhoto.isEmpty()) linearLayoutPhoto.setVisibility(View.GONE);
+                        break;
                 }
-                processBar.dismissView();
             }
         });
 
+        recyclerViewScrollPhoto.setAdapter(adapterScrollPhotos);
+        recyclerViewScrollPhoto.setHasFixedSize(true);
+        recyclerViewScrollPhoto.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
-        // recyclerViewEvent = rootView.findViewById(R.id.);
+        newRequest();
         return rootView;
+    }
+
+    public void newRequest() {
+        new Connection<ArrayList<EstimateDTO>>().getEstimations(
+                new GetEstimationsDTO(
+                        new PreferenceApp(getActivity()).getUser().getId()),
+                new Connection.AnswerServerResponse<ArrayList<EstimateDTO>>() {
+                    @Override
+                    public void processFinish(Boolean isSuccess, ServerResponse<ArrayList<EstimateDTO>> answerServerResponse) {
+                        if (isSuccess) {
+                            if (answerServerResponse.getDataTransferObject().isEmpty()) {
+                                Timber.e("empty");
+                                recyclerViewEstimation.setVisibility(View.GONE);
+                                emptyView.setVisibility(View.VISIBLE);
+                            } else {
+                                recyclerViewEstimation.setVisibility(View.VISIBLE);
+                                emptyView.setVisibility(View.GONE);
+                            }
+                            initUI(answerServerResponse.getDataTransferObject());
+                        } else {
+                            toastMessage();
+                        }
+                        processBar.dismissView();
+                    }
+                });
+    }
+
+    public void toastMessage() {
+        Toast.makeText(getActivity(), "Connection error!", Toast.LENGTH_SHORT).show();
     }
 
     public void initUI(ArrayList<EstimateDTO> estimateDTOs) {
@@ -117,4 +180,122 @@ public class TalkFragment extends BaseFragment {
         }));
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == Activity.RESULT_OK) {
+
+            if (data != null) {
+
+                final Uri fileUri = data.getData();
+
+                if (requestCode == REQUEST_TAKE_PHOTO) {
+
+                    for (Uri urlPhoto : listPhoto) {
+                        if (fileUri.equals(urlPhoto)) return;
+                    }
+
+                    listPhoto.add(fileUri);
+                    adapterScrollPhotos.notifyDataSetChanged();
+                    linearLayoutPhoto.setVisibility(View.VISIBLE);
+                }
+
+            }
+
+        }
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.buttonSendNewEstimation:
+                if (editTextMessage.getText().toString().isEmpty()) {
+                    Toast.makeText(getActivity(), "Field empty!", Toast.LENGTH_SHORT).show();
+                } else {
+                    processBar.showView();
+
+
+                    new Connection<String>().newEstimation(
+                            getActivity(),
+                            new NewEstimateRequestDTO(
+                                    new PreferenceApp(getActivity()).getUserID().toString(),
+                                    editTextMessage.getText().toString()),
+                            listPhoto,
+                            new Connection.AnswerServerResponse<String>() {
+                                @Override
+                                public void processFinish(Boolean isSuccess, ServerResponse<String> answerServerResponse) {
+                                    if (isSuccess) {
+                                        newRequest();
+                                    } else {
+                                        toastMessage();
+                                    }
+                                    processBar.dismissView();
+                                }
+                            }
+                    );
+                }
+                break;
+            case R.id.buttonAddPhotoNewEstimation:
+                if (isStoragePermissionGranted(this.getActivity())) {
+                    Intent takePhotoIntent = new Intent(Intent.ACTION_GET_CONTENT);
+                    takePhotoIntent.setType("image/*");
+                    startActivityForResult(takePhotoIntent, REQUEST_TAKE_PHOTO);
+                    break;
+                }
+        }
+    }
+
+
+    static String[] PERMISSIONS_STORAGE = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+    static String[] PERMISSIONS_CAMERA = {Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+    Boolean IS_PERMISSIONS_STORAGE = false;
+    Boolean IS_PERMISSIONS_CAMERA = false;
+
+    public boolean isStoragePermissionGranted(Context context) {
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (context.checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED && context.checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                return true;
+            } else {
+                IS_PERMISSIONS_STORAGE = false;
+                ActivityCompat.requestPermissions(this.getActivity(), PERMISSIONS_STORAGE, 1);
+                return IS_PERMISSIONS_STORAGE;
+            }
+        } else { //permission is automatically granted on sdk < 23 upon installation
+            return true;
+        }
+    }
+
+    public boolean isCameraPermissionGranted(Context context) {
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (context.checkSelfPermission(android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED && context.checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED && context.checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                return true;
+            } else {
+                IS_PERMISSIONS_CAMERA = false;
+                ActivityCompat.requestPermissions(this.getActivity(), PERMISSIONS_CAMERA, 2);
+                return IS_PERMISSIONS_CAMERA;
+            }
+        } else { //permission is automatically granted on sdk < 23 upon installation
+            return true;
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case 1:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+                    IS_PERMISSIONS_STORAGE = true;
+                }
+                break;
+            case 2:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED && grantResults[2] == PackageManager.PERMISSION_GRANTED) {
+                    IS_PERMISSIONS_CAMERA = true;
+                }
+                break;
+        }
+
+    }
 }

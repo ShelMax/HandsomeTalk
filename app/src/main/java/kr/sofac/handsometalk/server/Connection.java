@@ -1,24 +1,33 @@
 package kr.sofac.handsometalk.server;
 
+import android.content.Context;
+import android.net.Uri;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.File;
 import java.lang.reflect.Type;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 import kr.sofac.handsometalk.dto.AuthorizationDTO;
 import kr.sofac.handsometalk.dto.EstimateDTO;
 import kr.sofac.handsometalk.dto.EventDTO;
 import kr.sofac.handsometalk.dto.GetEstimationsDTO;
-import kr.sofac.handsometalk.dto.GetListMessageDTO;
 import kr.sofac.handsometalk.dto.GetPushDTO;
 import kr.sofac.handsometalk.dto.MessageDTO;
+import kr.sofac.handsometalk.dto.NewEstimateRequestDTO;
 import kr.sofac.handsometalk.dto.PushDTO;
 import kr.sofac.handsometalk.dto.RegistrationDTO;
 import kr.sofac.handsometalk.dto.UserDTO;
 import kr.sofac.handsometalk.server.retrofit.ManagerRetrofit;
 import kr.sofac.handsometalk.server.type.ServerResponse;
+import kr.sofac.handsometalk.util.PathUtil;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import timber.log.Timber;
 
 
@@ -53,6 +62,7 @@ public class Connection<T> {
             }
         });
     }
+
     /**
      * Registration DTO
      */
@@ -72,6 +82,7 @@ public class Connection<T> {
             }
         });
     }
+
     /**
      * Get All Events
      */
@@ -111,6 +122,7 @@ public class Connection<T> {
             }
         });
     }
+
     /**
      * Get All Estimations
      */
@@ -130,17 +142,16 @@ public class Connection<T> {
             }
         });
     }
-    /**
-     * Get All Message estimate
-     */
-    public void getEstimation(GetListMessageDTO getListMessageDTO, AnswerServerResponse<T> async) { //Change name request / Change data in method parameters
+
+    public void newEstimation(Context context, NewEstimateRequestDTO newEstimateRequestDTO, ArrayList<Uri> listUri, AnswerServerResponse<T> async) {
         answerServerResponse = async;
-        new ManagerRetrofit<GetListMessageDTO>().sendRequest(getListMessageDTO, new Object() {// Change type Object sending / Change data sending
-        }.getClass().getEnclosingMethod().getName(), new ManagerRetrofit.AsyncAnswerString() {
+
+        new ManagerRetrofit<NewEstimateRequestDTO>().sendMultiPartRequest(newEstimateRequestDTO, new Object() {// Change (type sending) / (data sending)
+        }.getClass().getEnclosingMethod().getName(), generateMultiPartList(listUri, context), new ManagerRetrofit.AsyncAnswerString() {
             @Override
             public void processFinish(Boolean isSuccess, String answerString) {
                 if (isSuccess) {
-                    Type typeAnswer = new TypeToken<ServerResponse<ArrayList<MessageDTO>>>() { //Change type response
+                    Type typeAnswer = new TypeToken<ServerResponse>() { //Change type response(тип ответа)
                     }.getType();
                     tryParsing(answerString, typeAnswer);
                 } else {
@@ -148,6 +159,26 @@ public class Connection<T> {
                 }
             }
         });
+
+    }
+
+    public void newMessage(Context context, MessageDTO messageDTO, ArrayList<Uri> listUri, AnswerServerResponse<T> async) {
+        answerServerResponse = async;
+
+        new ManagerRetrofit<MessageDTO>().sendMultiPartRequest(messageDTO, new Object() {// Change (type sending) / (data sending)
+        }.getClass().getEnclosingMethod().getName(), generateMultiPartList(listUri, context), new ManagerRetrofit.AsyncAnswerString() {
+            @Override
+            public void processFinish(Boolean isSuccess, String answerString) {
+                if (isSuccess) {
+                    Type typeAnswer = new TypeToken<ServerResponse>() { //Change type response(тип ответа)
+                    }.getType();
+                    tryParsing(answerString, typeAnswer);
+                } else {
+                    answerServerResponse.processFinish(false, null);
+                }
+            }
+        });
+
     }
 
     /**
@@ -341,20 +372,20 @@ public class Connection<T> {
      * Dop methods
      */
 
-//    public ArrayList<MultipartBody.Part> generateMultiPartList(ArrayList<Uri> listFileUri, Context context) {
-//        ArrayList<MultipartBody.Part> arrayListMulti = new ArrayList<>();
-//        for (int i = 0; i < listFileUri.size(); i++) {
-//            Timber.e("listFileUri.get(i).toString()  " + listFileUri.get(i).toString());
-//            try {
-//                File file = new File(PathUtil.getPath(context, listFileUri.get(i)));
-//                arrayListMulti.add(MultipartBody.Part.createFormData("files[" + i + "]", file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file)));
-//            } catch (URISyntaxException e) {
-//                e.printStackTrace();
-//            }
-//
-//        }
-//        return arrayListMulti;
-//    }
+    public ArrayList<MultipartBody.Part> generateMultiPartList(ArrayList<Uri> listFileUri, Context context) {
+        ArrayList<MultipartBody.Part> arrayListMulti = new ArrayList<>();
+        for (int i = 0; i < listFileUri.size(); i++) {
+            Timber.e("listFileUri.get(i).toString()  " + listFileUri.get(i).toString());
+            try {
+                File file = new File(PathUtil.getPath(context, listFileUri.get(i)));
+                arrayListMulti.add(MultipartBody.Part.createFormData("images[" + i + "]", file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file)));
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            }
+
+        }
+        return arrayListMulti;
+    }
 
     private void tryParsing(String answerString, Type typeAnswer) {
         try {

@@ -6,7 +6,7 @@ package kr.sofac.handsometalk;
 
 public class Constants {
 
-    public static final String CLOUD_API_KEY = "AIzaSyDZJmgv9fvQnQkc5vvCx8bPFcUqSYDVhnM";
+    public static final String CLOUD_API_KEY = "AIzaSyBLJ0AT163eM9t_bLkLz0hIbcbwW_LrXdI";
 
     // Connection /
     public static final String BASE_URL = "http://handsometalk.gq/";

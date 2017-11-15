@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "88675286979",
+    "firebase_url": "https://handsometalk-8ec60.firebaseio.com",
+    "project_id": "handsometalk-8ec60",
+    "storage_bucket": "handsometalk-8ec60.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:88675286979:android:5aad8fd775d8997e",
+        "android_client_info": {
+          "package_name": "kr.sofac.handsometalk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "88675286979-ndkd61cqm3hrfht2nnhpklth1em4sgq5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kr.sofac.handsometalk",
+            "certificate_hash": "07859bae2a80a5008b0ccb13c07d6b6d83f61205"
+          }
+        },
+        {
+          "client_id": "88675286979-mmu8ma7r6o85lfc66st2tqggv6bcg3ap.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwM_pvScZ9aapf3DwkL1IcBRAiM26SFYc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "88675286979-mmu8ma7r6o85lfc66st2tqggv6bcg3ap.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "88675286979-kndrbitt9t5cfpk7hc5bb0979ghkisav.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sofac.Event-me"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

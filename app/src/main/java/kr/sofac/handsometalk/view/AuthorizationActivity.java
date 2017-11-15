@@ -14,7 +14,6 @@ import kr.sofac.handsometalk.R;
 import kr.sofac.handsometalk.dto.AuthorizationDTO;
 import kr.sofac.handsometalk.dto.UserDTO;
 import kr.sofac.handsometalk.server.Connection;
-import kr.sofac.handsometalk.server.type.ServerResponse;
 import kr.sofac.handsometalk.util.PreferenceApp;
 
 public class AuthorizationActivity extends BaseActivity implements View.OnClickListener {
@@ -58,17 +57,14 @@ public class AuthorizationActivity extends BaseActivity implements View.OnClickL
                                     editPassword.getText().toString(),
                                     editEmail.getText().toString(),
                                     new PreferenceApp(this).getGoogleKey()),
-                            new Connection.AnswerServerResponse<UserDTO>() {
-                                @Override
-                                public void processFinish(Boolean isSuccess, ServerResponse<UserDTO> answerServerResponse) {
-                                    if (isSuccess) {
-                                        saveUser(answerServerResponse.getDataTransferObject());
-                                        startMainActivity();
-                                    } else {
-                                        showToastError();
-                                    }
-                                    progressBar.dismissView();
+                            (isSuccess, answerServerResponse) -> {
+                                if (isSuccess) {
+                                    saveUser(answerServerResponse.getDataTransferObject());
+                                    startMainActivity();
+                                } else {
+                                    showToastError();
                                 }
+                                progressBar.dismissView();
                             });
                 } else {
                     Toast.makeText(this, "Fields is empty", Toast.LENGTH_SHORT).show();

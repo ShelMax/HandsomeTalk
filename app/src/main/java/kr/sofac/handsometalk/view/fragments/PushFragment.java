@@ -1,6 +1,7 @@
 package kr.sofac.handsometalk.view.fragments;
 
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -27,6 +28,7 @@ public class PushFragment extends BaseFragment {
     private RecyclerView.LayoutManager mLayoutManager;
     private AdapterPush adapterPush;
     private ProgressBar processBar;
+    private ConstraintLayout emptyView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,16 +47,27 @@ public class PushFragment extends BaseFragment {
         recyclerViewPush.setLayoutManager(mLayoutManager);
         processBar = new ProgressBar(getActivity());
         processBar.showView();
-        new Connection<ArrayList<PushDTO>>().getListPush(new GetPushDTO(new PreferenceApp(getActivity()).getUser().getId(), new PreferenceApp(getActivity()).getGoogleKey()), new Connection.AnswerServerResponse<ArrayList<PushDTO>>() {
-            @Override
-            public void processFinish(Boolean isSuccess, ServerResponse<ArrayList<PushDTO>> answerServerResponse) {
-                if (isSuccess) {
-                    initUI(answerServerResponse.getDataTransferObject());
+        emptyView = rootView.findViewById(R.id.idRecyclerIsEmpty);
+
+        new Connection<ArrayList<PushDTO>>().getListPush(
+                new GetPushDTO(
+                        new PreferenceApp(getActivity()).getUser().getId(),
+                        new PreferenceApp(getActivity()).getGoogleKey()),
+                (isSuccess, answerServerResponse) -> {
+            if (isSuccess) {
+                if (answerServerResponse.getDataTransferObject().isEmpty()) {
+                    Timber.e("empty");
+                    recyclerViewPush.setVisibility(View.GONE);
+                    emptyView.setVisibility(View.VISIBLE);
                 } else {
-                    Timber.e("Error!");
+                    recyclerViewPush.setVisibility(View.VISIBLE);
+                    emptyView.setVisibility(View.GONE);
+                    initUI(answerServerResponse.getDataTransferObject());
                 }
-                processBar.dismissView();
+            } else {
+                Timber.e("Error!");
             }
+            processBar.dismissView();
         });
 
         // recyclerViewEvent = rootView.findViewById(R.id.);

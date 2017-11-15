@@ -17,7 +17,7 @@ import static kr.sofac.handsometalk.Constants.TYPE_CONTENT_NAVIGATION;
 
 public class MainCustomActivity extends BaseActivity implements View.OnClickListener {
 
-    ImageButton calendarButton, contactsButton, infoButton, eventButton, pushButton, talkButton, settingsButton;
+    ImageButton calendarButton, contactsButton, infoButton, eventButton, pushButton, talkButton, settingsButton, websiteButton;
     LinearLayout container;
     AnimationDrawable anim;
 
@@ -32,6 +32,7 @@ public class MainCustomActivity extends BaseActivity implements View.OnClickList
         pushButton = findViewById(R.id.id_push_button);
         talkButton = findViewById(R.id.id_talk_button);
         settingsButton = findViewById(R.id.id_settings_button);
+        websiteButton = findViewById(R.id.id_website_button);
 
         calendarButton.setOnClickListener(this);
         contactsButton.setOnClickListener(this);
@@ -40,6 +41,7 @@ public class MainCustomActivity extends BaseActivity implements View.OnClickList
         pushButton.setOnClickListener(this);
         talkButton.setOnClickListener(this);
         settingsButton.setOnClickListener(this);
+        websiteButton.setOnClickListener(this);
 
         container = findViewById(R.id.idLiner2);
         anim = (AnimationDrawable) container.getBackground();

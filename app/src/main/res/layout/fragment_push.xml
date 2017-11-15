@@ -1,15 +1,11 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="kr.sofac.handsometalk.view.fragments.PushFragment">
 
-    <!--<ImageView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="500dp"-->
-        <!--android:background="#e8d8be"-->
-        <!--android:scaleType="fitStart"-->
-        <!--android:src="@drawable/image_info_background" />-->
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,7 +34,9 @@
                 card_view:contentPadding="0dp">
 
                 <LinearLayout
+
                     android:layout_width="match_parent"
+                    android:orientation="vertical"
                     android:layout_height="match_parent"
                     android:paddingTop="3dp"
                     android:paddingBottom="3dp">
@@ -48,6 +46,37 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scrollbars="vertical"  />
+
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/idRecyclerIsEmpty"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/imageView"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginStart="8dp"
+                            android:src="@drawable/icon"
+                            card_view:layout_constraintBottom_toTopOf="@+id/idTextListEmpty"
+                            card_view:layout_constraintEnd_toEndOf="parent"
+                            card_view:layout_constraintStart_toStartOf="parent"
+                            card_view:layout_constraintTop_toTopOf="parent"
+                            card_view:layout_constraintVertical_chainStyle="packed" />
+
+                        <TextView
+                            android:id="@+id/idTextListEmpty"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="32dp"
+                            android:text="@string/unfortunately_you_do_not_have_any_notifications"
+                            card_view:layout_constraintBottom_toBottomOf="parent"
+                            card_view:layout_constraintEnd_toEndOf="parent"
+                            card_view:layout_constraintHorizontal_bias="0.5"
+                            card_view:layout_constraintStart_toStartOf="parent"
+                            card_view:layout_constraintTop_toBottomOf="@+id/imageView" />
+                    </android.support.constraint.ConstraintLayout>
                 </LinearLayout>
 
             </android.support.v7.widget.CardView>

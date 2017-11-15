@@ -72,5 +72,6 @@ Tel. 02-6081-0151\n
     <b>네비게이션 주소를 이용하실 경우</b>\n
 [서울시 서초구 서초동 1307-1호 경동주차장]를 입력해 주십시요.\n
 </string>
+    <string name="unfortunately_you_do_not_have_any_notifications">Unfortunately, you do not have any notifications</string>
 
 </resources>

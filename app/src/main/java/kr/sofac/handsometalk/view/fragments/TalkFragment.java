@@ -66,7 +66,7 @@ public class TalkFragment extends BaseFragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_talk, container, false);
 
-        recyclerViewEstimation = (RecyclerView) rootView.findViewById(R.id.idRecyclerEstimation);
+        recyclerViewEstimation = rootView.findViewById(R.id.idRecyclerEstimation);
 
         emptyView = rootView.findViewById(R.id.recyclerTalkEmpty);
         editTextMessage = rootView.findViewById(R.id.idEditMessage);
@@ -77,7 +77,7 @@ public class TalkFragment extends BaseFragment implements View.OnClickListener {
         buttonAddPhotoMessage.setOnClickListener(this);
 
 
-        recyclerViewScrollPhoto = (RecyclerView) rootView.findViewById(R.id.idRecyclerScrollPhotos);
+        recyclerViewScrollPhoto = rootView.findViewById(R.id.idRecyclerScrollPhotos);
         linearLayoutPhoto = rootView.findViewById(R.id.idLayoutPhotos);
         mLayoutManager = new LinearLayoutManager(this.getActivity());
         recyclerViewEstimation.setHasFixedSize(true);
@@ -89,16 +89,13 @@ public class TalkFragment extends BaseFragment implements View.OnClickListener {
         listPhoto = new ArrayList<>();
 
         adapterScrollPhotos = new AdapterScrollPhotos(listPhoto);
-        adapterScrollPhotos.setItemClickListener(new AdapterScrollPhotos.ClickListener() {
-            @Override
-            public void onMyClick(View view, int position) {
-                switch (view.getId()) {
-                    case R.id.idButtonDeleting:
-                        listPhoto.remove(position);
-                        adapterScrollPhotos.notifyDataSetChanged();
-                        if (listPhoto.isEmpty()) linearLayoutPhoto.setVisibility(View.GONE);
-                        break;
-                }
+        adapterScrollPhotos.setItemClickListener((view, position) -> {
+            switch (view.getId()) {
+                case R.id.idButtonDeleting:
+                    listPhoto.remove(position);
+                    adapterScrollPhotos.notifyDataSetChanged();
+                    if (listPhoto.isEmpty()) linearLayoutPhoto.setVisibility(View.GONE);
+                    break;
             }
         });
 
@@ -114,24 +111,21 @@ public class TalkFragment extends BaseFragment implements View.OnClickListener {
         new Connection<ArrayList<EstimateDTO>>().getEstimations(
                 new GetEstimationsDTO(
                         new PreferenceApp(getActivity()).getUser().getId()),
-                new Connection.AnswerServerResponse<ArrayList<EstimateDTO>>() {
-                    @Override
-                    public void processFinish(Boolean isSuccess, ServerResponse<ArrayList<EstimateDTO>> answerServerResponse) {
-                        if (isSuccess) {
-                            if (answerServerResponse.getDataTransferObject().isEmpty()) {
-                                Timber.e("empty");
-                                recyclerViewEstimation.setVisibility(View.GONE);
-                                emptyView.setVisibility(View.VISIBLE);
-                            } else {
-                                recyclerViewEstimation.setVisibility(View.VISIBLE);
-                                emptyView.setVisibility(View.GONE);
-                            }
-                            initUI(answerServerResponse.getDataTransferObject());
+                (isSuccess, answerServerResponse) -> {
+                    if (isSuccess) {
+                        if (answerServerResponse.getDataTransferObject().isEmpty()) {
+                            Timber.e("empty");
+                            recyclerViewEstimation.setVisibility(View.GONE);
+                            emptyView.setVisibility(View.VISIBLE);
                         } else {
-                            toastMessage();
+                            recyclerViewEstimation.setVisibility(View.VISIBLE);
+                            emptyView.setVisibility(View.GONE);
+                            initUI(answerServerResponse.getDataTransferObject());
                         }
-                        processBar.dismissView();
+                    } else {
+                        toastMessage();
                     }
+                    processBar.dismissView();
                 });
     }
 

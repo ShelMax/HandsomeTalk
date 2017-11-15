@@ -6,16 +6,16 @@ package kr.sofac.handsometalk.dto;
 
 public class MessageDTO {
 
-    String id;
-    String estimate_id;
-    String user_id;
-    String manager_id;
-    String message;
-    String date;
-    String type;
-    String user_name;
-    String kakao_id;
-    String manager_name;
+    private String id;
+    private String estimate_id;
+    private String user_id;
+    private String manager_id;
+    private String message;
+    private String date;
+    private String type;
+    private String user_name;
+    private String kakao_id;
+    private String manager_name;
 
     public MessageDTO(String id, String estimate_id, String user_id, String manager_id, String message, String date, String type, String user_name, String kakao_id, String manager_name) {
         this.id = id;

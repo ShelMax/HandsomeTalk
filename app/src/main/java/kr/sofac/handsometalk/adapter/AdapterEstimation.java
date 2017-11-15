@@ -12,7 +12,6 @@ import java.util.ArrayList;
 
 import kr.sofac.handsometalk.R;
 import kr.sofac.handsometalk.dto.EstimateDTO;
-import timber.log.Timber;
 
 /**
  * Created by Maxim on 09.11.2017.
@@ -44,9 +43,7 @@ public class AdapterEstimation extends RecyclerView.Adapter<AdapterEstimation.Vi
     public void onBindViewHolder(ViewHolder view, int position) {
 
         EstimateDTO estimateDTO = getEstimateDTO(position);
-
-        Timber.e(estimateDTO.toString());
-
+        //Timber.e(estimateDTO.toString());
         LinearLayout.LayoutParams lParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
         view.titleEstimation.setText(estimateDTO.getSku());

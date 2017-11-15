@@ -8,7 +8,6 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import kr.sofac.handsometalk.dto.UserDTO;
-import timber.log.Timber;
 
 import static android.content.Context.MODE_PRIVATE;
 import static android.content.Context.USER_SERVICE;
@@ -33,7 +32,7 @@ public class PreferenceApp {
 
     public Long getUserID() {
         Long userID = preferences.getLong(USER_ID_PREF, 1L);
-        Timber.e("userID : " + userID.toString());
+        //Timber.e("userID : " + userID.toString());
         return userID;
     }
 

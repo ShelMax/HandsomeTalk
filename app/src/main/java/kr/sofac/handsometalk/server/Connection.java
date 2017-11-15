@@ -49,16 +49,13 @@ public class Connection<T> {
     public void authorizationUser(AuthorizationDTO authorizationDTO, AnswerServerResponse<T> async) { //Change name request / Change data in method parameters
         answerServerResponse = async;
         new ManagerRetrofit<AuthorizationDTO>().sendRequest(authorizationDTO, new Object() {// Change type Object sending / Change data sending
-        }.getClass().getEnclosingMethod().getName(), new ManagerRetrofit.AsyncAnswerString() {
-            @Override
-            public void processFinish(Boolean isSuccess, String answerString) {
-                if (isSuccess) {
-                    Type typeAnswer = new TypeToken<ServerResponse<UserDTO>>() { //Change type response
-                    }.getType();
-                    tryParsing(answerString, typeAnswer);
-                } else {
-                    answerServerResponse.processFinish(false, null);
-                }
+        }.getClass().getEnclosingMethod().getName(), (isSuccess, answerString) -> {
+            if (isSuccess) {
+                Type typeAnswer = new TypeToken<ServerResponse<UserDTO>>() { //Change type response
+                }.getType();
+                tryParsing(answerString, typeAnswer);
+            } else {
+                answerServerResponse.processFinish(false, null);
             }
         });
     }
@@ -69,16 +66,13 @@ public class Connection<T> {
     public void registrationUser(RegistrationDTO registrationDTO, AnswerServerResponse<T> async) { //Change name request / Change data in method parameters
         answerServerResponse = async;
         new ManagerRetrofit<RegistrationDTO>().sendRequest(registrationDTO, new Object() {// Change type Object sending / Change data sending
-        }.getClass().getEnclosingMethod().getName(), new ManagerRetrofit.AsyncAnswerString() {
-            @Override
-            public void processFinish(Boolean isSuccess, String answerString) {
-                if (isSuccess) {
-                    Type typeAnswer = new TypeToken<ServerResponse<UserDTO>>() { //Change type response
-                    }.getType();
-                    tryParsing(answerString, typeAnswer);
-                } else {
-                    answerServerResponse.processFinish(false, null);
-                }
+        }.getClass().getEnclosingMethod().getName(), (isSuccess, answerString) -> {
+            if (isSuccess) {
+                Type typeAnswer = new TypeToken<ServerResponse<UserDTO>>() { //Change type response
+                }.getType();
+                tryParsing(answerString, typeAnswer);
+            } else {
+                answerServerResponse.processFinish(false, null);
             }
         });
     }
@@ -89,16 +83,13 @@ public class Connection<T> {
     public void allEvents(String str, AnswerServerResponse<T> async) { //Change name request / Change data in method parameters
         answerServerResponse = async;
         new ManagerRetrofit<String>().sendRequest(str, new Object() {// Change type Object sending / Change data sending
-        }.getClass().getEnclosingMethod().getName(), new ManagerRetrofit.AsyncAnswerString() {
-            @Override
-            public void processFinish(Boolean isSuccess, String answerString) {
-                if (isSuccess) {
-                    Type typeAnswer = new TypeToken<ServerResponse<ArrayList<EventDTO>>>() { //Change type response
-                    }.getType();
-                    tryParsing(answerString, typeAnswer);
-                } else {
-                    answerServerResponse.processFinish(false, null);
-                }
+        }.getClass().getEnclosingMethod().getName(), (isSuccess, answerString) -> {
+            if (isSuccess) {
+                Type typeAnswer = new TypeToken<ServerResponse<ArrayList<EventDTO>>>() { //Change type response
+                }.getType();
+                tryParsing(answerString, typeAnswer);
+            } else {
+                answerServerResponse.processFinish(false, null);
             }
         });
     }
@@ -109,16 +100,13 @@ public class Connection<T> {
     public void getListPush(GetPushDTO getPushDTO, AnswerServerResponse<T> async) { //Change name request / Change data in method parameters
         answerServerResponse = async;
         new ManagerRetrofit<GetPushDTO>().sendRequest(getPushDTO, new Object() {// Change type Object sending / Change data sending
-        }.getClass().getEnclosingMethod().getName(), new ManagerRetrofit.AsyncAnswerString() {
-            @Override
-            public void processFinish(Boolean isSuccess, String answerString) {
-                if (isSuccess) {
-                    Type typeAnswer = new TypeToken<ServerResponse<ArrayList<PushDTO>>>() { //Change type response
-                    }.getType();
-                    tryParsing(answerString, typeAnswer);
-                } else {
-                    answerServerResponse.processFinish(false, null);
-                }
+        }.getClass().getEnclosingMethod().getName(), (isSuccess, answerString) -> {
+            if (isSuccess) {
+                Type typeAnswer = new TypeToken<ServerResponse<ArrayList<PushDTO>>>() { //Change type response
+                }.getType();
+                tryParsing(answerString, typeAnswer);
+            } else {
+                answerServerResponse.processFinish(false, null);
             }
         });
     }
@@ -129,19 +117,35 @@ public class Connection<T> {
     public void getEstimations(GetEstimationsDTO getEstimationDTO, AnswerServerResponse<T> async) { //Change name request / Change data in method parameters
         answerServerResponse = async;
         new ManagerRetrofit<GetEstimationsDTO>().sendRequest(getEstimationDTO, new Object() {// Change type Object sending / Change data sending
-        }.getClass().getEnclosingMethod().getName(), new ManagerRetrofit.AsyncAnswerString() {
-            @Override
-            public void processFinish(Boolean isSuccess, String answerString) {
-                if (isSuccess) {
-                    Type typeAnswer = new TypeToken<ServerResponse<ArrayList<EstimateDTO>>>() { //Change type response
-                    }.getType();
-                    tryParsing(answerString, typeAnswer);
-                } else {
-                    answerServerResponse.processFinish(false, null);
-                }
+        }.getClass().getEnclosingMethod().getName(), (isSuccess, answerString) -> {
+            if (isSuccess) {
+                Type typeAnswer = new TypeToken<ServerResponse<ArrayList<EstimateDTO>>>() { //Change type response
+                }.getType();
+                tryParsing(answerString, typeAnswer);
+            } else {
+                answerServerResponse.processFinish(false, null);
             }
         });
     }
+
+    /**
+     * Get Estimation and All Message inside
+     */
+    public void getEstimation(MessageDTO messageDTO, AnswerServerResponse<T> async) { //Change name request / Change data in method parameters
+        answerServerResponse = async;
+        new ManagerRetrofit<MessageDTO>().sendRequest(messageDTO, new Object() {// Change type Object sending / Change data sending
+        }.getClass().getEnclosingMethod().getName(), (isSuccess, answerString) -> {
+            if (isSuccess) {
+                Type typeAnswer = new TypeToken<ServerResponse<EstimateDTO>>() { //Change type response
+                }.getType();
+                tryParsing(answerString, typeAnswer);
+            } else {
+                answerServerResponse.processFinish(false, null);
+            }
+        });
+    }
+
+    //{"dataTransferObject":{"estimate_id":"1"}, "requestType":"getEstimation"}
 
     public void newEstimation(Context context, NewEstimateRequestDTO newEstimateRequestDTO, ArrayList<Uri> listUri, AnswerServerResponse<T> async) {
         answerServerResponse = async;
@@ -375,7 +379,6 @@ public class Connection<T> {
     public ArrayList<MultipartBody.Part> generateMultiPartList(ArrayList<Uri> listFileUri, Context context) {
         ArrayList<MultipartBody.Part> arrayListMulti = new ArrayList<>();
         for (int i = 0; i < listFileUri.size(); i++) {
-            Timber.e("listFileUri.get(i).toString()  " + listFileUri.get(i).toString());
             try {
                 File file = new File(PathUtil.getPath(context, listFileUri.get(i)));
                 arrayListMulti.add(MultipartBody.Part.createFormData("images[" + i + "]", file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file)));

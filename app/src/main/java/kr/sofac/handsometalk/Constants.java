@@ -29,6 +29,7 @@ public class Constants {
     public static final String USER_AUTHORIZATION = "USER_AUTHORIZATION";
     public static final String GOOGLE_CLOUD_PREFERENCE = "GOOGLE_CLOUD_PREFERENCE";
     public static final String USER_PREFERENCE = "USER_PREFERENCE";
+    public final static String ESTIMATION_ID = "ESTIMATION_ID";
 
     // File url path /
     public final static String PART_ESTIMATE = "data/files/estimate/"; //Part estimate
@@ -36,7 +37,7 @@ public class Constants {
     public final static String PART_POST = "data/files/post/"; //Part post
     public final static String PART_TOSS = "data/files/toss/"; //Part toss
 
-    public final static String PART_IMAGE = "data/files/images/original/"; //Part toss
+    public final static String PART_IMAGE = "data/files/images/original/"; //
 
     public final static int REQUEST_TAKE_FILE = 11111;
     public final static int REQUEST_TAKE_GALLERY_VIDEO = 11112;

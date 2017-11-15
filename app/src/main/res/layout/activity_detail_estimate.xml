@@ -11,8 +11,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:layout_marginTop="24dp"
+        android:orientation="vertical"
         android:paddingTop="?attr/actionBarSize">
 
         <LinearLayout
@@ -37,21 +37,84 @@
 
                 <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingBottom="3dp"
-                    android:paddingTop="3dp">
+                    android:layout_height="match_parent" >
+
+                    <View
+                        android:id="@+id/viewLine"
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@color/colorGreyViewLine"
+                        card_view:layout_constraintBottom_toTopOf="@+id/idRecyclerScrollPhotos"
+                        card_view:layout_constraintEnd_toEndOf="parent"
+                        card_view:layout_constraintStart_toStartOf="parent" />
+
+                    <EditText
+                        android:id="@+id/idEditMessage"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/background_empty"
+                        android:ems="10"
+                        android:hint="Enter text message..."
+                        android:inputType="textMultiLine"
+                        android:maxLines="5"
+                        android:padding="5dp"
+                        android:textColor="@color/colorGrey"
+                        android:textSize="12sp"
+                        card_view:layout_constraintBottom_toBottomOf="parent"
+                        card_view:layout_constraintEnd_toStartOf="@+id/buttonSend"
+                        card_view:layout_constraintStart_toEndOf="@+id/imageButtonAttachPhoto" />
+
+                    <ImageButton
+                        android:id="@+id/buttonSend"
+                        android:layout_width="0dp"
+                        android:layout_height="25dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/background_empty"
+                        android:padding="5dp"
+                        app:srcCompat="@drawable/send"
+                        card_view:layout_constraintBottom_toBottomOf="@+id/idEditMessage"
+                        card_view:layout_constraintDimensionRatio="w,1:1"
+                        card_view:layout_constraintEnd_toEndOf="parent" />
+
+                    <ImageButton
+                        android:id="@+id/imageButtonAttachPhoto"
+                        android:layout_width="0dp"
+                        android:layout_height="25dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/background_empty"
+                        app:srcCompat="@drawable/message_image"
+                        card_view:layout_constraintBottom_toBottomOf="@+id/idEditMessage"
+                        card_view:layout_constraintDimensionRatio="w,1:1"
+                        card_view:layout_constraintStart_toStartOf="parent" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/idRecyclerScrollPhotos"
+                        android:visibility="gone"
+                        android:padding="5dp"
+                        android:layout_width="0dp"
+                        android:layout_height="80dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:scrollbars="vertical"
+                        card_view:layout_constraintBottom_toTopOf="@+id/idEditMessage"
+                        card_view:layout_constraintEnd_toEndOf="parent"
+                        card_view:layout_constraintStart_toStartOf="parent" />
 
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/idRecyclerMessage"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scrollbars="vertical" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                    </LinearLayout>
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:scrollbars="vertical"
+                        card_view:layout_constraintBottom_toTopOf="@+id/viewLine"
+                        card_view:layout_constraintEnd_toEndOf="parent"
+                        card_view:layout_constraintHorizontal_bias="1.0"
+                        card_view:layout_constraintStart_toStartOf="parent"
+                        card_view:layout_constraintTop_toTopOf="parent" />
 
                 </android.support.constraint.ConstraintLayout>
 

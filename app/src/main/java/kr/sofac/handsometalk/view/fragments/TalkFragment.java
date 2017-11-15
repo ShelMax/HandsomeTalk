@@ -31,12 +31,12 @@ import kr.sofac.handsometalk.dto.EstimateDTO;
 import kr.sofac.handsometalk.dto.GetEstimationsDTO;
 import kr.sofac.handsometalk.dto.NewEstimateRequestDTO;
 import kr.sofac.handsometalk.server.Connection;
-import kr.sofac.handsometalk.server.type.ServerResponse;
 import kr.sofac.handsometalk.util.PreferenceApp;
 import kr.sofac.handsometalk.util.ProgressBar;
 import kr.sofac.handsometalk.view.DetailEstimateActivity;
 import timber.log.Timber;
 
+import static kr.sofac.handsometalk.Constants.ESTIMATION_ID;
 import static kr.sofac.handsometalk.Constants.REQUEST_TAKE_PHOTO;
 
 public class TalkFragment extends BaseFragment implements View.OnClickListener {
@@ -44,7 +44,7 @@ public class TalkFragment extends BaseFragment implements View.OnClickListener {
     public RecyclerView recyclerViewEstimation;
     private RecyclerView.LayoutManager mLayoutManager;
     private AdapterEstimation adapterEstimation;
-    private ProgressBar processBar;
+    private ProgressBar progressBar;
     private ConstraintLayout emptyView;
     private Button buttonSendMessage, buttonAddPhotoMessage;
     private EditText editTextMessage;
@@ -76,16 +76,11 @@ public class TalkFragment extends BaseFragment implements View.OnClickListener {
         buttonSendMessage.setOnClickListener(this);
         buttonAddPhotoMessage.setOnClickListener(this);
 
-
         recyclerViewScrollPhoto = rootView.findViewById(R.id.idRecyclerScrollPhotos);
         linearLayoutPhoto = rootView.findViewById(R.id.idLayoutPhotos);
         mLayoutManager = new LinearLayoutManager(this.getActivity());
-        recyclerViewEstimation.setHasFixedSize(true);
-        recyclerViewEstimation.setLayoutManager(mLayoutManager);
 
-        processBar = new ProgressBar(getActivity());
-        processBar.showView();
-
+        progressBar = new ProgressBar(getActivity());
         listPhoto = new ArrayList<>();
 
         adapterScrollPhotos = new AdapterScrollPhotos(listPhoto);
@@ -100,6 +95,7 @@ public class TalkFragment extends BaseFragment implements View.OnClickListener {
         });
 
         recyclerViewScrollPhoto.setAdapter(adapterScrollPhotos);
+
         recyclerViewScrollPhoto.setHasFixedSize(true);
         recyclerViewScrollPhoto.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
@@ -108,6 +104,7 @@ public class TalkFragment extends BaseFragment implements View.OnClickListener {
     }
 
     public void newRequest() {
+        progressBar.showView();
         new Connection<ArrayList<EstimateDTO>>().getEstimations(
                 new GetEstimationsDTO(
                         new PreferenceApp(getActivity()).getUser().getId()),
@@ -125,7 +122,7 @@ public class TalkFragment extends BaseFragment implements View.OnClickListener {
                     } else {
                         toastMessage();
                     }
-                    processBar.dismissView();
+                    progressBar.dismissView();
                 });
     }
 
@@ -137,16 +134,17 @@ public class TalkFragment extends BaseFragment implements View.OnClickListener {
 
         adapterEstimation = new AdapterEstimation(getActivity(), estimateDTOs);
         recyclerViewEstimation.setAdapter(adapterEstimation);
+        recyclerViewEstimation.setHasFixedSize(true);
+        recyclerViewEstimation.setLayoutManager(mLayoutManager);
 
         recyclerViewEstimation.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), recyclerViewEstimation, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-
-                startActivity(new Intent(getActivity(), DetailEstimateActivity.class));
-//                if (postDTOs != null) {
-//                    intentDetailPostActivity.putExtra(POST_ID, postDTOs.get(position).getId());
-//                    startActivityForResult(intentDetailPostActivity, 1);
-//                }
+                Intent intent = new Intent(getActivity(), DetailEstimateActivity.class);
+                if (estimateDTOs != null) {
+                    intent.putExtra(ESTIMATION_ID, estimateDTOs.get(position).getId());
+                    startActivityForResult(intent, 1);
+                }
             }
 
             @Override
@@ -208,25 +206,20 @@ public class TalkFragment extends BaseFragment implements View.OnClickListener {
                 if (editTextMessage.getText().toString().isEmpty()) {
                     Toast.makeText(getActivity(), "Field empty!", Toast.LENGTH_SHORT).show();
                 } else {
-                    processBar.showView();
-
-
+                    progressBar.showView();
                     new Connection<String>().newEstimation(
                             getActivity(),
                             new NewEstimateRequestDTO(
                                     new PreferenceApp(getActivity()).getUserID().toString(),
                                     editTextMessage.getText().toString()),
                             listPhoto,
-                            new Connection.AnswerServerResponse<String>() {
-                                @Override
-                                public void processFinish(Boolean isSuccess, ServerResponse<String> answerServerResponse) {
-                                    if (isSuccess) {
-                                        newRequest();
-                                    } else {
-                                        toastMessage();
-                                    }
-                                    processBar.dismissView();
+                            (isSuccess, answerServerResponse) -> {
+                                if (isSuccess) {
+                                    newRequest();
+                                } else {
+                                    toastMessage();
                                 }
+                                progressBar.dismissView();
                             }
                     );
                 }

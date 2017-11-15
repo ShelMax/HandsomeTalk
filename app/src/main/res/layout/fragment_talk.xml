@@ -25,7 +25,6 @@
             android:orientation="vertical">
 
             <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-
                 android:id="@+id/card_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -42,9 +41,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:paddingBottom="3dp"
-                    android:paddingTop="3dp">
+                    android:orientation="vertical" >
 
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/idRecyclerEstimation"
@@ -55,8 +52,7 @@
                     <android.support.constraint.ConstraintLayout
                         android:id="@+id/recyclerTalkEmpty"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
+                        android:layout_height="match_parent" >
 
 
                         <ImageView

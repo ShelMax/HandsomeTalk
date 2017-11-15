@@ -1,5 +1,7 @@
 package kr.sofac.handsometalk.view;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
@@ -21,6 +23,7 @@ public class MainCustomActivity extends BaseActivity implements View.OnClickList
     ImageButton calendarButton, contactsButton, infoButton, eventButton, pushButton, talkButton, settingsButton, websiteButton;
     LinearLayout container;
     AnimationDrawable anim;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,8 @@ public class MainCustomActivity extends BaseActivity implements View.OnClickList
         anim = (AnimationDrawable) container.getBackground();
         anim.setEnterFadeDuration(3000);
         anim.setExitFadeDuration(3000);
+
+
     }
 
     public void startChoiceActivity(String typeFragment) {
@@ -121,8 +126,26 @@ public class MainCustomActivity extends BaseActivity implements View.OnClickList
         }
     }
 
+    AlertDialog.Builder ad;
+
     public void notAuthorization() {
-        Toast.makeText(this, "You not authorization!", Toast.LENGTH_SHORT).show();
+        String title = "Your not authorization";
+        String message = "You can't use this function because your not authorization.\n\n Do you want sing in?";
+        String buttonOk = "Yes";
+        String buttonCancel = "Not";
+
+        ad = new AlertDialog.Builder(this);
+        ad.setTitle(title);
+        ad.setMessage(message);
+
+        ad.setPositiveButton(buttonOk, (dialog, which) -> {
+            startActivity(new Intent(this, AuthorizationActivity.class));
+            finishAffinity();
+        });
+        ad.setNegativeButton(buttonCancel, (dialog, which) -> {});
+        ad.setCancelable(true);
+
+        ad.show();
     }
 
     public boolean checkAuthorization() {

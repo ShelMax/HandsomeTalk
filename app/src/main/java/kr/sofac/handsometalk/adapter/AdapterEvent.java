@@ -63,40 +63,6 @@ public class AdapterEvent extends RecyclerView.Adapter<AdapterEvent.ViewHolder> 
 //                .bitmapTransform(new CropCircleTransformation(ctx))
                 .into(view.imageView);
 
-//        view.titleItemPost.setText(postDTO.getName());
-//        view.dateItemPost.setText(postDTO.getDate().toString());
-//        view.dateItemPost.setText(new SimpleDateFormat("d MMM yyyy", Locale.GERMAN).format(postDTO.getDate())); //"d MMM yyyy HH:mm:ss"
-//        if (postDTO.getBody_original() != null)
-//            view.messageItemPost.setText(ConvertorHTML.fromHTML(postDTO.getBody_original()));
-
-//        //FILES
-//        if (postDTO.getDocs().size() > 0) {
-//            view.linearLayoutFiles.setVisibility(View.VISIBLE);
-//            view.linearLayoutFiles.removeAllViews();
-//            View fileItemView = inflater.inflate(R.layout.item_preview_post_file, null);
-//            TextView textView = (TextView) fileItemView.findViewById(R.id.idNameFile);
-//            if (postDTO.getDocs().size() == 1) {
-//                textView.setText("" + postDTO.getDocs().get(0) + "");
-//            } else if (postDTO.getDocs().size() > 1) {
-//                textView.setText(postDTO.getDocs().get(0) + " and " + (postDTO.getDocs().size() - 1) + " files");
-//            }
-//            view.linearLayoutFiles.addView(fileItemView, lParams);
-//        } else {
-//            view.linearLayoutFiles.setVisibility(View.GONE);
-//        }
-
-//        //PHOTO CAROUSEL
-//        view.recyclerView.setLayoutManager(new LinearLayoutManager(ctx, LinearLayoutManager.HORIZONTAL, false));
-//        if (postDTO.getImages().size() > 0) {
-//            view.recyclerView.setVisibility(View.VISIBLE);
-//            for (String imageName : postDTO.getImages()) {
-//                listImage.add(BASE_URL + PART_POST + imageName);
-//            }
-//            view.recyclerView.setAdapter(new AdapterGalleryGroup(listImage));
-//        } else {
-//            view.recyclerView.setVisibility(View.GONE);
-//        }
-
     }
 
     @Override

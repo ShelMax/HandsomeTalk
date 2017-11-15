@@ -1,5 +1,6 @@
 package kr.sofac.handsometalk.view;
 
+import android.app.AlertDialog;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
@@ -235,8 +236,26 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
         }
     }
 
+    AlertDialog.Builder ad;
+
     public void notAuthorization() {
-        Toast.makeText(this, "You not authorization!", Toast.LENGTH_SHORT).show();
+        String title = "Your not authorization";
+        String message = "You can't use this function because your not authorization.\n\n Do you want sing in?";
+        String buttonOk = "Yes";
+        String buttonCancel = "Not";
+
+        ad = new AlertDialog.Builder(this);
+        ad.setTitle(title);
+        ad.setMessage(message);
+
+        ad.setPositiveButton(buttonOk, (dialog, which) -> {
+            startActivity(new Intent(this, AuthorizationActivity.class));
+            finishAffinity();
+        });
+        ad.setNegativeButton(buttonCancel, (dialog, which) -> {});
+        ad.setCancelable(true);
+
+        ad.show();
     }
 
     public boolean checkAuthorization() {

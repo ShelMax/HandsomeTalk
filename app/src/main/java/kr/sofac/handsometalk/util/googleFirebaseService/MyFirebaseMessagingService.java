@@ -1,6 +1,7 @@
 package kr.sofac.handsometalk.util.googleFirebaseService;
 
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
@@ -36,6 +37,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         Intent intent = new Intent(this, MainCustomActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
+        PendingIntent contentIntent = PendingIntent.getActivity(this,
+                0, intent,
+                PendingIntent.FLAG_CANCEL_CURRENT);
+
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
@@ -44,6 +49,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .setContentTitle(this.getString(R.string.app_name))
                 .setContentText(messageBody)
                 .setAutoCancel(true)
+                .setContentIntent(contentIntent)
                 .setSound(defaultSoundUri);
 
         NotificationManager notificationManager =

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:background="@drawable/background_style"
     tools:context="kr.sofac.handsometalk.view.NavigationActivity">
 
@@ -11,7 +12,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="24dp"
         android:orientation="vertical"
         android:paddingTop="?attr/actionBarSize">
 
@@ -56,9 +56,10 @@
                         android:layout_marginBottom="8dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
                         android:background="@drawable/background_empty"
                         android:ems="10"
-                        android:hint="Enter text message..."
+                        android:hint="@string/enter_text_message"
                         android:inputType="textMultiLine"
                         android:maxLines="5"
                         android:padding="5dp"
@@ -66,7 +67,9 @@
                         android:textSize="12sp"
                         card_view:layout_constraintBottom_toBottomOf="parent"
                         card_view:layout_constraintEnd_toStartOf="@+id/buttonSend"
-                        card_view:layout_constraintStart_toEndOf="@+id/imageButtonAttachPhoto" />
+                        card_view:layout_constraintStart_toEndOf="@+id/imageButtonAttachPhoto"
+                        card_view:layout_constraintTop_toTopOf="parent"
+                        card_view:layout_constraintVertical_bias="1.0" />
 
                     <ImageButton
                         android:id="@+id/buttonSend"
@@ -127,7 +130,6 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:theme="@style/AppTheme.AppBarOverlay"
         app:elevation="0dp">
 
@@ -141,4 +143,3 @@
     </android.support.design.widget.AppBarLayout>
 
 </android.support.design.widget.CoordinatorLayout>
-

@@ -53,7 +53,7 @@ public class AdapterMessages extends RecyclerView.Adapter<AdapterMessages.ViewHo
         MessageDTO messageDTO = getMessageDTO(position);
         LinearLayout.LayoutParams lParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-        if (messageDTO.getUser_id().equals(new PreferenceApp(ctx).getUserID().toString())) {
+        if (messageDTO.getUser_id().equals(new PreferenceApp(ctx).getUserID())) {
             view.constraintLayoutMy.setVisibility(View.VISIBLE);
             view.constraintLayoutHim.setVisibility(View.GONE);
             if ("image".equals(messageDTO.getType())) {

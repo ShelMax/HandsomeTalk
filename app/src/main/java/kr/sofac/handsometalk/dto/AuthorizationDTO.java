@@ -6,12 +6,12 @@ package kr.sofac.handsometalk.dto;
 
 public class AuthorizationDTO {
     String password;
-    String login;
+    String email;
     String googleCloudKey;
 
-    public AuthorizationDTO(String password, String login, String googleCloudKey) {
+    public AuthorizationDTO(String password, String email, String googleCloudKey) {
         this.password = password;
-        this.login = login;
+        this.email = email;
         this.googleCloudKey = googleCloudKey;
     }
 
@@ -23,12 +23,12 @@ public class AuthorizationDTO {
         this.password = password;
     }
 
-    public String getLogin() {
-        return login;
+    public String getEmail() {
+        return email;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getGoogleCloudKey() {
@@ -43,11 +43,10 @@ public class AuthorizationDTO {
     public String toString() {
         return "AuthorizationDTO{" +
                 "password='" + password + '\'' +
-                ", login='" + login + '\'' +
+                ", email='" + email + '\'' +
                 ", googleCloudKey='" + googleCloudKey + '\'' +
                 '}';
     }
-
 }
 
 //{"dataTransferObject":{"password":"1234", "login":"mr_jeka@bk.ru", "googleCloudKey":"1234"}, "requestType":"authorizationUser"}

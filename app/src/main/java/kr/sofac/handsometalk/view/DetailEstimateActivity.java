@@ -79,7 +79,7 @@ public class DetailEstimateActivity extends BaseActivity implements View.OnClick
             }
         });
         recyclerViewScrollPhoto.setAdapter(adapterScrollPhotos);
-        recyclerViewScrollPhoto.setHasFixedSize(true);
+        recyclerViewScrollPhoto.setHasFixedSize(false);
         recyclerViewScrollPhoto.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
         newRequest();

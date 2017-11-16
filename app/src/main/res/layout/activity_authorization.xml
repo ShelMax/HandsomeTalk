@@ -20,12 +20,12 @@
         android:singleLine="true"
         android:theme="@style/Theme.App.Base"
         android:textColor="@color/colorWhite"
-        app:layout_constraintBottom_toTopOf="@+id/id_edit_email"
-        app:layout_constraintEnd_toEndOf="@+id/id_edit_email"
-        app:layout_constraintStart_toStartOf="@+id/id_edit_email" />
+        app:layout_constraintBottom_toTopOf="@+id/id_edit_password"
+        app:layout_constraintEnd_toEndOf="@+id/id_edit_password"
+        app:layout_constraintStart_toStartOf="@+id/id_edit_password" />
 
     <EditText
-        android:id="@+id/id_edit_email"
+        android:id="@+id/id_edit_password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -50,17 +50,17 @@
         android:layout_height="wrap_content"
         android:text="@string/sign_in"
         android:textColor="@color/colorGrey"
-        app:layout_constraintEnd_toEndOf="@+id/id_edit_email"
+        app:layout_constraintEnd_toEndOf="@+id/id_edit_password"
         app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="@+id/id_edit_email"
-        app:layout_constraintTop_toBottomOf="@+id/id_edit_email" />
+        app:layout_constraintStart_toStartOf="@+id/id_edit_password"
+        app:layout_constraintTop_toBottomOf="@+id/id_edit_password" />
 
     <Button
         android:id="@+id/id_kakaotalk_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:backgroundTint="@color/colorYellow"
+        android:background="@color/colorYellow"
         android:text="@string/kakaotalk"
         android:textColor="@color/colorGrey"
         app:layout_constraintDimensionRatio=""
@@ -90,7 +90,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
-        android:text="Handsome Talk"
+        android:text="@string/handsome_talk"
         android:textColor="@color/colorWhite"
         android:textSize="30sp"
         android:textStyle="bold"

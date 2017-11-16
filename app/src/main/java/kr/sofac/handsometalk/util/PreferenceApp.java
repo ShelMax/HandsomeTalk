@@ -8,7 +8,6 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import kr.sofac.handsometalk.dto.UserDTO;
-import timber.log.Timber;
 
 import static android.content.Context.MODE_PRIVATE;
 import static android.content.Context.USER_SERVICE;
@@ -31,15 +30,15 @@ public class PreferenceApp {
         preferences = context.getSharedPreferences(USER_SERVICE, MODE_PRIVATE);
     }
 
-    public Long getUserID() {
-        Long userID = preferences.getLong(USER_ID_PREF, 1L);
-        //Timber.e("userID : " + userID.toString());
+    public String getUserID() {
+        String userID = preferences.getString(USER_ID_PREF, "1");
+       // Timber.e("userID : " + userID.toString());
         return userID;
     }
 
-    public void setUserID(Long id) {
+    public void setUserID(String id) {
         SharedPreferences.Editor editorUser = preferences.edit();
-        editorUser.putLong(USER_ID_PREF, id);
+        editorUser.putString(USER_ID_PREF, id);
         editorUser.apply();
         editorUser.commit();
     }
@@ -56,14 +55,14 @@ public class PreferenceApp {
     }
 
     public String getGoogleKey() {
-        Timber.e("setGoogleKey : %s", preferences.getString(GOOGLE_CLOUD_PREFERENCE, ""));
+        //Timber.e("setGoogleKey : %s", preferences.getString(GOOGLE_CLOUD_PREFERENCE, ""));
         return preferences.getString(GOOGLE_CLOUD_PREFERENCE, "");
     }
 
     public void setGoogleKey(String googleKey) {
         SharedPreferences.Editor editorUser = preferences.edit();
         editorUser.putString(GOOGLE_CLOUD_PREFERENCE, googleKey);
-        Timber.e("setGoogleKey : %s", googleKey);
+        //Timber.e("setGoogleKey : %s", googleKey);
         editorUser.apply();
         editorUser.commit();
     }
@@ -75,8 +74,10 @@ public class PreferenceApp {
     public void setUser(UserDTO userDTO) {
         SharedPreferences.Editor editorUser = preferences.edit();
         editorUser.putString(USER_PREFERENCE, gson.toJson(userDTO));
+       // Timber.e("userID : " + gson.toJson(userDTO));
         editorUser.apply();
         editorUser.commit();
+        setUserID(userDTO.getId());
     }
 
 }

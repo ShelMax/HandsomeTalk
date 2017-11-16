@@ -127,7 +127,7 @@ public class TalkFragment extends BaseFragment implements View.OnClickListener {
     }
 
     public void toastMessage() {
-        Toast.makeText(getActivity(), "Connection error!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), R.string.connection_error, Toast.LENGTH_SHORT).show();
     }
 
     public void initUI(ArrayList<EstimateDTO> estimateDTOs) {
@@ -204,13 +204,13 @@ public class TalkFragment extends BaseFragment implements View.OnClickListener {
         switch (view.getId()) {
             case R.id.buttonSendNewEstimation:
                 if (editTextMessage.getText().toString().isEmpty()) {
-                    Toast.makeText(getActivity(), "Field empty!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.field_empty, Toast.LENGTH_SHORT).show();
                 } else {
                     progressBar.showView();
                     new Connection<String>().newEstimation(
                             getActivity(),
                             new NewEstimateRequestDTO(
-                                    new PreferenceApp(getActivity()).getUserID().toString(),
+                                    new PreferenceApp(getActivity()).getUserID(),
                                     editTextMessage.getText().toString()),
                             listPhoto,
                             (isSuccess, answerServerResponse) -> {

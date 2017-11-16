@@ -28,7 +28,7 @@ public class AuthorizationActivity extends BaseActivity implements View.OnClickL
         setContentView(R.layout.activity_authorization);
 
         editEmail = findViewById(R.id.id_edit_name);
-        editPassword = findViewById(R.id.id_edit_email);
+        editPassword = findViewById(R.id.id_edit_password);
 
         buttonSignIn = findViewById(R.id.id_sign_in_button);
         buttonKakaoTalk = findViewById(R.id.id_kakaotalk_button);
@@ -71,7 +71,7 @@ public class AuthorizationActivity extends BaseActivity implements View.OnClickL
                 }
                 break;
             case R.id.id_kakaotalk_button:
-                Toast.makeText(this, "KakaoTalk Sign in!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "KakaoTalk it's not work now", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.id_register_text_view:
                 startActivity(new Intent(this, RegistrationActivity.class));

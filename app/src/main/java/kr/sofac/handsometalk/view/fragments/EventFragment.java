@@ -14,7 +14,6 @@ import kr.sofac.handsometalk.adapter.AdapterEvent;
 import kr.sofac.handsometalk.adapter.RecyclerItemClickListener;
 import kr.sofac.handsometalk.dto.EventDTO;
 import kr.sofac.handsometalk.server.Connection;
-import kr.sofac.handsometalk.server.type.ServerResponse;
 import kr.sofac.handsometalk.util.ProgressBar;
 import timber.log.Timber;
 
@@ -43,16 +42,13 @@ public class EventFragment extends BaseFragment {
         recyclerViewEvent.setLayoutManager(mLayoutManager);
         processBar = new ProgressBar(getActivity());
         processBar.showView();
-        new Connection<ArrayList<EventDTO>>().allEvents("", new Connection.AnswerServerResponse<ArrayList<EventDTO>>() {
-            @Override
-            public void processFinish(Boolean isSuccess, ServerResponse<ArrayList<EventDTO>> answerServerResponse) {
-                if(isSuccess){
-                    initUI(answerServerResponse.getDataTransferObject());
-                }else{
-                    Timber.e("Error!");
-                }
-                processBar.dismissView();
+        new Connection<ArrayList<EventDTO>>().allEvents("", (isSuccess, answerServerResponse) -> {
+            if(isSuccess){
+                initUI(answerServerResponse.getDataTransferObject());
+            }else{
+                Timber.e("Error!");
             }
+            processBar.dismissView();
         });
 
         // recyclerViewEvent = rootView.findViewById(R.id.);

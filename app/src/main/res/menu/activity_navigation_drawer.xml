@@ -7,7 +7,7 @@
     <item
         android:id="@+id/id_home"
         android:icon="@drawable/home"
-        android:title="Home" />
+        android:title="@string/home" />
     <item
         android:id="@+id/id_info"
         android:icon="@drawable/information"

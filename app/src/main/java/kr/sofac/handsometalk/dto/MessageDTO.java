@@ -1,5 +1,7 @@
 package kr.sofac.handsometalk.dto;
 
+import java.util.Locale;
+
 /**
  * Created by Maxim on 13.11.2017.
  */
@@ -63,7 +65,7 @@ public class MessageDTO {
     }
 
     public String getMessage() {
-        return message;
+        return message.toLowerCase(Locale.ENGLISH);
     }
 
     public void setMessage(String message) {

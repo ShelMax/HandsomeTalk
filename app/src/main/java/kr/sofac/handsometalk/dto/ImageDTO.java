@@ -1,5 +1,7 @@
 package kr.sofac.handsometalk.dto;
 
+import java.util.Locale;
+
 /**
  * Created by Maxim on 09.11.2017.
  */
@@ -44,7 +46,7 @@ public class ImageDTO {
     }
 
     public String getFilename() {
-        return filename;
+        return filename.toLowerCase(Locale.ENGLISH);
     }
 
     public void setFilename(String filename) {

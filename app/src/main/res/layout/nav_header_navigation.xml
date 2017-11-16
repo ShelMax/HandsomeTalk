@@ -29,14 +29,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/nav_header_vertical_spacing"
-            android:text="User Name"
+            android:text="@string/user_name"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         <TextView
             android:id="@+id/id_user_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="email@naver.com" />
+            android:text="@string/email_naver_com" />
 
     </LinearLayout>
 
@@ -56,7 +56,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="Sign in"
+            android:text="@string/sign_in"
             android:textColor="@color/colorWhite"
             android:textSize="18sp" />
     </RelativeLayout>

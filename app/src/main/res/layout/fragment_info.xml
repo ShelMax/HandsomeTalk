@@ -53,7 +53,7 @@
                             android:layout_marginBottom="10dp"
                             android:layout_marginTop="10dp"
                             android:gravity="center_horizontal"
-                            android:text="About me, For me, Event me\n“고객의 미소가 이벤트 미의 미래입니다.”"
+                            android:text="@string/about_me_for_me_text"
                             android:textColor="@color/colorBlack"
                             android:textSize="16sp"
                             android:textStyle="bold" />
@@ -62,18 +62,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="fill_horizontal"
-                            android:text="이벤트에는 지속적인 연구와 많은 사례 분석을 통해 안전하고 검증된 시술로 모든 고객님께 더 나은 만족을 드리기 위해 최선을 다합니다.\n
-\n
-프리미엄 급 의료장비와 편안한 진료 시설, 그리고 이벤트미만의 신개념 토탈 프로그램을 통해 고객에게 한 걸음 더 가까이 다가가려 노력합니다.\n
-\n
-단순히 원하는 시굴을 해드리는 것이 아니라 고민을 같이 나누고 만족스러운 해결책을 함께 찾는 것이 의료인의 진정한 역할이라고 생각합니다.\n
-\n
-저희 이벤트 미 의료진과 직원들은 항상 고객님의 마음으로 생각하고 따뜻한 이웃처럼 늘 함께하겠습니다.\n
-\n
-체계적인 관리와 시술, 선진화된 시스템으로 뷰티트렌드와 안티에이징의 새로운 기준을 만들어 나가겠습니다.\n
-\n
-대표원장  김기남\n
-" />
+                            android:text="@string/text_1_about" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -81,7 +70,7 @@
                             android:layout_marginBottom="10dp"
                             android:layout_marginTop="10dp"
                             android:gravity="center_horizontal"
-                            android:text="Why? 이벤트미 (Event me)\n이벤트미는 고객사랑의 정신과 엄격한 시술 원칙이 있습니다."
+                            android:text="@string/why_event_me"
                             android:textColor="@color/colorBlack"
                             android:textSize="16sp"
                             android:textStyle="bold" />
@@ -90,18 +79,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="fill_horizontal"
-                            android:text="이벤트에는 지속적인 연구와 많은 사례 분석을 통해 안전하고 검증된 시술로 모든 고객님께 더 나은 만족을 드리기 위해 최선을 다합니다.\n
-\n
-프리미엄 급 의료장비와 편안한 진료 시설, 그리고 이벤트미만의 신개념 토탈 프로그램을 통해 고객에게 한 걸음 더 가까이 다가가려 노력합니다.\n
-\n
-단순히 원하는 시굴을 해드리는 것이 아니라 고민을 같이 나누고 만족스러운 해결책을 함께 찾는 것이 의료인의 진정한 역할이라고 생각합니다.\n
-\n
-저희 이벤트 미 의료진과 직원들은 항상 고객님의 마음으로 생각하고 따뜻한 이웃처럼 늘 함께하겠습니다.\n
-\n
-체계적인 관리와 시술, 선진화된 시스템으로 뷰티트렌드와 안티에이징의 새로운 기준을 만들어 나가겠습니다.\n
-\n
-대표원장  김기남\n
-" />
+                            android:text="@string/about_me_text2" />
 
 
 

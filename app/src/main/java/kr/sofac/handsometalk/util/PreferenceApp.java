@@ -31,15 +31,15 @@ public class PreferenceApp {
         preferences = context.getSharedPreferences(USER_SERVICE, MODE_PRIVATE);
     }
 
-    public Long getUserID() {
-        Long userID = preferences.getLong(USER_ID_PREF, 1L);
+    public String getUserID() {
+        String userID = preferences.getString(USER_ID_PREF, "1");
         //Timber.e("userID : " + userID.toString());
         return userID;
     }
 
-    public void setUserID(Long id) {
+    public void setUserID(String id) {
         SharedPreferences.Editor editorUser = preferences.edit();
-        editorUser.putLong(USER_ID_PREF, id);
+        editorUser.putString(USER_ID_PREF, id);
         editorUser.apply();
         editorUser.commit();
     }
@@ -77,6 +77,7 @@ public class PreferenceApp {
         editorUser.putString(USER_PREFERENCE, gson.toJson(userDTO));
         editorUser.apply();
         editorUser.commit();
+        setUserID(userDTO.getId());
     }
 
 }

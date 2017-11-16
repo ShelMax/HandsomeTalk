@@ -11,7 +11,6 @@ import kr.sofac.handsometalk.R;
 import kr.sofac.handsometalk.dto.RegistrationDTO;
 import kr.sofac.handsometalk.dto.UserDTO;
 import kr.sofac.handsometalk.server.Connection;
-import kr.sofac.handsometalk.server.type.ServerResponse;
 import kr.sofac.handsometalk.util.PreferenceApp;
 
 public class RegistrationActivity extends BaseActivity implements View.OnClickListener {
@@ -54,17 +53,14 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
                                     phoneNumber,
                                     email,
                                     new PreferenceApp(this).getGoogleKey()),
-                            new Connection.AnswerServerResponse<UserDTO>() {
-                                @Override
-                                public void processFinish(Boolean isSuccess, ServerResponse<UserDTO> answerServerResponse) {
-                                    if (isSuccess) {
-                                        saveUser(answerServerResponse.getDataTransferObject());
-                                        startMainActivity();
-                                    } else {
-                                        showToastError();
-                                    }
-                                    progressBar.dismissView();
+                            (isSuccess, answerServerResponse) -> {
+                                if (isSuccess) {
+                                    saveUser(answerServerResponse.getDataTransferObject());
+                                    startMainActivity();
+                                } else {
+                                    showToastError();
                                 }
+                                progressBar.dismissView();
                             });
                 } else {
                     Toast.makeText(this, "Field is empty!", Toast.LENGTH_SHORT).show();

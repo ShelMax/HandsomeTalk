@@ -1,4 +1,6 @@
 <resources>
+
+    <string name="kakao_app_key">848c339718166a5604b86baf61e8d5ed</string>
     <string name="app_name">HandsomeTalk</string>
     <string name="email">Email</string>
     <string name="kakaotalk">KakaoTalk</string>

@@ -14,8 +14,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.NoBar"
-        >
+        android:theme="@style/AppTheme.NoBar">
 
 
         <activity android:name=".view.MainCustomActivity">
@@ -35,9 +34,9 @@
 
         <activity android:name=".view.NavigationActivity" />
 
-        <activity android:name=".view.DetailEstimateActivity"
-            android:configChanges="keyboard"/>
-
+        <activity
+            android:name=".view.DetailEstimateActivity"
+            android:configChanges="keyboard" />
 
 
         <!-- Push Google Cloud Messaging services -->
@@ -48,14 +47,14 @@
         </service>
 
 
-
         <service android:name=".util.googleFirebaseService.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
-
-
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="@string/kakao_app_key" />
     </application>
 </manifest>

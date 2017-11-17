@@ -62,7 +62,6 @@ dependencies {
 
     compile 'com.google.code.gson:gson:2.8.0'
     compile 'com.jakewharton.timber:timber:4.6.0'
-
 }
 
 apply plugin: 'com.google.gms.google-services'

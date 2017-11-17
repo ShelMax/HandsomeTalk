@@ -14,7 +14,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.NoBar">
+        android:theme="@style/AppTheme.NoBar"
+        >
 
 
         <activity android:name=".view.MainCustomActivity">
@@ -34,7 +35,8 @@
 
         <activity android:name=".view.NavigationActivity" />
 
-        <activity android:name=".view.DetailEstimateActivity" />
+        <activity android:name=".view.DetailEstimateActivity"
+            android:configChanges="keyboard"/>
 
 
 

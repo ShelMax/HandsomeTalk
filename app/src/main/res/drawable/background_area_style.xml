@@ -1,17 +1,8 @@
-<selector xmlns:android="http://schemas.android.com/apk/res/android" >
-<!--<item>-->
-    <!--<shape android:shape="rectangle">-->
-
-        <!--<solid android:color="#0377BE"/>-->
-    <!--</shape>-->
-<!--</item>-->
-
-    <item>
-        <rotate
-            android:fromDegrees="85" >
-            <shape>
-                <solid android:color="#ffffff" />
-            </shape>
-        </rotate>
-    </item>
-</selector>
+<!-- drawable/cards.xml -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:height="960dp"
+    android:width="540dp"
+    android:viewportHeight="960"
+    android:viewportWidth="540">
+    <path android:fillColor="#fff" android:pathData="M 334.02 81.95 C 402.67 73.62 471.37 65.60 540.00 57.14 L 540.00 819.81 C 360.01 844.03 180.00 868.12 0.00 892.32 L 0.00 121.97 C 111.35 108.70 222.67 95.26 334.02 81.95 Z" />
+</vector>

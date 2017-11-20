@@ -1,6 +1,7 @@
 package kr.sofac.handsometalk;
 
 import android.app.Application;
+import android.support.multidex.MultiDex;
 import android.util.Log;
 
 import kr.sofac.handsometalk.util.FakeCrashLibrary;
@@ -15,6 +16,7 @@ public class HandsomeTalk extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        MultiDex.install(this);
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
         } else {

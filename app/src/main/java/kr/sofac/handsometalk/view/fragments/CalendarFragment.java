@@ -1,6 +1,11 @@
 package kr.sofac.handsometalk.view.fragments;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,13 +15,14 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import kr.sofac.handsometalk.R;
-import kr.sofac.handsometalk.dto.EstimateDTO;
-import kr.sofac.handsometalk.dto.GetEstimationsDTO;
+import kr.sofac.handsometalk.dto.MessageDTO;
 import kr.sofac.handsometalk.server.Connection;
 import kr.sofac.handsometalk.util.PreferenceApp;
 import kr.sofac.handsometalk.util.ProgressBar;
@@ -24,11 +30,15 @@ import kr.sofac.handsometalk.util.ProgressBar;
 
 public class CalendarFragment extends BaseFragment {
 
+    Dialog dialog;
+    AlertDialog.Builder builder;
+    Date date;
+
     private CalendarView calendarView;
     private SimpleAdapter simpleAdapter;
     private ListView listViewTime;
     private ProgressBar progressBar;
-    String[] texts = { "sometext 1", "sometext 2", "sometext 3", "sometext 4", "sometext 5" };
+    final String[] texts = {"08:00 AM", "09:00 AM", "10:00 AM", "11:00 AM", "12:00 AM", "01:00 PM", "02:00 PM", "03:00 PM", "04:00 PM", "05:00 PM", "06:00 PM", "07:00 PM", "08:00 PM"};
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,6 +54,7 @@ public class CalendarFragment extends BaseFragment {
         listViewTime = view.findViewById(R.id.listViewTime);
         progressBar = new ProgressBar(getActivity());
 
+
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.DATE, calendar.getActualMaximum(Calendar.DATE));
         calendar.set(Calendar.HOUR_OF_DAY, 23);//not sure this is needed
@@ -55,69 +66,53 @@ public class CalendarFragment extends BaseFragment {
         //calendarView.setMaxDate(endOfMonth);
         calendarView.setMinDate(startOfMonth);
 
-        ArrayAdapter<String[]> arrayAdapter = new ArrayAdapter<String[]>(this, R.layout.item_calendar, texts);
 
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this.getActivity(), R.layout.item_calendar, texts);
 
-        calendarView.setOnDateChangeListener((calendarView, i, i1, i2) -> {
+        listViewTime.setAdapter(arrayAdapter);
+        listViewTime.setOnItemClickListener((adapterView, view1, i, l) -> {
 
-            Toast.makeText(this.getActivity(), "i= " + i + " i1= " + i1 + " i2= " + i2, Toast.LENGTH_SHORT).show();
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.ENGLISH);
+            date = new Date();
+            date.setTime(calendarView.getDate());
+            date.setHours(i + 8);
+            date.setMinutes(0);
+            date.setSeconds(0);
+            builder = new AlertDialog.Builder(getActivity());
+            builder.setPositiveButton("SEND", (dialogInterface, i12) -> newRequestAdd(date));
+            builder.setNegativeButton("CANCEL", (dialogInterface, i1) -> {});
+            builder.setTitle("You choice this date " + simpleDateFormat.format(date));
+            builder.setMessage("Do you want make an appointment?");
+            builder.show();
 
         });
+
 
         return view;
     }
 
-    public void newRequest(Date date) {
+    public void newRequestAdd(Date date) {
         progressBar.showView();
-        new Connection<ArrayList<EstimateDTO>>().getEstimations(
-                new GetEstimationsDTO( new PreferenceApp(getActivity()).getUser().getId()),
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
+        new Connection<ArrayList<MessageDTO>>().addFeedback(
+                new MessageDTO("", "", new PreferenceApp(getActivity()).getUser().getId(), "", "", simpleDateFormat.format(date), "", "", "", ""),
                 (isSuccess, answerServerResponse) -> {
+                    if (isSuccess) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                        LayoutInflater inflater = getActivity().getLayoutInflater();
+                        View view = inflater.inflate(R.layout.dialog_custom, null, false);
+                        builder.setView(view);
+                        dialog = builder.create();
+                        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                        dialog.show();
+                        new Handler().postDelayed(() -> dialog.dismiss(), 3000);
+
+                    } else {
+                        Toast.makeText(getActivity(), "Some error!", Toast.LENGTH_SHORT).show();
+                    }
 
                     progressBar.dismissView();
                 });
     }
-
-
-//    public void initUI(ArrayList<EstimateDTO> estimateDTOs) {
-//
-//        adapterEstimation = new AdapterEstimation(getActivity(), estimateDTOs);
-//        recyclerViewEstimation.setAdapter(adapterEstimation);
-//        recyclerViewEstimation.setHasFixedSize(true);
-//        recyclerViewEstimation.setLayoutManager(mLayoutManager);
-//
-//        recyclerViewEstimation.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), recyclerViewEstimation, new RecyclerItemClickListener.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(View view, int position) {
-//                Intent intent = new Intent(getActivity(), DetailEstimateActivity.class);
-//                if (estimateDTOs != null) {
-//                    intent.putExtra(ESTIMATION_ID, estimateDTOs.get(position).getId());
-//                    startActivityForResult(intent, 1);
-//                }
-//            }
-//
-//            @Override
-//            public void onLongItemClick(View view, final int position) {
-////                postDTO = postDTOs.get(position);
-////                GroupFragment.idPost = postDTOs.get(position).getId();
-////
-////                if (postDTO.getUser_id().equals(userDTO.getId()) || userDTO.isAdmin()) {
-////
-////                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-////                    builder.setItems(R.array.choice_double_click_post, (dialog, which) -> {
-////                        switch (which) {
-////                            case 0: // Edit
-////                                changePost(GroupFragment.idPost);
-////                                break;
-////                            case 1: // Delete
-////                                Timber.e("Click delete");
-////                                deletePost();
-////                                break;
-////                        }
-////                    });
-////                    builder.show();
-////                }
-//            }
-//        }));
-//    }
 
 }

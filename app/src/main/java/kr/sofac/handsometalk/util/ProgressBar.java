@@ -14,7 +14,7 @@ import kr.sofac.handsometalk.R;
 
 public class ProgressBar {
 
-    ProgressDialog pd;
+    private ProgressDialog pd;
 
     public ProgressBar(Context context) {
         this.pd = new ProgressDialog(context, R.style.MyTheme);

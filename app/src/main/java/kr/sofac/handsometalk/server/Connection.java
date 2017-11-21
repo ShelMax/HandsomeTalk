@@ -186,6 +186,23 @@ public class Connection<T> {
     }
 
     /**
+     * Registration DTO
+     */
+    public void addFeedback(MessageDTO messageDTO, AnswerServerResponse<T> async) { //Change name request / Change data in method parameters
+        answerServerResponse = async;
+        new ManagerRetrofit<MessageDTO>().sendRequest(messageDTO, new Object() {// Change type Object sending / Change data sending
+        }.getClass().getEnclosingMethod().getName(), (isSuccess, answerString) -> {
+            if (isSuccess) {
+                Type typeAnswer = new TypeToken<ServerResponse>() { //Change type response
+                }.getType();
+                tryParsing(answerString, typeAnswer);
+            } else {
+                answerServerResponse.processFinish(false, null);
+            }
+        });
+    }
+
+    /**
      * Get correct VERSION from Server
      */
 //    public void getCorrectVersion(AnswerServerResponse<T> async) { //Change name request() / Change data in method parameters

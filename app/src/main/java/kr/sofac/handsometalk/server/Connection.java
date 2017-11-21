@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import kr.sofac.handsometalk.dto.AuthorizationDTO;
 import kr.sofac.handsometalk.dto.EstimateDTO;
 import kr.sofac.handsometalk.dto.EventDTO;
+import kr.sofac.handsometalk.dto.FeedbackDTO;
 import kr.sofac.handsometalk.dto.GetEstimationsDTO;
 import kr.sofac.handsometalk.dto.GetPushDTO;
 import kr.sofac.handsometalk.dto.MessageDTO;
@@ -202,6 +203,22 @@ public class Connection<T> {
         });
     }
 
+    /**
+     * Registration DTO
+     */
+    public void feedbackList(GetEstimationsDTO getEstimationsDTO, AnswerServerResponse<T> async) { //Change name request / Change data in method parameters
+        answerServerResponse = async;
+        new ManagerRetrofit<GetEstimationsDTO>().sendRequest(getEstimationsDTO, new Object() {// Change type Object sending / Change data sending
+        }.getClass().getEnclosingMethod().getName(), (isSuccess, answerString) -> {
+            if (isSuccess) {
+                Type typeAnswer = new TypeToken<ServerResponse<ArrayList<FeedbackDTO>>>() { //Change type response
+                }.getType();
+                tryParsing(answerString, typeAnswer);
+            } else {
+                answerServerResponse.processFinish(false, null);
+            }
+        });
+    }
     /**
      * Get correct VERSION from Server
      */

@@ -10,27 +10,36 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="?attr/actionBarSize"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingTop="?attr/actionBarSize">
 
-        <com.prolificinteractive.materialcalendarview.MaterialCalendarView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+        <com.prolificinteractive.materialcalendarview.MaterialCalendarView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/calendarView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:mcv_selectionColor="#00F"
-            />
+            app:mcv_arrowColor="#ffffff"
+            app:mcv_calendarMode="month"
+            app:mcv_dateTextAppearance="@style/CustomTextAppearanceCalendar"
+            app:mcv_firstDayOfWeek="monday"
+            app:mcv_headerTextAppearance="@style/CustomLabelAppearanceCalendar"
+            app:mcv_selectionColor="#949494"
+            app:mcv_showOtherDates="all"
+            app:mcv_tileHeight="35dp"
+            app:mcv_tileSize="match_parent"
+            app:mcv_weekDayTextAppearance="@style/CustomWeekAppearanceCalendar" />
 
+        <!--app:mcv_weekDayTextAppearance="@style/CustomWeekAppearanceCalendar"-->
+        <!--app:mcv_headerTextAppearance="@style/CustomTextAppearanceCalendar"-->
 
         <!--<CalendarView-->
-            <!--android:id="@+id/calendarView"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="307dp"-->
-            <!--android:layout_margin="0dp"-->
-            <!--android:padding="0dp"-->
-            <!--android:theme="@style/CalenderViewCustom" />-->
-            <!--&lt;!&ndash;android:dateTextAppearance="@style/CalenderViewDateCustomText"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:weekDayTextAppearance="@style/CalenderViewWeekCustomText"/>&ndash;&gt;-->
+        <!--android:id="@+id/calendarView"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="307dp"-->
+        <!--android:layout_margin="0dp"-->
+        <!--android:padding="0dp"-->
+        <!--android:theme="@style/CalenderViewCustom" />-->
+        <!--&lt;!&ndash;android:dateTextAppearance="@style/CalenderViewDateCustomText"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:weekDayTextAppearance="@style/CalenderViewWeekCustomText"/>&ndash;&gt;-->
 
         <LinearLayout
             android:layout_width="match_parent"

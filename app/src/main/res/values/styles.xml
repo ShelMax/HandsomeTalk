@@ -8,6 +8,20 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="CustomTextAppearanceCalendar" parent="TextAppearance.MaterialCalendarWidget.Date">
+        <item name="android:textColor">@color/calendar_selector</item>
+    </style>
+
+    <style name="CustomLabelAppearanceCalendar" parent="CustomTextAppearanceCalendar">
+    <item name="android:textColor">#ffffff</item>
+</style>
+
+
+    <style name="CustomWeekAppearanceCalendar" parent="CustomTextAppearanceCalendar">
+        <item name="android:textColor">#b3b3b3</item>
+    </style>
+
+
     <style name="AppTheme.NoBar" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>

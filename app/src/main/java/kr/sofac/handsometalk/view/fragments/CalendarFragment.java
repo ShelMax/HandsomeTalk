@@ -10,11 +10,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.CalendarView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
+import com.prolificinteractive.materialcalendarview.CalendarDay;
+import com.prolificinteractive.materialcalendarview.CalendarMode;
+import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
+
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -22,10 +26,13 @@ import java.util.Date;
 import java.util.Locale;
 
 import kr.sofac.handsometalk.R;
+import kr.sofac.handsometalk.dto.FeedbackDTO;
+import kr.sofac.handsometalk.dto.GetEstimationsDTO;
 import kr.sofac.handsometalk.dto.MessageDTO;
 import kr.sofac.handsometalk.server.Connection;
 import kr.sofac.handsometalk.util.PreferenceApp;
 import kr.sofac.handsometalk.util.ProgressBar;
+import timber.log.Timber;
 
 
 public class CalendarFragment extends BaseFragment {
@@ -34,7 +41,7 @@ public class CalendarFragment extends BaseFragment {
     AlertDialog.Builder builder;
     Date date;
 
-    private CalendarView calendarView;
+    private MaterialCalendarView materialCalendarView;
     private SimpleAdapter simpleAdapter;
     private ListView listViewTime;
     private ProgressBar progressBar;
@@ -50,21 +57,32 @@ public class CalendarFragment extends BaseFragment {
 
         View view = inflater.inflate(R.layout.fragment_calendar, container, false);
 
-        calendarView = view.findViewById(R.id.calendarView);
+        materialCalendarView = view.findViewById(R.id.calendarView);
         listViewTime = view.findViewById(R.id.listViewTime);
         progressBar = new ProgressBar(getActivity());
 
 
+//        Calendar calendar = Calendar.getInstance();
+//        calendar.set(Calendar.DATE, calendar.getActualMaximum(Calendar.DATE));
+//        calendar.set(Calendar.HOUR_OF_DAY, 23);//not sure this is needed
+//        long endOfMonth = calendar.getTimeInMillis();
+//        calendar = Calendar.getInstance();
+//        calendar.set(Calendar.DATE, 1);
+//        calendar.set(Calendar.HOUR_OF_DAY, 0);
+//        long startOfMonth = calendar.getTimeInMillis();
+//        //calendarView.setMaxDate(endOfMonth);
+//        calendarView.setMinDate(startOfMonth);
+
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.DATE, calendar.getActualMaximum(Calendar.DATE));
-        calendar.set(Calendar.HOUR_OF_DAY, 23);//not sure this is needed
-        long endOfMonth = calendar.getTimeInMillis();
-        calendar = Calendar.getInstance();
         calendar.set(Calendar.DATE, 1);
         calendar.set(Calendar.HOUR_OF_DAY, 0);
-        long startOfMonth = calendar.getTimeInMillis();
-        //calendarView.setMaxDate(endOfMonth);
-        calendarView.setMinDate(startOfMonth);
+
+        materialCalendarView.state().edit()
+                .setFirstDayOfWeek(Calendar.MONDAY)
+                .setMinimumDate(CalendarDay.from(calendar))
+                .setMaximumDate(CalendarDay.from(2018, 5, 12))
+                .setCalendarDisplayMode(CalendarMode.MONTHS)
+                .commit();
 
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this.getActivity(), R.layout.item_calendar, texts);
@@ -74,7 +92,7 @@ public class CalendarFragment extends BaseFragment {
 
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.ENGLISH);
             date = new Date();
-            date.setTime(calendarView.getDate());
+            date.setTime(materialCalendarView.getSelectedDate().getDate().getTime());
             date.setHours(i + 8);
             date.setMinutes(0);
             date.setSeconds(0);
@@ -87,6 +105,7 @@ public class CalendarFragment extends BaseFragment {
 
         });
 
+        newRequestGetList();
 
         return view;
     }
@@ -111,6 +130,32 @@ public class CalendarFragment extends BaseFragment {
                         Toast.makeText(getActivity(), "Some error!", Toast.LENGTH_SHORT).show();
                     }
 
+                    progressBar.dismissView();
+                });
+    }
+
+    public void newRequestGetList(){
+
+        progressBar.showView();
+        new Connection<ArrayList<FeedbackDTO>>().feedbackList(new GetEstimationsDTO(new PreferenceApp(getActivity()).getUser().getId()),
+                (isSuccess, answerServerResponse) -> {
+                    if (isSuccess) {
+                        for(FeedbackDTO feedbackDTO : answerServerResponse.getDataTransferObject()){
+                            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
+                            String strDate = feedbackDTO.getDate();
+                            Date date = new Date();
+                            try {
+                                date = format.parse(strDate);
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+                            Timber.e("\n%s", date.toString());
+                            materialCalendarView.selectRange(CalendarDay.from(date),CalendarDay.from(date));
+                        }
+
+                    } else {
+                        Toast.makeText(getActivity(), "Some error!", Toast.LENGTH_SHORT).show();
+                    }
                     progressBar.dismissView();
                 });
     }

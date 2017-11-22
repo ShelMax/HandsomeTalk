@@ -221,7 +221,24 @@ public class Connection<T> {
     }
 
     /**
-     * Dop methods
+     * Registration DTO
+     */
+    public void updateUser(UserDTO userDTO, AnswerServerResponse<T> async) { //Change name request / Change data in method parameters
+        answerServerResponse = async;
+        new ManagerRetrofit<UserDTO>().sendRequest(userDTO, new Object() {// Change type Object sending / Change data sending
+        }.getClass().getEnclosingMethod().getName(), (isSuccess, answerString) -> {
+            if (isSuccess) {
+                Type typeAnswer = new TypeToken<ServerResponse<ArrayList<FeedbackDTO>>>() { //Change type response
+                }.getType();
+                tryParsing(answerString, typeAnswer);
+            } else {
+                answerServerResponse.processFinish(false, null);
+            }
+        });
+    }
+
+    /**
+     * //////////// Dop methods
      */
 
     public ArrayList<MultipartBody.Part> generateMultiPartList(ArrayList<Uri> listFileUri, Context context) {

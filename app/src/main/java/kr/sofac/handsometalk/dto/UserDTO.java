@@ -5,6 +5,8 @@ package kr.sofac.handsometalk.dto;
  */
 
 public class UserDTO {
+
+    String user_id;
     String id;
     String email;
     String password;
@@ -17,7 +19,8 @@ public class UserDTO {
     String access;
     String kakao_id;
 
-    public UserDTO(String id, String email, String password, String name, String phone, Boolean sex, String avatar, String date, Boolean visible, String access, String kakao_id) {
+    public UserDTO(String user_id, String id, String email, String password, String name, String phone, Boolean sex, String avatar, String date, Boolean visible, String access, String kakao_id) {
+        this.user_id = user_id;
         this.id = id;
         this.email = email;
         this.password = password;
@@ -29,6 +32,14 @@ public class UserDTO {
         this.visible = visible;
         this.access = access;
         this.kakao_id = kakao_id;
+    }
+
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 
     public String getId() {
@@ -122,7 +133,8 @@ public class UserDTO {
     @Override
     public String toString() {
         return "UserDTO{" +
-                "id='" + id + '\'' +
+                "user_id='" + user_id + '\'' +
+                ", id='" + id + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +

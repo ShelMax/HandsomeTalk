@@ -38,8 +38,8 @@
     <!--<menu>-->
     <item
         android:id="@+id/id_settings"
-        android:icon="@drawable/settings"
-        android:title="@string/settings" />
+        android:icon="@drawable/account_box"
+        android:title="@string/profile" />
     <item
         android:id="@+id/id_exit"
         android:icon="@drawable/logout_variant"

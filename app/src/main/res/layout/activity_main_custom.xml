@@ -10,6 +10,7 @@
 
     <LinearLayout
         android:id="@+id/idLiner2"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/animation_list"
@@ -21,6 +22,7 @@
     <LinearLayout
         android:id="@+id/idLiner"
         android:layout_width="match_parent"
+        android:orientation="vertical"
         android:layout_height="match_parent"
         android:layout_marginTop="24dp"
         android:background="@drawable/background_main"
@@ -50,7 +52,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_weight="1"
-        android:text="@string/settings"
+        android:text="@string/profile"
         android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toBottomOf="@+id/id_settings_button"
         app:layout_constraintStart_toEndOf="@+id/id_settings_button"
@@ -246,7 +248,7 @@
         android:layout_marginStart="8dp"
         android:background="@drawable/oval_button_yellow"
         android:padding="15dp"
-        app:srcCompat="@drawable/settings"
+        app:srcCompat="@drawable/account_box"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="w,1:1"
         app:layout_constraintEnd_toEndOf="parent"

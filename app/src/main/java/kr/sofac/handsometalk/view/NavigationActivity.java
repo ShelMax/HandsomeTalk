@@ -11,9 +11,12 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
 import kr.sofac.handsometalk.R;
 import kr.sofac.handsometalk.util.PreferenceApp;
 import kr.sofac.handsometalk.view.fragments.CalendarFragment;
@@ -24,10 +27,12 @@ import kr.sofac.handsometalk.view.fragments.PushFragment;
 import kr.sofac.handsometalk.view.fragments.SettingsFragment;
 import kr.sofac.handsometalk.view.fragments.TalkFragment;
 
+import static kr.sofac.handsometalk.Constants.BASE_URL;
 import static kr.sofac.handsometalk.Constants.CALENDAR_FRAGMENT;
 import static kr.sofac.handsometalk.Constants.CONTACTS_FRAGMENT;
 import static kr.sofac.handsometalk.Constants.EVENT_FRAGMENT;
 import static kr.sofac.handsometalk.Constants.INFO_FRAGMENT;
+import static kr.sofac.handsometalk.Constants.PART_IMAGE;
 import static kr.sofac.handsometalk.Constants.PUSH_FRAGMENT;
 import static kr.sofac.handsometalk.Constants.SETTINGS_FRAGMENT;
 import static kr.sofac.handsometalk.Constants.TALK_FRAGMENT;
@@ -108,6 +113,15 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
         View header = navigationView.getHeaderView(0);
         if (checkAuthorization()) {
             header.findViewById(R.id.id_sign_in_background).setVisibility(View.GONE);
+
+            Glide.with(this)
+                    .load(BASE_URL + PART_IMAGE + new PreferenceApp(this).getUser().getAvatar())
+                    .bitmapTransform(new CropCircleTransformation(this))
+                    .override(200, 200)
+                    .error(R.drawable.avatar)
+                    .placeholder(R.drawable.avatar)
+                    .into((ImageView) header.findViewById(R.id.id_image_user));
+
             ((TextView) header.findViewById(R.id.id_user_name)).setText((new PreferenceApp(this).getUser().getName()));
             ((TextView) header.findViewById(R.id.id_user_email)).setText((new PreferenceApp(this).getUser().getEmail()));
         } else {

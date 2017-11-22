@@ -29,17 +29,18 @@ android:layout_height="wrap_content">
     card_view:layout_constraintBaseline_toBaselineOf="@+id/idTitleEstimation"
     card_view:layout_constraintEnd_toEndOf="parent" />
 
-<TextView
-    android:id="@+id/idDescriptionEstimation"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="8dp"
-    android:layout_marginTop="8dp"
-    android:text="TextView"
-    android:textSize="14sp"
-    card_view:layout_constraintBottom_toBottomOf="parent"
-    card_view:layout_constraintStart_toStartOf="@+id/idTitleEstimation"
-    card_view:layout_constraintTop_toBottomOf="@+id/idTitleEstimation" />
+    <TextView
+        android:id="@+id/idDescriptionEstimation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:maxLines="5"
+        android:text="TextView"
+        android:textSize="14sp"
+        card_view:layout_constraintBottom_toBottomOf="parent"
+        card_view:layout_constraintStart_toStartOf="@+id/idTitleEstimation"
+        card_view:layout_constraintTop_toBottomOf="@+id/idTitleEstimation" />
 
 <View
     android:layout_width="match_parent"

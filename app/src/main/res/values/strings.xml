@@ -99,7 +99,7 @@ Tel. 02-6081-0151\n
 
     </string>
 
-    <string name="estimate_text">원장님에게 도움이 필요할때는 언제든지  글을 남겨 주세요</string>
+    <string name="estimate_text">원장님에게 도움이 필요할때는 \n언제든지  글을 남겨 주세요</string>
     <string name="type_your_message_here">Type your message here…</string>
     <string name="attach_photo">Attach photo</string>
     <string name="send_message">Send message</string>

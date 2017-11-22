@@ -34,7 +34,6 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
     }
 
 
-
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -44,24 +43,28 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
                 String phoneNumber = editPhoneNumber.getText().toString();
                 String password = editPassword.getText().toString();
                 String confirmPassword = getEditPasswordConfirm.getText().toString();
-                if (!name.isEmpty()&&!email.isEmpty()&&!phoneNumber.isEmpty()&&!password.isEmpty()&&!confirmPassword.isEmpty()&&(password.equals(confirmPassword))) {
-                    progressBar.showView();
-                    new Connection<UserDTO>().registrationUser(new RegistrationDTO(
-                                    password,
-                                    name,
-                                    true,
-                                    phoneNumber,
-                                    email,
-                                    new PreferenceApp(this).getGoogleKey()),
-                            (isSuccess, answerServerResponse) -> {
-                                if (isSuccess) {
-                                    saveUser(answerServerResponse.getDataTransferObject());
-                                    startMainActivity();
-                                } else {
-                                    showToastError();
-                                }
-                                progressBar.dismissView();
-                            });
+                if (!name.isEmpty() && !email.isEmpty() && !phoneNumber.isEmpty() && !password.isEmpty() && !confirmPassword.isEmpty()) {
+                    if ((password.equals(confirmPassword))) {
+                        progressBar.showView();
+                        new Connection<UserDTO>().registrationUser(new RegistrationDTO(
+                                        password,
+                                        name,
+                                        true,
+                                        phoneNumber,
+                                        email,
+                                        new PreferenceApp(this).getGoogleKey()),
+                                (isSuccess, answerServerResponse) -> {
+                                    if (isSuccess) {
+                                        saveUser(answerServerResponse.getDataTransferObject());
+                                        startMainActivity();
+                                    } else {
+                                        showToastError();
+                                    }
+                                    progressBar.dismissView();
+                                });
+                    } else {
+                        Toast.makeText(this, "Passwords do not match!", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
                     Toast.makeText(this, "Field is empty!", Toast.LENGTH_SHORT).show();
                 }

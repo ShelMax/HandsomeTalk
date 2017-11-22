@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -34,6 +35,7 @@ import kr.sofac.handsometalk.server.Connection;
 import kr.sofac.handsometalk.util.PreferenceApp;
 import kr.sofac.handsometalk.util.ProgressBar;
 import kr.sofac.handsometalk.view.DetailEstimateActivity;
+import kr.sofac.handsometalk.view.NewEstimateActivity;
 import timber.log.Timber;
 
 import static kr.sofac.handsometalk.Constants.ESTIMATION_ID;
@@ -48,6 +50,7 @@ public class TalkFragment extends BaseFragment implements View.OnClickListener {
     private ConstraintLayout emptyView;
     private Button buttonSendMessage, buttonAddPhotoMessage;
     private EditText editTextMessage;
+    private FloatingActionButton floatingActionButton;
 
     private ArrayList<Uri> listPhoto;
     private LinearLayout linearLayoutPhoto;
@@ -70,11 +73,12 @@ public class TalkFragment extends BaseFragment implements View.OnClickListener {
 
         emptyView = rootView.findViewById(R.id.recyclerTalkEmpty);
         editTextMessage = rootView.findViewById(R.id.idEditMessage);
-
+        floatingActionButton = rootView.findViewById(R.id.fabNewEstimate);
         buttonSendMessage = rootView.findViewById(R.id.buttonSendNewEstimation);
         buttonAddPhotoMessage = rootView.findViewById(R.id.buttonAddPhotoNewEstimation);
         buttonSendMessage.setOnClickListener(this);
         buttonAddPhotoMessage.setOnClickListener(this);
+        floatingActionButton.setOnClickListener(this);
 
         recyclerViewScrollPhoto = rootView.findViewById(R.id.idRecyclerScrollPhotos);
         linearLayoutPhoto = rootView.findViewById(R.id.idLayoutPhotos);
@@ -117,6 +121,7 @@ public class TalkFragment extends BaseFragment implements View.OnClickListener {
                         } else {
                             recyclerViewEstimation.setVisibility(View.VISIBLE);
                             emptyView.setVisibility(View.GONE);
+                            floatingActionButton.setVisibility(View.VISIBLE);
                             initUI(answerServerResponse.getDataTransferObject());
                         }
                     } else {
@@ -231,6 +236,9 @@ public class TalkFragment extends BaseFragment implements View.OnClickListener {
                     startActivityForResult(takePhotoIntent, REQUEST_TAKE_PHOTO);
                     break;
                 }
+            case R.id.fabNewEstimate:
+                startActivity(new Intent(getActivity(), NewEstimateActivity.class));
+                break;
         }
     }
 

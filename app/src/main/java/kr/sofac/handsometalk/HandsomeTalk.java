@@ -1,6 +1,7 @@
 package kr.sofac.handsometalk;
 
 import android.app.Application;
+import android.content.pm.ActivityInfo;
 import android.support.multidex.MultiDex;
 import android.util.Log;
 
@@ -22,6 +23,7 @@ public class HandsomeTalk extends Application {
         } else {
             Timber.plant(new CrashReportingTree());
         }
+
     }
 
     /**

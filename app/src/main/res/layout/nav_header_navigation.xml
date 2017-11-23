@@ -26,9 +26,9 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
             android:gravity="center_vertical"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:paddingTop="10dp">
 
             <TextView
                 android:id="@+id/id_user_name"
@@ -48,23 +48,25 @@
     </LinearLayout>
 
     <RelativeLayout
-    android:id="@+id/id_sign_in_background"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/nav_header_height"
-    android:paddingTop="15dp"
-    android:background="@color/colorDarkTransparent"
-    android:gravity="center_vertical|center_horizontal">
+        android:id="@+id/id_sign_in_background"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nav_header_height"
+        android:background="@color/colorDarkTransparent"
+        android:gravity="center_vertical|center_horizontal"
+        android:paddingTop="15dp">
 
-    <TextView
-    android:background="@drawable/border_textview"
-    android:paddingStart="15dp"
-    android:paddingEnd="15dp"
-    android:id="@+id/id_sign_in_button_tv"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:gravity="center_horizontal"
-    android:text="@string/sign_in"
-    android:textColor="@color/colorWhite"
-    android:textSize="18sp" />
+        <TextView
+            android:id="@+id/id_sign_in_button_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_textview"
+            android:gravity="center_horizontal|center_vertical"
+            android:paddingBottom="12dp"
+            android:paddingEnd="25dp"
+            android:paddingStart="25dp"
+            android:paddingTop="12dp"
+            android:text="@string/sign_in"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp" />
     </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>

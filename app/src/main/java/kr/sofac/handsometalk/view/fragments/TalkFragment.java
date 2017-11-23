@@ -15,6 +15,9 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -68,7 +71,6 @@ public class TalkFragment extends BaseFragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_talk, container, false);
-
         recyclerViewEstimation = rootView.findViewById(R.id.idRecyclerEstimation);
 
         emptyView = rootView.findViewById(R.id.recyclerTalkEmpty);
@@ -131,12 +133,32 @@ public class TalkFragment extends BaseFragment implements View.OnClickListener {
                 });
     }
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        getActivity().getMenuInflater().inflate(R.menu.talk_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.idRefresh:
+                newRequest();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     public void toastMessage() {
         Toast.makeText(getActivity(), R.string.connection_error, Toast.LENGTH_SHORT).show();
     }
 
     public void initUI(ArrayList<EstimateDTO> estimateDTOs) {
-
+        if(estimateDTOs.isEmpty()){
+            setHasOptionsMenu(false);
+        } else {
+            setHasOptionsMenu(true);
+        }
         adapterEstimation = new AdapterEstimation(getActivity(), estimateDTOs);
         recyclerViewEstimation.setAdapter(adapterEstimation);
         recyclerViewEstimation.setHasFixedSize(true);

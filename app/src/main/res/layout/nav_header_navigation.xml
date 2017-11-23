@@ -19,44 +19,52 @@
 
         <ImageView
             android:id="@+id/id_image_user"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:paddingTop="@dimen/nav_header_vertical_spacing" />
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/avatar" />
 
-        <TextView
-            android:id="@+id/id_user_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/nav_header_vertical_spacing"
-            android:text="@string/user_name"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
-        <TextView
-            android:id="@+id/id_user_email"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/email_naver_com" />
+            android:paddingTop="10dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/id_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/user_name"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:id="@+id/id_user_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/email_naver_com" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
     <RelativeLayout
-        android:id="@+id/id_sign_in_background"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/nav_header_height"
-        android:paddingTop="15dp"
-        android:background="@color/colorDarkTransparent"
-        android:gravity="center_vertical|center_horizontal">
+    android:id="@+id/id_sign_in_background"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/nav_header_height"
+    android:paddingTop="15dp"
+    android:background="@color/colorDarkTransparent"
+    android:gravity="center_vertical|center_horizontal">
 
-        <TextView
-            android:background="@drawable/border_textview"
-            android:paddingStart="15dp"
-            android:paddingEnd="15dp"
-            android:id="@+id/id_sign_in_button_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="@string/sign_in"
-            android:textColor="@color/colorWhite"
-            android:textSize="18sp" />
+    <TextView
+    android:background="@drawable/border_textview"
+    android:paddingStart="15dp"
+    android:paddingEnd="15dp"
+    android:id="@+id/id_sign_in_button_tv"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:text="@string/sign_in"
+    android:textColor="@color/colorWhite"
+    android:textSize="18sp" />
     </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>

@@ -63,9 +63,11 @@
                         android:hint="@string/enter_text_message"
                         android:inputType="textMultiLine"
                         android:maxLines="5"
+                        android:minLines="2"
+                        android:textSize="13sp"
                         android:padding="5dp"
                         android:textColor="@color/colorGrey"
-                        android:textSize="12sp"
+
                         card_view:layout_constraintBottom_toBottomOf="parent"
                         card_view:layout_constraintEnd_toStartOf="@+id/buttonSend"
                         card_view:layout_constraintStart_toEndOf="@+id/imageButtonAttachPhoto"
@@ -74,8 +76,8 @@
 
                     <ImageButton
                         android:id="@+id/buttonSend"
-                        android:layout_width="0dp"
-                        android:layout_height="25dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:layout_marginEnd="8dp"
                         android:background="@drawable/background_empty"
                         android:padding="5dp"
@@ -86,8 +88,8 @@
 
                     <ImageButton
                         android:id="@+id/imageButtonAttachPhoto"
-                        android:layout_width="0dp"
-                        android:layout_height="25dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:layout_marginStart="8dp"
                         android:background="@drawable/background_empty"
                         app:srcCompat="@drawable/message_image"

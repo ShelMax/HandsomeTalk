@@ -9,8 +9,8 @@ public class Constants {
     public static final String CLOUD_API_KEY = "AIzaSyBLJ0AT163eM9t_bLkLz0hIbcbwW_LrXdI";
 
     // Connection /
-    //public static final String BASE_URL = "http://handsometalk.gq/";
-    public static final String BASE_URL = "http://192.168.0.58/"; // Test server
+    public static final String BASE_URL = "http://handsometalk.gq/";
+    //public static final String BASE_URL = "http://192.168.0.58/"; // Test server
     public final static String PART_CONTROLLER = "data/ajax/request.php";
 
     // Type view in (MainCustomActivity -> NavigationActivity) /

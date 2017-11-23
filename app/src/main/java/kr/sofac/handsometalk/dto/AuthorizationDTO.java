@@ -5,14 +5,35 @@ package kr.sofac.handsometalk.dto;
  */
 
 public class AuthorizationDTO {
+    String kakao_id;
     String password;
     String email;
     String googleCloudKey;
+
+    public AuthorizationDTO(String kakao_id, String password, String email, String googleCloudKey) {
+        this.kakao_id = kakao_id;
+        this.password = password;
+        this.email = email;
+        this.googleCloudKey = googleCloudKey;
+    }
+
+    public AuthorizationDTO(String kakao_id, String googleCloudKey) {
+        this.kakao_id = kakao_id;
+        this.googleCloudKey = googleCloudKey;
+    }
 
     public AuthorizationDTO(String password, String email, String googleCloudKey) {
         this.password = password;
         this.email = email;
         this.googleCloudKey = googleCloudKey;
+    }
+
+    public String getKakao_id() {
+        return kakao_id;
+    }
+
+    public void setKakao_id(String kakao_id) {
+        this.kakao_id = kakao_id;
     }
 
     public String getPassword() {
@@ -42,7 +63,8 @@ public class AuthorizationDTO {
     @Override
     public String toString() {
         return "AuthorizationDTO{" +
-                "password='" + password + '\'' +
+                "kakao_id='" + kakao_id + '\'' +
+                ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", googleCloudKey='" + googleCloudKey + '\'' +
                 '}';

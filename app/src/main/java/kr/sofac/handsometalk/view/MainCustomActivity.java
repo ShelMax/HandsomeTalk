@@ -1,7 +1,6 @@
 package kr.sofac.handsometalk.view;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
@@ -14,7 +13,6 @@ import android.widget.Toast;
 import kr.sofac.handsometalk.Constants;
 import kr.sofac.handsometalk.R;
 import kr.sofac.handsometalk.util.PreferenceApp;
-import timber.log.Timber;
 
 import static kr.sofac.handsometalk.Constants.TYPE_CONTENT_NAVIGATION;
 
@@ -28,8 +26,6 @@ public class MainCustomActivity extends BaseActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        Timber.e(new PreferenceApp(this).getGoogleKey());
 
         setContentView(R.layout.activity_main_custom);
         calendarButton = findViewById(R.id.id_calendar_button);

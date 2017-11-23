@@ -10,17 +10,27 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.kakao.auth.ISessionCallback;
+import com.kakao.auth.Session;
+import com.kakao.usermgmt.LoginButton;
+import com.kakao.util.exception.KakaoException;
+import com.kakao.util.helper.log.Logger;
+
 import kr.sofac.handsometalk.R;
 import kr.sofac.handsometalk.dto.AuthorizationDTO;
 import kr.sofac.handsometalk.dto.UserDTO;
 import kr.sofac.handsometalk.server.Connection;
 import kr.sofac.handsometalk.util.PreferenceApp;
+import timber.log.Timber;
 
 public class AuthorizationActivity extends BaseActivity implements View.OnClickListener {
+
+    private SessionCallback callback;
 
     EditText editEmail, editPassword;
     Button buttonSignIn, buttonKakaoTalk;
     TextView textRegisterLink;
+    LoginButton loginButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +43,15 @@ public class AuthorizationActivity extends BaseActivity implements View.OnClickL
         buttonSignIn = findViewById(R.id.id_sign_in_button);
         buttonKakaoTalk = findViewById(R.id.id_kakaotalk_button);
         textRegisterLink = findViewById(R.id.id_register_text_view);
+        loginButton = findViewById(R.id.com_kakao_login);
 
         buttonSignIn.setOnClickListener(this);
         buttonKakaoTalk.setOnClickListener(this);
         textRegisterLink.setOnClickListener(this);
+
+        callback = new SessionCallback();
+        Session.getCurrentSession().addCallback(callback);
+        Session.getCurrentSession().checkAndImplicitOpen();
     }
 
     @Override
@@ -71,7 +86,8 @@ public class AuthorizationActivity extends BaseActivity implements View.OnClickL
                 }
                 break;
             case R.id.id_kakaotalk_button:
-                Toast.makeText(this, "KakaoTalk it's not work now", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "TALK", Toast.LENGTH_SHORT).show();
+                loginButton.performClick();
                 break;
             case R.id.id_register_text_view:
                 startActivity(new Intent(this, RegistrationActivity.class));
@@ -94,6 +110,9 @@ public class AuthorizationActivity extends BaseActivity implements View.OnClickL
         finishAffinity();
 
     }
+
+
+
 
     /**
      * Save login & pass
@@ -124,6 +143,42 @@ public class AuthorizationActivity extends BaseActivity implements View.OnClickL
         SharedPreferences settings = getSharedPreferences("preferences", Context.MODE_PRIVATE);
         editEmail.setText(settings.getString("Username", ""));
         editPassword.setText(settings.getString("Password", ""));
+    }
+
+
+
+
+  /** KakaoTalk API*/
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (Session.getCurrentSession().handleActivityResult(requestCode, resultCode, data)) {
+            Timber.e("Kakao data : "+data.toString());
+            return;
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Session.getCurrentSession().removeCallback(callback);
+    }
+
+    private class SessionCallback implements ISessionCallback {
+
+        @Override
+        public void onSessionOpened() {
+            startMainActivity();
+        }
+
+        @Override
+        public void onSessionOpenFailed(KakaoException exception) {
+            if(exception != null) {
+                Logger.e(exception);
+            }
+        }
     }
 
 }

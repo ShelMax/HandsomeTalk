@@ -4,172 +4,120 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="24dp"
-    android:fitsSystemWindows="true"
     android:background="@drawable/background_style"
+    android:fitsSystemWindows="true"
+    android:paddingTop="24dp"
     tools:context="kr.sofac.handsometalk.view.RegistrationActivity">
 
 
     <EditText
         android:id="@+id/id_edit_email"
         android:layout_width="0dp"
-        android:layout_height="46dp"
-        android:layout_marginBottom="8dp"
+        android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Email"
+        android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:textColor="@color/colorWhite"
         android:theme="@style/Theme.App.Base"
         app:layout_constraintBottom_toTopOf="@+id/id_edit_phone"
-        app:layout_constraintEnd_toEndOf="@+id/id_edit_phone"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/id_edit_phone" />
+        app:layout_constraintDimensionRatio="w,5:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/id_edit_name" />
 
     <EditText
         android:id="@+id/id_edit_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
         android:ems="10"
         android:hint="@string/name"
         android:inputType="text"
         android:singleLine="true"
         android:textColor="@color/colorWhite"
         android:theme="@style/Theme.App.Base"
-        app:layout_constraintBottom_toTopOf="@+id/switch1"
-        app:layout_constraintEnd_toEndOf="@+id/id_edit_email"
-        app:layout_constraintStart_toStartOf="@+id/id_edit_email" />
+        app:layout_constraintBottom_toTopOf="@+id/id_edit_email"
+        app:layout_constraintDimensionRatio="w,5:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginBottom="40dp"
         android:text="@string/create_account"
         android:textColor="@color/colorWhite"
         android:textSize="30sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/id_edit_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Switch
-        android:id="@+id/switch1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:textColor="@color/colorWhite"
-        android:textOff="@string/male"
-        android:textOn="@string/female"
-        app:layout_constraintBottom_toTopOf="@+id/id_edit_email"
-        app:layout_constraintEnd_toEndOf="@+id/id_edit_email"
-        app:layout_constraintStart_toStartOf="@+id/id_edit_email" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="20dp" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="@string/male"
-        android:textColor="@color/colorWhite"
-        app:layout_constraintBaseline_toBaselineOf="@+id/switch1"
-        app:layout_constraintEnd_toStartOf="@+id/switch1" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="@string/female"
-        android:textColor="@color/colorWhite"
-        app:layout_constraintBaseline_toBaselineOf="@+id/switch1"
-        app:layout_constraintStart_toEndOf="@+id/switch1" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <EditText
         android:id="@+id/id_edit_phone"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/phone_number"
         android:inputType="phone"
         android:textColor="@color/colorWhite"
         android:theme="@style/Theme.App.Base"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/id_password"
         app:layout_constraintDimensionRatio="w,5:1"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.556" />
+        app:layout_constraintTop_toBottomOf="@+id/id_edit_email" />
 
     <EditText
         android:id="@+id/id_password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
         android:textColor="@color/colorWhite"
         android:theme="@style/Theme.App.Base"
-        app:layout_constraintEnd_toEndOf="@+id/id_edit_phone"
-        app:layout_constraintStart_toStartOf="@+id/id_edit_phone"
+        app:layout_constraintBottom_toTopOf="@+id/id_confirm_pasword"
+        app:layout_constraintDimensionRatio="w,5:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/id_edit_phone" />
 
     <EditText
         android:id="@+id/id_confirm_pasword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/confirm_password"
         android:inputType="textPassword"
         android:textColor="@color/colorWhite"
         android:theme="@style/Theme.App.Base"
-        app:layout_constraintEnd_toEndOf="@+id/id_password"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/id_password"
+        app:layout_constraintBottom_toTopOf="@+id/id_sign_up_button"
+        app:layout_constraintDimensionRatio="w,5:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/id_password" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="20dp" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="-8dp" />
 
     <Button
         android:id="@+id/id_sign_up_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
         android:text="@string/sign_up"
         android:textColor="@color/colorGrey"
-        app:layout_constraintEnd_toEndOf="@+id/id_confirm_pasword"
-        app:layout_constraintStart_toStartOf="@+id/id_confirm_pasword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="w,4:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/id_confirm_pasword" />
 
 </android.support.constraint.ConstraintLayout>

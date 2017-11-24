@@ -68,10 +68,9 @@ public class CalendarFragment extends BaseFragment {
         materialCalendarView.state().edit()
                 .setFirstDayOfWeek(Calendar.MONDAY)
                 .setMinimumDate(CalendarDay.from(calendar))
-                .setMaximumDate(CalendarDay.from(2018, 5, 12))
+                .setMaximumDate(CalendarDay.from(2018+1, 1, 1))
                 .setCalendarDisplayMode(CalendarMode.MONTHS)
                 .commit();
-
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this.getActivity(), R.layout.item_calendar, texts);
 
@@ -80,13 +79,18 @@ public class CalendarFragment extends BaseFragment {
 
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.ENGLISH);
             date = new Date();
-            date.setTime(materialCalendarView.getSelectedDate().getDate().getTime());
+            if (materialCalendarView.getSelectedDate()!= null) {
+                date.setTime(materialCalendarView.getSelectedDate().getDate().getTime());
+            } else {
+                date.setTime(date.getTime());
+            }
             date.setHours(i + 8);
             date.setMinutes(0);
             date.setSeconds(0);
             builder = new AlertDialog.Builder(getActivity());
             builder.setPositiveButton("SEND", (dialogInterface, i12) -> newRequestAdd(date));
-            builder.setNegativeButton("CANCEL", (dialogInterface, i1) -> {});
+            builder.setNegativeButton("CANCEL", (dialogInterface, i1) -> {
+            });
             builder.setTitle("You choice this date " + simpleDateFormat.format(date));
             builder.setMessage("Do you want make an appointment?");
             builder.show();
@@ -121,13 +125,13 @@ public class CalendarFragment extends BaseFragment {
                 });
     }
 
-    public void newRequestGetList(){
+    public void newRequestGetList() {
 
         progressBar.showView();
         new Connection<ArrayList<FeedbackDTO>>().feedbackList(new GetEstimationsDTO(new PreferenceApp(getActivity()).getUser().getId()),
                 (isSuccess, answerServerResponse) -> {
                     if (isSuccess) {
-                        for(FeedbackDTO feedbackDTO : answerServerResponse.getDataTransferObject()){
+                        for (FeedbackDTO feedbackDTO : answerServerResponse.getDataTransferObject()) {
                             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
                             String strDate = feedbackDTO.getDate();
                             Date date = new Date();
@@ -137,11 +141,11 @@ public class CalendarFragment extends BaseFragment {
                                 e.printStackTrace();
                             }
                             Timber.e("\n%s", date.toString());
-                            materialCalendarView.selectRange(CalendarDay.from(date),CalendarDay.from(date));
+                            materialCalendarView.selectRange(CalendarDay.from(date), CalendarDay.from(date));
                         }
 
                     } else {
-                        Toast.makeText(getActivity(), "Some error!", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getActivity(), "Some error!", Toast.LENGTH_SHORT).show();
                     }
                     progressBar.dismissView();
                 });

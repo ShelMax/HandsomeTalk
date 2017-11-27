@@ -222,10 +222,10 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
     AlertDialog.Builder ad;
 
     public void notAuthorization() {
-        String title = "Your not authorization";
-        String message = "You can't use this function because your not authorization.\n\n Do you want sing in?";
-        String buttonOk = "Yes";
-        String buttonCancel = "Not";
+        String title = getString(R.string.your_not_authorization);
+        String message = getString(R.string.You_cant_use_this_function);
+        String buttonOk = getString(R.string.yes);
+        String buttonCancel = getString(R.string.not);
 
         ad = new AlertDialog.Builder(this);
         ad.setTitle(title);

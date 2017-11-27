@@ -117,7 +117,6 @@ public class TalkFragment extends BaseFragment implements View.OnClickListener {
                 (isSuccess, answerServerResponse) -> {
                     if (isSuccess) {
                         if (answerServerResponse.getDataTransferObject().isEmpty()) {
-                            Timber.e("empty");
                             recyclerViewEstimation.setVisibility(View.GONE);
                             emptyView.setVisibility(View.VISIBLE);
                         } else {

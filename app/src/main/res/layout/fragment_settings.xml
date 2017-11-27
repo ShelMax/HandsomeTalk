@@ -45,7 +45,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="Name"
+                    android:text="@string/name"
                     android:textColor="@color/colorWhite"
                     android:textStyle="bold" />
 
@@ -53,7 +53,7 @@
                     android:id="@+id/tv_email_profile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Mail"
+                    android:text="@string/mail"
                     android:textColor="@color/colorWhite" />
 
             </LinearLayout>
@@ -95,7 +95,7 @@
                         android:layout_marginEnd="8dp"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
-                        android:hint="+380 93 222 22 22"
+                        android:hint="@string/_380_93_222_22_22"
                         android:inputType="phone"
                         card_view:layout_constraintEnd_toEndOf="parent"
                         card_view:layout_constraintStart_toStartOf="parent"
@@ -108,7 +108,7 @@
                         android:layout_marginEnd="8dp"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
-                        android:hint="example@naver.com"
+                        android:hint="@string/example_naver_com"
                         android:inputType="textEmailAddress"
                         card_view:layout_constraintEnd_toEndOf="parent"
                         card_view:layout_constraintHorizontal_bias="1.0"
@@ -121,7 +121,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="24dp"
-                        android:text="Phone number:"
+                        android:text="@string/phone_number"
                         card_view:layout_constraintStart_toStartOf="parent"
                         card_view:layout_constraintTop_toTopOf="parent" />
 
@@ -131,7 +131,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="16dp"
-                        android:text="E-mail:"
+                        android:text="@string/e_mail"
                         card_view:layout_constraintStart_toStartOf="parent"
                         card_view:layout_constraintTop_toBottomOf="@+id/phone_number_edit" />
                 </android.support.constraint.ConstraintLayout>

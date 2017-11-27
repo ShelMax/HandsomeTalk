@@ -78,7 +78,7 @@
                                 android:layout_marginEnd="8dp"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginTop="12dp"
-                                android:text="Why?"
+                                android:text="@string/why"
                                 android:textColor="@color/colorBlack"
                                 android:textSize="36sp"
                                 android:textStyle="bold"

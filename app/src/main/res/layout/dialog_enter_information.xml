@@ -15,7 +15,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="Finish registration"
+        android:text="@string/finish_registration"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/name_info"
         app:layout_constraintHorizontal_bias="0.516"
@@ -28,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Email:"
+        android:text="@string/email_double"
         app:layout_constraintStart_toStartOf="@+id/email_info"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Phone number:"
+        android:text="@string/phone_number_double"
         app:layout_constraintStart_toStartOf="@+id/email_info"
         app:layout_constraintTop_toBottomOf="@+id/email_info" />
 
@@ -46,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Name:"
+        android:text="@string/name_double"
         app:layout_constraintStart_toStartOf="@+id/phone_nubmer_info"
         app:layout_constraintTop_toBottomOf="@+id/phone_nubmer_info" />
 
@@ -58,7 +58,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Enter your email"
+        android:hint="@string/enter_your_email"
         android:inputType="textEmailAddress"
         app:layout_constraintDimensionRatio="h,6:1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -71,7 +71,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Enter your phone number"
+        android:hint="@string/enter_your_phone_number"
         android:inputType="phone"
         app:layout_constraintEnd_toEndOf="@+id/email_info"
         app:layout_constraintHorizontal_bias="0.0"
@@ -85,7 +85,7 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:text="@string/name"
         app:layout_constraintEnd_toEndOf="@+id/phone_nubmer_info"
         app:layout_constraintStart_toStartOf="@+id/phone_nubmer_info"
         app:layout_constraintTop_toBottomOf="@+id/textView21" />

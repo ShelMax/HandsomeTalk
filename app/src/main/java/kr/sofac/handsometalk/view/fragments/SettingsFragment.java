@@ -62,7 +62,7 @@ public class SettingsFragment extends BaseFragment {
             if (!phoneNumberEdit.getText().toString().isEmpty() && !emailEdit.getText().toString().isEmpty()) {
                 newRequest(phoneNumberEdit.getText().toString(), emailEdit.getText().toString());
             } else {
-                Toast.makeText(getActivity(), "Field empty!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), R.string.field_empty, Toast.LENGTH_SHORT).show();
             }
         });
 

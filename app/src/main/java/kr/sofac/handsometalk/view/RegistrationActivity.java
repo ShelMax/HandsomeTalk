@@ -63,10 +63,10 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
                                     progressBar.dismissView();
                                 });
                     } else {
-                        Toast.makeText(this, "Passwords do not match!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, R.string.passwords_do_not_match, Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(this, "Field is empty!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.field_is_empty, Toast.LENGTH_SHORT).show();
                 }
                 break;
         }
@@ -79,7 +79,7 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
     }
 
     public void showToastError() {
-        Toast.makeText(this, "Connection error!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, R.string.connection_error, Toast.LENGTH_SHORT).show();
     }
 
     public void startMainActivity() {

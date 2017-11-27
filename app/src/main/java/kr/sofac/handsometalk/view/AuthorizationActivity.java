@@ -94,11 +94,10 @@ public class AuthorizationActivity extends BaseActivity implements View.OnClickL
                                 progressBar.dismissView();
                             });
                 } else {
-                    Toast.makeText(this, "Fields is empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.fields_is_empty, Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.id_kakaotalk_button:
-                Toast.makeText(this, "TALK", Toast.LENGTH_SHORT).show();
                 loginButton.performClick();
                 break;
             case R.id.id_register_text_view:
@@ -115,7 +114,7 @@ public class AuthorizationActivity extends BaseActivity implements View.OnClickL
     }
 
     public void showToastError() {
-        Toast.makeText(this, "Connection error!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, R.string.connection_error, Toast.LENGTH_SHORT).show();
     }
 
     public void startMainActivity() {
@@ -226,7 +225,7 @@ public class AuthorizationActivity extends BaseActivity implements View.OnClickL
                                         }
                                     });
                                 }else {
-                                    Toast.makeText(localActivity, "Field empty!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(localActivity, R.string.field_empty, Toast.LENGTH_SHORT).show();
                                 }
                             });
 

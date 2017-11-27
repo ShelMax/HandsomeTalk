@@ -46,7 +46,7 @@ public class EventFragment extends BaseFragment {
             if(isSuccess){
                 initUI(answerServerResponse.getDataTransferObject());
             }else{
-                Timber.e("Error!");
+                Timber.e(getString(R.string.error));
             }
             processBar.dismissView();
         });

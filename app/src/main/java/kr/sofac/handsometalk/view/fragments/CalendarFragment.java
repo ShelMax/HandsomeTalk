@@ -91,8 +91,8 @@ public class CalendarFragment extends BaseFragment {
             builder.setPositiveButton("SEND", (dialogInterface, i12) -> newRequestAdd(date));
             builder.setNegativeButton("CANCEL", (dialogInterface, i1) -> {
             });
-            builder.setTitle("You choice this date " + simpleDateFormat.format(date));
-            builder.setMessage("Do you want make an appointment?");
+            builder.setTitle(getString(R.string.you_choice_this_date) + simpleDateFormat.format(date));
+            builder.setMessage(R.string.do_you_want_make);
             builder.show();
 
         });
@@ -118,7 +118,7 @@ public class CalendarFragment extends BaseFragment {
                         new Handler().postDelayed(() -> dialog.dismiss(), 3000);
 
                     } else {
-                        Toast.makeText(getActivity(), "Some error!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), R.string.some_error, Toast.LENGTH_SHORT).show();
                     }
 
                     progressBar.dismissView();

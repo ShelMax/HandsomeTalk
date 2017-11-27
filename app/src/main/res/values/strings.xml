@@ -19,6 +19,88 @@
     <string name="password">Password</string>
     <string name="don_t_have_an_account_register">Don\'t have an account? Register</string>
 
+
+    <string name="unfortunately_you_do_not_have_any_notifications">Unfortunately, you do not have any notifications</string>
+    <string name="handsome_talk">Handsome Talk</string>
+    <string name="enter_text_message">Enter text message…</string>
+    <string name="calendar">Calendar</string>
+    <string name="event">Event</string>
+    <string name="push">Push</string>
+    <string name="handsome_talk_name">핸섬톡</string>
+    <string name="name">Name</string>
+    <string name="create_account">Create Account</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="phone_number">Phone number</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="sign_up">Sign up</string>
+    <string name="about_me_for_me_text">About me, For me, Event me \n<i>“고객의 미소가 이벤트 미의 미래입니다.”</i></string>
+
+
+    <string name="estimate_text">원장님에게 도움이 필요할때는 \n언제든지  글을 남겨 주세요</string>
+    <string name="type_your_message_here">Type your message here…</string>
+    <string name="attach_photo">Attach photo</string>
+    <string name="send_message">Send message</string>
+    <string name="date">Date</string>
+    <string name="message_text">Message text</string>
+    <string name="user_name">User Name</string>
+    <string name="email_naver_com">email@naver.com</string>
+    <string name="home">Home</string>
+    <string name="connection_error">Connection error!</string>
+    <string name="profile">Profile</string>
+    <string name="you_choice_this_date">You choice this date</string>
+    <string name="do_you_want_make">Do you want make an appointment?</string>
+    <string name="some_error">Some error!</string>
+    <string name="error">Error!</string>
+    <string name="fields_is_empty">Fields is empty</string>
+    <string name="your_not_authorization">Your not authorization</string>
+    <string name="You_cant_use_this_function">You can\'t use this function because your not authorization.   Do you want sing in?</string>
+    <string name="yes">Yes</string>
+    <string name="not">Not</string>
+    <string name="create_new_estimate">Create new estimate</string>
+    <string name="field_is_empty">Field is empty!</string>
+    <string name="passwords_do_not_match">Passwords do not match!</string>
+    <string name="our_manager_will_call_you">Our manager will call you!</string>
+    <string name="finish_registration">Finish registration</string>
+    <string name="email_double">Email:</string>
+    <string name="phone_number_double">Phone number:</string>
+    <string name="name_double">Name:</string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="enter_your_phone_number">Enter your phone number</string>
+    <string name="why">Why?</string>
+    <string name="mail">Mail</string>
+    <string name="_380_93_222_22_22">+380 93 222 22 22</string>
+    <string name="example_naver_com">example@naver.com</string>
+    <string name="e_mail">E-mail:</string>
+
+
+    <string name="text_1_about">이벤트에는 지속적인 연구와 많은 사례 분석을 통해 안전하고 검증된 시술로 모든 고객님께 더 나은 만족을 드리기 위해 최선을 다합니다.\n\n
+        프리미엄 급 의료장비와 편안한 진료 시설, 그리고 이벤트미만의 신개념 토탈 프로그램을 통해 고객에게 한 걸음 더 가까이 다가가려 노력합니다.\n\n
+        단순히 원하는 시굴을 해드리는 것이 아니라 고민을 같이 나누고 만족스러운 해결책을 함께 찾는 것이 의료인의 진정한 역할이라고 생각합니다.
+        저희 이벤트 미 의료진과 직원들은 항상 고객님의 마음으로 생각하고 따뜻한 이웃처럼 늘 함께하겠습니다.\n\n
+        체계적인 관리와 시술, 선진화된 시스템으로 뷰티트렌드와 안티에이징의 새로운 기준을 만들어 나가겠습니다.\n\n
+        <b>대표원장 김기남</b></string>
+    <string name="why_event_me">이벤트미 사술 및 치료원칙 \n(STEP 공식)</string>
+    <string name="about_me_text2">
+        <b>SAFETY\n
+        고객안전 최우선</b>\n
+        의료에서 반드시 우선시해야 하는 것은 안전성입니다. 시술 방법의 선정, 시술준비와 과정, 그리고 회복과정 모두 안정성을 최고의 가치 중 하나로 명심하고 여러분을 맞이합니다. \n
+        \n
+        <b>TYPE\n
+        맞춤 개인치료</b>\n
+        개인은 나이나 성별 차이뿐만 아니라, 부위마다 신체상태가 다릅니다. 따라서 세밀한 치료방법의 선택과 진행을 하는 것이 중요합니다.\n
+        \n
+        <b>EFFECT\n
+        최적의 방법</b>\n
+        안정성은 기본이지만 효과 역시 우선 고려되어야 합니다. 그래서 개인별 (TYPE) 치료를 선택하며, 가장 효과적인 방법을 선택합니다.\n
+        \n
+        <b>PERMANENCE\n
+        효과의 지속성</b>\n
+        치료의 효과가 오래가도록 시술 방법의 선택 및 유지관리를 위한 세심한 안내와 지도를 합니다.\n
+
+    </string>
+
+
     <string name="contact_text"><b>Address</b>\n
 서초구 강남대로 61 길 3 대승빌딩 6 층\n
 강남역 10번출구에서 한남동방향으로 20미터 직진하여\n
@@ -58,59 +140,5 @@ Tel. 02-6081-0151\n
     <b>네비게이션 주소를 이용하실 경우</b>\n
 [서울시 서초구 서초동 1307-1호 경동주차장]를 입력해 주십시요.\n
 </string>
-    <string name="unfortunately_you_do_not_have_any_notifications">Unfortunately, you do not have any notifications</string>
-    <string name="handsome_talk">Handsome Talk</string>
-    <string name="enter_text_message">Enter text message…</string>
-    <string name="calendar">Calendar</string>
-    <string name="event">Event</string>
-    <string name="push">Push</string>
-    <string name="handsome_talk_name">핸섬톡</string>
-    <string name="name">Name</string>
-    <string name="create_account">Create Account</string>
-    <string name="male">Male</string>
-    <string name="female">Female</string>
-    <string name="phone_number">Phone number</string>
-    <string name="confirm_password">Confirm password</string>
-    <string name="sign_up">Sign up</string>
-    <string name="about_me_for_me_text">About me, For me, Event me \n<i>“고객의 미소가 이벤트 미의 미래입니다.”</i></string>
-    <string name="text_1_about">이벤트에는 지속적인 연구와 많은 사례 분석을 통해 안전하고 검증된 시술로 모든 고객님께 더 나은 만족을 드리기 위해 최선을 다합니다.\n\n
-        프리미엄 급 의료장비와 편안한 진료 시설, 그리고 이벤트미만의 신개념 토탈 프로그램을 통해 고객에게 한 걸음 더 가까이 다가가려 노력합니다.\n\n
-        단순히 원하는 시굴을 해드리는 것이 아니라 고민을 같이 나누고 만족스러운 해결책을 함께 찾는 것이 의료인의 진정한 역할이라고 생각합니다.
-        저희 이벤트 미 의료진과 직원들은 항상 고객님의 마음으로 생각하고 따뜻한 이웃처럼 늘 함께하겠습니다.\n\n
-        체계적인 관리와 시술, 선진화된 시스템으로 뷰티트렌드와 안티에이징의 새로운 기준을 만들어 나가겠습니다.\n\n
-        <b>대표원장 김기남</b></string>
-    <string name="why_event_me">이벤트미 사술 및 치료원칙 \n(STEP 공식)</string>
-    <string name="about_me_text2">
-        <b>SAFETY\n
-        고객안전 최우선</b>\n
-        의료에서 반드시 우선시해야 하는 것은 안전성입니다. 시술 방법의 선정, 시술준비와 과정, 그리고 회복과정 모두 안정성을 최고의 가치 중 하나로 명심하고 여러분을 맞이합니다. \n
-        \n
-        <b>TYPE\n
-        맞춤 개인치료</b>\n
-        개인은 나이나 성별 차이뿐만 아니라, 부위마다 신체상태가 다릅니다. 따라서 세밀한 치료방법의 선택과 진행을 하는 것이 중요합니다.\n
-        \n
-        <b>EFFECT\n
-        최적의 방법</b>\n
-        안정성은 기본이지만 효과 역시 우선 고려되어야 합니다. 그래서 개인별 (TYPE) 치료를 선택하며, 가장 효과적인 방법을 선택합니다.\n
-        \n
-        <b>PERMANENCE\n
-        효과의 지속성</b>\n
-        치료의 효과가 오래가도록 시술 방법의 선택 및 유지관리를 위한 세심한 안내와 지도를 합니다.\n
-
-    </string>
-
-    <string name="estimate_text">원장님에게 도움이 필요할때는 \n언제든지  글을 남겨 주세요</string>
-    <string name="type_your_message_here">Type your message here…</string>
-    <string name="attach_photo">Attach photo</string>
-    <string name="send_message">Send message</string>
-    <string name="date">Date</string>
-    <string name="message_text">Message text</string>
-    <string name="user_name">User Name</string>
-    <string name="email_naver_com">email@naver.com</string>
-
-    <string name="home">Home</string>
-    <string name="connection_error">Connection error!</string>
-    <string name="field_empty">Field empty!</string>
-    <string name="profile">Profile</string>
 
 </resources>

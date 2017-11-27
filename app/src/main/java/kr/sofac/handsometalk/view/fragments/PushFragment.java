@@ -16,7 +16,6 @@ import kr.sofac.handsometalk.adapter.RecyclerItemClickListener;
 import kr.sofac.handsometalk.dto.GetPushDTO;
 import kr.sofac.handsometalk.dto.PushDTO;
 import kr.sofac.handsometalk.server.Connection;
-import kr.sofac.handsometalk.server.type.ServerResponse;
 import kr.sofac.handsometalk.util.PreferenceApp;
 import kr.sofac.handsometalk.util.ProgressBar;
 import timber.log.Timber;
@@ -41,7 +40,7 @@ public class PushFragment extends BaseFragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_push, container, false);
 
-        recyclerViewPush = (RecyclerView) rootView.findViewById(R.id.idRecyclerPush);
+        recyclerViewPush = rootView.findViewById(R.id.idRecyclerPush);
         mLayoutManager = new LinearLayoutManager(this.getActivity());
         recyclerViewPush.setHasFixedSize(true);
         recyclerViewPush.setLayoutManager(mLayoutManager);
@@ -56,7 +55,6 @@ public class PushFragment extends BaseFragment {
                 (isSuccess, answerServerResponse) -> {
             if (isSuccess) {
                 if (answerServerResponse.getDataTransferObject().isEmpty()) {
-                    Timber.e("empty");
                     recyclerViewPush.setVisibility(View.GONE);
                     emptyView.setVisibility(View.VISIBLE);
                 } else {
@@ -65,7 +63,7 @@ public class PushFragment extends BaseFragment {
                     initUI(answerServerResponse.getDataTransferObject());
                 }
             } else {
-                Timber.e("Error!");
+                Timber.e(getString(R.string.error));
             }
             processBar.dismissView();
         });

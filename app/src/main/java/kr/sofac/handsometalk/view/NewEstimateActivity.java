@@ -45,7 +45,7 @@ public class NewEstimateActivity extends BaseActivity implements View.OnClickLis
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        setTitle("Create new estimate");
+        setTitle(getString(R.string.create_new_estimate));
 
         emptyView = findViewById(R.id.recyclerTalkEmpty);
         editTextMessage = findViewById(R.id.idEditMessage);

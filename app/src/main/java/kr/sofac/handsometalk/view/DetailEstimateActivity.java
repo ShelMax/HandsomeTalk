@@ -95,7 +95,7 @@ public class DetailEstimateActivity extends BaseActivity implements View.OnClick
                     if (isSuccess) {
                         initUI(answerServerResponse.getDataTransferObject());
                     } else {
-                        toastMessage("Connection error!");
+                        toastMessage(getString(R.string.connection_error));
                     }
                     progressBar.dismissView();
                 });
@@ -163,7 +163,7 @@ public class DetailEstimateActivity extends BaseActivity implements View.OnClick
         switch (view.getId()) {
             case R.id.buttonSend:
                 if (editTextMessage.getText().toString().isEmpty()) {
-                    Toast.makeText(this, "Field empty!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.field_empty, Toast.LENGTH_SHORT).show();
                 } else {
                     progressBar.showView();
                     new Connection<String>().newMessage(
@@ -178,7 +178,7 @@ public class DetailEstimateActivity extends BaseActivity implements View.OnClick
                                     recyclerViewScrollPhoto.setVisibility(View.GONE);
                                     newRequest();
                                 } else {
-                                    toastMessage("Connection error!");
+                                    toastMessage(getString(R.string.connection_error));
                                 }
                                 progressBar.dismissView();
                             }

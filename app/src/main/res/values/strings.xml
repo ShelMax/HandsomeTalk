@@ -1,79 +1,88 @@
 <resources>
-
     <string name="kakao_app_key">848c339718166a5604b86baf61e8d5ed</string>
-    <string name="app_name">HandsomeTalk</string>
-    <string name="email">Email</string>
-    <string name="kakaotalk">KakaoTalk</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="about_us">About us</string>
-    <string name="help_me">Help me</string>
-    <string name="make_an_appointment">Make an appointment</string>
-    <string name="events">Events</string>
-    <string name="notifications">Notifications</string>
-    <string name="contacts">Contacts</string>
-    <string name="settings">Settings</string>
-    <string name="sign_out">Sign out</string>
-    <string name="sign_in">Sign in</string>
-    <string name="ToastLogOut">Click again to exit</string>
-    <string name="password">Password</string>
-    <string name="don_t_have_an_account_register">Don\'t have an account? Register</string>
-
-
-    <string name="unfortunately_you_do_not_have_any_notifications">Unfortunately, you do not have any notifications</string>
-    <string name="handsome_talk">Handsome Talk</string>
-    <string name="enter_text_message">Enter text message…</string>
-    <string name="calendar">Calendar</string>
-    <string name="event">Event</string>
-    <string name="push">Push</string>
-    <string name="handsome_talk_name">핸섬톡</string>
-    <string name="name">Name</string>
-    <string name="create_account">Create Account</string>
-    <string name="male">Male</string>
-    <string name="female">Female</string>
-    <string name="phone_number">Phone number</string>
-    <string name="confirm_password">Confirm password</string>
-    <string name="sign_up">Sign up</string>
-    <string name="about_me_for_me_text">About me, For me, Event me \n<i>“고객의 미소가 이벤트 미의 미래입니다.”</i></string>
-
-
-    <string name="estimate_text">원장님에게 도움이 필요할때는 \n언제든지  글을 남겨 주세요</string>
-    <string name="type_your_message_here">Type your message here…</string>
-    <string name="attach_photo">Attach photo</string>
-    <string name="send_message">Send message</string>
     <string name="date">Date</string>
     <string name="message_text">Message text</string>
-    <string name="user_name">User Name</string>
-    <string name="email_naver_com">email@naver.com</string>
-    <string name="home">Home</string>
-    <string name="connection_error">Connection error!</string>
-    <string name="profile">Profile</string>
-    <string name="you_choice_this_date">You choice this date</string>
-    <string name="do_you_want_make">Do you want make an appointment?</string>
-    <string name="some_error">Some error!</string>
-    <string name="error">Error!</string>
-    <string name="fields_is_empty">Fields is empty</string>
-    <string name="your_not_authorization">Your not authorization</string>
-    <string name="You_cant_use_this_function">You can\'t use this function because your not authorization.   Do you want sing in?</string>
-    <string name="yes">Yes</string>
-    <string name="not">Not</string>
-    <string name="create_new_estimate">Create new estimate</string>
-    <string name="field_is_empty">Field is empty!</string>
-    <string name="passwords_do_not_match">Passwords do not match!</string>
-    <string name="our_manager_will_call_you">Our manager will call you!</string>
-    <string name="finish_registration">Finish registration</string>
-    <string name="email_double">Email:</string>
-    <string name="phone_number_double">Phone number:</string>
-    <string name="name_double">Name:</string>
-    <string name="enter_your_email">Enter your email</string>
-    <string name="enter_your_phone_number">Enter your phone number</string>
-    <string name="why">Why?</string>
-    <string name="mail">Mail</string>
+
+    <string name="handsome_talk_name">핸섬톡</string>
+    <string name="handsome_talk">핸섬톡</string>
+    <string name="app_name">핸섬톡</string>
+
+    <string name="kakaotalk">KakaoTalk</string>
+
+    <string name="email">이메일</string>
+    <string name="mail">이메일</string>
+    <string name="create_account">계정을 만들어 주세요</string>
+    <string name="password">비밀번호</string>
+    <string name="confirm_password">비밀번호 확인</string>
+    <string name="sign_out">사인아웃</string>
+    <string name="sign_in">Sign in</string>
+    <string name="sign_up">회원가입</string>
+    <string name="finish_registration">등록을 끝까지 해 주세요</string>
+
+
+    <string name="enter_your_phone_number">전화번호를 입력하세요</string>
+    <string name="phone_number">전화번호</string>
+    <string name="phone_number_double">전화번호:</string>
+    <string name="name_double">이름:</string>
+    <string name="name">이름</string>
     <string name="_380_93_222_22_22">+380 93 222 22 22</string>
     <string name="example_naver_com">example@naver.com</string>
-    <string name="e_mail">E-mail:</string>
+    <string name="e_mail">이메일:</string>
+    <string name="enter_your_email">이메일을 입력하세요</string>
+    <string name="email_double">이메일:</string>
 
 
+    <string name="home">홈</string>
+    <string name="event">이벤트</string>
+    <string name="events">이벤트</string>
+    <string name="help_me">도와줘요! 원장님</string>
+    <string name="contacts">오시는 길</string>
+    <string name="settings">설정</string>
+    <string name="profile">프로필</string>
+    <string name="about_us">About</string>
+    <string name="calendar">예약하기</string>
+    <string name="make_an_appointment">예약하기</string>
+    <string name="notifications">알림</string>
+
+    <string name="ToastLogOut">나가려면 다시 클릭하세요</string>
+
+    <string name="don_t_have_an_account_register">계정이 없으신가요? 계정을 만드세요!</string>
+    <string name="unfortunately_you_do_not_have_any_notifications">알림이 없습니다</string>
+    <string name="enter_text_message">메시지를 입력하세요</string>
+    <string name="estimate_text">원장님에게 도움이 필요할때는 \n언제든지  글을 남겨 주세요</string>
+    <string name="type_your_message_here">여기에 메시지를 입력해 주세요…</string>
+    <string name="attach_photo">사진을 첨부하세요</string>
+    <string name="send_message">메시지가 발송되었습니다</string>
+    <string name="user_name">이름</string>
+    <string name="email_naver_com">email@naver.com</string>
+
+
+    <string name="you_choice_this_date">이 날짜를 선택하셨어요</string>
+    <string name="do_you_want_make">예약을 하고 싶으세요?</string>
+    <string name="fields_is_empty">모든 필드에 입력하십시오!</string>
+    <string name="connection_error">연결이 원활하지 않았어요.</string>
+    <string name="some_error">오류가 발생했습니다!</string>
+    <string name="error">오류가 발생했습니다!</string>
+    <string name="field_is_empty">모든 필드에 입력하십시오!</string>
+    <string name="field_empty">모든 필드에 입력하십시오!</string>
+    <string name="passwords_do_not_match">비밀번호가 맞지 않습니다!</string>
+
+    <string name="your_not_authorization">로그인해 주세요</string>
+    <string name="You_cant_use_this_function">회원가입을 하지 않아서 이 기능을 사용할 수 없습니다. \n등록하고 싶으세요?</string>
+
+    <string name="create_new_estimate">새로운 문의를 만드세요</string>
+
+    <string name="our_manager_will_call_you">잠시 후 연락 들이겠습니다!</string>
+
+    <string name="yes">확인</string>
+    <string name="not">취소</string>
+
+
+    <!--base text app-->
+    <string name="why">Why?</string>
+    <string name="about_me_for_me_text">About me, For me, Event me \n<i>“고객의 미소가 이벤트 미의 미래입니다.”</i></string>
     <string name="text_1_about">이벤트에는 지속적인 연구와 많은 사례 분석을 통해 안전하고 검증된 시술로 모든 고객님께 더 나은 만족을 드리기 위해 최선을 다합니다.\n\n
         프리미엄 급 의료장비와 편안한 진료 시설, 그리고 이벤트미만의 신개념 토탈 프로그램을 통해 고객에게 한 걸음 더 가까이 다가가려 노력합니다.\n\n
         단순히 원하는 시굴을 해드리는 것이 아니라 고민을 같이 나누고 만족스러운 해결책을 함께 찾는 것이 의료인의 진정한 역할이라고 생각합니다.

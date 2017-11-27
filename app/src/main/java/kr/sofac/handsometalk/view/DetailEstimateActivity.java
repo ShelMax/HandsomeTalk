@@ -51,7 +51,7 @@ public class DetailEstimateActivity extends BaseActivity implements View.OnClick
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        setTitle("Talk");
+        setTitle(getString(R.string.help_me));
 
         listPhoto = new ArrayList<>();
 

@@ -104,7 +104,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_weight="1"
-        android:text="@string/push"
+        android:text="@string/notifications"
         android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toBottomOf="@+id/id_push_button"
         app:layout_constraintStart_toEndOf="@+id/id_push_button"
